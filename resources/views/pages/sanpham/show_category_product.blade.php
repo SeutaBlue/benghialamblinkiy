@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.3/themes/base/jquery-ui.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.3/themes/base/jquery-ui.min.css">
 
-    <title>Sản phẩm | Blinkiy</title>
+    <title>{{ $this_category_product->category_name}} | Blinkiy</title>
 </head>
 
 <body>
@@ -27,7 +27,7 @@
         <div class="filter-bar">
             <!-- /*BỘ LỌC DANH MỤC SẢN PHẨM*/ -->
             @foreach ($category as $key => $cate)
-                @if ($cate->category_id == $category_product_id)
+                @if ($cate->category_id == $this_category_product->category_id)
                     <div class="category">
                         <a class="category-title-4"
                             href=" {{ URL::to('/danh-muc-san-pham/' . $cate->category_id) }}">{{ $cate->category_name }}</a>
@@ -58,7 +58,7 @@
                         <li><input type="checkbox" class="checkbox_color" name="filter[]" id=""
                                 onclick="MakeFilter()" value="hồng"> Hồng</li>
                         <li><input type="checkbox" class="checkbox_color" name="filter[]" id=""
-                                onclick="MakeFilter()" value="xanh lam"> Xanh lam</li>
+                                onclick="MakeFilter()" value="xanh dương"> Xanh dương</li>
                         <li><input type="checkbox" class="checkbox_color" name="filter[]" id=""
                                 onclick="MakeFilter()" value="vàng"> Vàng</li>
                         <li><input type="checkbox" class="checkbox_color" name="filter[]" id=""
@@ -114,13 +114,12 @@
             </div>
             </form>
 
-            <br><br><br><br><br>
         </div>
 
         <!-- DANH SÁCH SẢN PHẨM -->
         <div class="product-list">
             <!-- THANH SEARCH -->
-            <form action="{{ URL::to('/tim-kiem') }}" method="post">
+            <form action="{{ URL::to('/tim-kiem') }}" method="get">
                 {{ csrf_field() }}
                 <!--Style lại class "search-bar" thành "search_product",style lại "input-group" , thêm class "search_button_product" và "search_input_product"-->
                 <div class="search_product">

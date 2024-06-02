@@ -123,6 +123,8 @@ class CategoryProduct extends Controller
         
         $category_product=DB::table('tbl_category_product')->where('category_status','1')->orderby('category_id','asc')->get();
         
+        $this_category_product=DB::table('tbl_category_product')->where('category_status','1')->where('category_id',$category_product_id)->first();
+
         $all_product=DB::table('tbl_product')->where('category_id',$category_product_id)->where('product_status','1');
 
         $min_price=DB::table('tbl_product')->min('product_price');
@@ -157,7 +159,7 @@ class CategoryProduct extends Controller
         ->paginate(16);
 
         return view('pages.sanpham.show_category_product')
-        ->with('category_product_id',$category_product_id)
+        ->with('this_category_product',$this_category_product)
         ->with('category',$category_product)->with('product',$all_product)
         ->with('min_price_value',$min_price)->with('max_price_value',$max_price)
         ->with('max_price_range',$max_price_range)->with('min_price_range',$min_price_range)

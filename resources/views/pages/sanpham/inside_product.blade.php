@@ -257,8 +257,7 @@
                                             src="{{ URL::to('public/uploads/product/' . $related_pro->product_image) }}">
                                     </div>
                                     <div class="product-content">
-                                        <a
-                                            href="{{ URL::to('/chi-tiet-san-pham/' . $pro->product_id) }}">{{ $related_pro->product_name }}</a>
+                                        <a class="product-name" href="{{ URL::to('/chi-tiet-san-pham/' . $pro->product_id) }}">{{ $related_pro->product_name }}</a>
                                         <p>{{ number_format($related_pro->product_price) . ' ' . 'VNĐ' }}</p>
                                     </div>
                                 </div>

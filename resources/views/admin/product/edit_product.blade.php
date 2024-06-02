@@ -65,6 +65,14 @@
                                 }
                             </script> --}}
                                 </div>
+                                <label for="exampleInputPassword1">Mệnh</label>
+                                    <select id="product_color" name="product_element" class="form-control input-sm m-bot15">
+                                        <option value="Kim" {{ $pro->product_element == 'Kim' ? 'selected' : '' }}>Kim</option>
+                                        <option value="Mộc" {{ $pro->product_element == 'Mộc' ? 'selected' : '' }}>Mộc</option>
+                                        <option value="Thủy" {{ $pro->product_element == 'Thủy' ? 'selected' : '' }}>Thủy</option>
+                                        <option value="Hỏa" {{ $pro->product_element == 'Hỏa' ? 'selected' : '' }}>Hỏa</option>
+                                        <option value="Thổ" {{ $pro->product_element == 'Thổ' ? 'selected' : '' }}>Thổ</option>
+                                    </select>
                                 <div class="form-group">
                                     <label for="exampleInputPassword1">Danh mục sản phẩm</label>
                                     <select name="cate_product" class="form-control input-sm m-bot15">

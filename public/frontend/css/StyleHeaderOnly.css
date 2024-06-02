@@ -188,7 +188,7 @@ i.fa-user, i.fa-cart-shopping, i.fa-heart
 .menu-bar-title
 {
     display: block;
-    text-decoration: none;
+    text-decoration: none !important;
     height: 75px;
     display: flex;
     align-items: center;

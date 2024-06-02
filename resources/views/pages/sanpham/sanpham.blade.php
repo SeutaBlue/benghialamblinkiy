@@ -18,7 +18,6 @@
 <body>
     @include('Header')
 
-   
     {{-- <script src = "https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script> --}}
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
@@ -46,7 +45,7 @@
                         <li><input type="checkbox" class="checkbox_color" name="filter[]" id=""
                                 onclick="MakeFilter()" value="hồng"> Hồng</li>
                         <li><input type="checkbox" class="checkbox_color" name="filter[]" id=""
-                                onclick="MakeFilter()" value="xanh lam"> Xanh lam</li>
+                                onclick="MakeFilter()" value="xanh dương"> Xanh dương</li>
                         <li><input type="checkbox" class="checkbox_color" name="filter[]" id=""
                                 onclick="MakeFilter()" value="vàng"> Vàng</li>
                         <li><input type="checkbox" class="checkbox_color" name="filter[]" id=""
@@ -102,13 +101,12 @@
             </div>
             </form>
 
-            <br><br><br><br><br><br><br><br><br><br>
         </div>
 
         <!-- DANH SÁCH SẢN PHẨM -->
         <div class="product-list">
             <!-- THANH SEARCH -->
-            <form action="{{ URL::to('/tim-kiem') }}" method="post">
+            <form action="{{ URL::to('/tim-kiem') }}" method="get">
                 {{ csrf_field() }}
                 <!--Style lại class "search-bar" thành "search_product",style lại "input-group" , thêm class "search_button_product" và "search_input_product"-->
                 <div class="search_product">

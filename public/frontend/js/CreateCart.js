@@ -1,5 +1,5 @@
 var cart = JSON.parse(sessionStorage.getItem('cart'));
-if (cart) {
+if (cart.length>0) {
     var cartContainer = document.querySelector('#list');
     cartContainer.innerHTML = " ";
 
@@ -161,4 +161,19 @@ if (cart) {
         cartContainer.appendChild(Item);
 
     });
+}
+else
+{
+    // alert("asd");
+   
+    var cartContainer = document.querySelector('#list');
+    var p = document.createElement("p");
+
+        // Thiết lập nội dung cho thẻ p
+        p.textContent = "Bạn chưa có sản phẩm nào trong giỏ hàng, hãy thêm vào đi nào :3";
+        p.className="note";
+
+        cartContainer.appendChild(p);
+        // Chèn thẻ p vào phần tử có id là container
+        // document.getElementById("list").appendChild(p);
 }

@@ -99,6 +99,7 @@ body  */
 }
 
 .left_btn, .right_btn {
+
   position: absolute;
   top: 55%;
   scale: 200%;
@@ -638,6 +639,7 @@ body  */
 }
 .product-content
 {
+  /* width: 255px; */
     text-align: center;
     display: grid;
     grid-template-columns: 100%;
@@ -647,24 +649,36 @@ body  */
     font-size: 18px;
     font-family: 'DM Sans';
     margin-top: 1px;
-    margin-bottom: 5px;
+    margin-bottom: 0px;
     text-decoration: none;
     color: #747474;
+
+    margin-left: 10%;
+    width: 80%;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.product-name
+{
+  height: 30px;
 
 }
 .product-content p
 {
     font-size: 19px;
     font-family: 'DM Sans';
-    margin-top: 0;
+    margin-top: -2px;
     color: #D0933E;
 }
 .bi-chevron-right, .bi-chevron-left
 {
     font-size: 35px;
     margin-left: -5px;
-    /* color: #ef99a2c8; */
-    color: rgba(255, 255, 255, 0.571);
+    color:#EF99A2;
+    /* color: rgba(255, 255, 255, 0.571); */
 }
 .bi-chevron-right:hover, .bi-chevron-left:hover
 {

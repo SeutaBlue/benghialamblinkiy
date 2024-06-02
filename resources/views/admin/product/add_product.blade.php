@@ -48,6 +48,16 @@
                                 </select>
                             </div>
                             <div class="form-group">
+                                <label for="exampleInputPassword1">Mệnh phong thủy</label>
+                                <select name="product_element" class="form-control input-sm m-bot15">
+                                    <option value="Kim">Kim</option>
+                                    <option value="Mộc">Mộc</option>
+                                    <option value="Thủy">Thủy</option>
+                                    <option value="Hỏa">Hỏa</option>
+                                    <option value="Thổ">Thổ</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
                                 <label for="exampleInputPassword1">Danh mục sản phẩm</label>
                                 <select name="cate_product" class="form-control input-sm m-bot15">
                                     @foreach ($category_product as $key => $cate)

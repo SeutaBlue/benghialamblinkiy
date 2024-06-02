@@ -290,84 +290,17 @@ function changequantity(product)//hàm để tăng số lượng nếu chọn tr
 }
 
 
+document.addEventListener('DOMContentLoaded', function() {
+    var productNames = document.querySelectorAll('.product-name');
 
+    productNames.forEach(function(productName) {
+        // var maxWidth = parseInt(window.getComputedStyle(productName).maxWidth);
 
-// function addToCart()
-// {
-//     $.ajax({
-//                 type: 'POST',
-//                 url: "{{ url::to('/add-to-cart') }}",
-//                 //url: "{{ url('/filter-products') }}",
-//                 //url: '{{ URL::to('/filter-products') }}', // URL của route Laravel
-
-//                 // data: JSON.stringify({
-//                 //     //_token: token, // Thêm CSRF token
-//                 //     filter_checked: filter_checked,
-//                 //     min_price: min_price,
-//                 //     max_price: max_price,
-//                 //     //additional_param: additionalParam // Thêm tham số tùy chọn
-//                 // }),
-
-//                 success: function(response) {
-//                     if (response.success) {
-//                         obj.innerHTML = "asasdas";
-//                     } else {
-//                         alert('Failed to filter products');
-//                     }
-//                 },
-//                 error: function(jqXHR, textStatus, errorThrown) {
-//                     obj.innerHTML = "asasdas";
-//                     console.log('AJAX call failed: ' + textStatus + ', ' + errorThrown);
-//                 }
-//             });
-// }
-
-// Buy now
-function buynow() {
-    // alert('v');
-    if (validateSelection()) {
-        Swal.fire({
-            icon: 'success',
-            title: 'Thành công',
-            text: 'Bạn đang được chuyển đến trang thanh toán!'
-        }).then(() => {
-            // Mua ngay (href=/checkout)
-        });
-    }
-}
-
-// AddtoCart button
-// document.getElementById("add_to_cart").addEventListener("click", function() {
-//     if (checkSelection()) {
-//         var xhr = new XMLHttpRequest();
-//         xhr.open("POST", "addToCart.php", true);
-//         xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
-//         xhr.onreadystatechange = function() {
-//             if (xhr.readyState == XMLHttpRequest.DONE && xhr.status == 200) {
-//                 var response = JSON.parse(xhr.responseText);
-//                 alert(response.message);
-//             }
-//         };
-//         var data = { type: "add_to_cart" };
-//         xhr.send(JSON.stringify(data));
-//     }
-// });
-
-// document.getElementById("buy_now").addEventListener("click", function() {
-//     if (checkSelection()) {
-//         var xhr = new XMLHttpRequest();
-//         xhr.open("POST", "buynow.php", true);
-//         xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
-//         xhr.onreadystatechange = function() {
-//             if (xhr.readyState == XMLHttpRequest.DONE && xhr.status == 200) {
-//                 var response = JSON.parse(xhr.responseText);
-//                 alert(response.message);
-//                 // Điều hướng tới trang thanh toán nếu cần
-//             }
-//         };
-//         var data = { type: "buy_now" };
-//         xhr.send(JSON.stringify(data));
-//     }
-// });
-
+        // // Nếu chiều rộng của tiêu đề lớn hơn chiều rộng tối đa
+        // if (productName.scrollWidth > maxWidth) {
+            // Thêm thuộc tính title để hiển thị tiêu đề đầy đủ khi di chuột qua
+            productName.setAttribute('title', productName.innerText);
+        // }
+    });
+});
 

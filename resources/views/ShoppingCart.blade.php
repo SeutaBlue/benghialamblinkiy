@@ -24,53 +24,57 @@
                     <div id="list" class="list">
 
                         @if ($login)
-                            @foreach ($ShoppingCart as $key => $cart)
-                                <div class="item">
-                                    <input type="checkbox" class="checkbox">
-                                    <div class = "img_product">
-                                        <a href="{{ URL::to('/chi-tiet-san-pham/' . $cart->product_id) }}">
-                                            <img class="product_img"
-                                                src="{{ URL::to('public/uploads/product/' . $cart->product_image) }}"
-                                                alt="sp">
-                                        </a>
-                                    </div>
-
-                                    <div class="item-info">
-                                        <div class="name">
+                            @if($ShoppingCart) 
+                                <p class="note">Bạn chưa có sản phẩm nào trong giỏ hàng, hãy thêm vào đi nào :3</p>
+                            @else
+                                @foreach ($ShoppingCart as $key => $cart)
+                                    <div class="item">
+                                        <input type="checkbox" class="checkbox">
+                                        <div class = "img_product">
                                             <a href="{{ URL::to('/chi-tiet-san-pham/' . $cart->product_id) }}">
-                                                <div class="product-name">{{ $cart->product_name }}</div>
+                                                <img class="product_img"
+                                                    src="{{ URL::to('public/uploads/product/' . $cart->product_image) }}"
+                                                    alt="sp">
                                             </a>
-                                            <input type="hidden" class="product-id" value="{{ $cart->product_id }}">
                                         </div>
-                                        <div class="product-decribe">(Màu: <input type="hidden"
-                                                class="color">{{ $cart->product_color }},
-                                            Kích cỡ:<input type="hidden" class="size" value="{{ $cart->size_id }}">
-                                            {{ $cart->size_value }} )
-                                        </div>
-                                        <div class="product-price">
-                                            <input type="hidden" class="price" value="{{ $cart->product_price }}">
-                                            <p class="price_text">{{ number_format($cart->product_price, 0, '.', '.') }}đ
-                                            </p>
-                                            <div class="number-input">
-                                                <input type="button" value="-" class="decrease_button"
-                                                    onclick="UpdateCart(this)">
-                                                <input type="number" class="quantity_values" name="quantity"
-                                                    value="{{ $cart->cart_quantity }}" aria-label="Product quantity"
-                                                    size="4" min="1" step="1" inputmode="numeric"
-                                                    autocomplete="off" onchange="UpdateCart(this)">
-                                                <input type="button" value="+" class="increase_button"
-                                                    onclick="UpdateCart(this)">
-                                                <input type="hidden" class="inventory" value="{{ $cart->SL }}">
+
+                                        <div class="item-info">
+                                            <div class="name">
+                                                <a href="{{ URL::to('/chi-tiet-san-pham/' . $cart->product_id) }}">
+                                                    <div class="product-name">{{ $cart->product_name }}</div>
+                                                </a>
+                                                <input type="hidden" class="product-id" value="{{ $cart->product_id }}">
                                             </div>
-                                            <p class="total">
-                                                {{ number_format($cart->cart_quantity * $cart->product_price, 0, '.', '.') }}đ
-                                            </p>
+                                            <div class="product-decribe">(Màu: <input type="hidden"
+                                                    class="color">{{ $cart->product_color }},
+                                                Kích cỡ:<input type="hidden" class="size" value="{{ $cart->size_id }}">
+                                                {{ $cart->size_value }} )
+                                            </div>
+                                            <div class="product-price">
+                                                <input type="hidden" class="price" value="{{ $cart->product_price }}">
+                                                <p class="price_text">{{ number_format($cart->product_price, 0, '.', '.') }}đ
+                                                </p>
+                                                <div class="number-input">
+                                                    <input type="button" value="-" class="decrease_button"
+                                                        onclick="UpdateCart(this)">
+                                                    <input type="number" class="quantity_values" name="quantity"
+                                                        value="{{ $cart->cart_quantity }}" aria-label="Product quantity"
+                                                        size="4" min="1" step="1" inputmode="numeric"
+                                                        autocomplete="off" onchange="UpdateCart(this)">
+                                                    <input type="button" value="+" class="increase_button"
+                                                        onclick="UpdateCart(this)">
+                                                    <input type="hidden" class="inventory" value="{{ $cart->SL }}">
+                                                </div>
+                                                <p class="total">
+                                                    {{ number_format($cart->cart_quantity * $cart->product_price, 0, '.', '.') }}đ
+                                                </p>
+                                            </div>
+                                            <p class="remove" onclick="DeleteCart(this)"><i class="fa-solid fa-trash"></i>
+                                                Xóa</p>
                                         </div>
-                                        <p class="remove" onclick="DeleteCart(this)"><i class="fa-solid fa-trash"></i>
-                                            Xóa</p>
                                     </div>
-                                </div>
-                            @endforeach
+                                @endforeach
+                            @endif
                         @else
                             <script src="{{ asset('public/frontend/js/CreateCart.js') }}"></script>
                         @endif

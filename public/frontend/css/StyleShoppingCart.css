@@ -169,6 +169,12 @@ body
 .all_total {
     color: #E6A244;
 }
+.note
+{
+    margin-left: 20px;
+    font-size: 19px;
+    color: #3E2929;
+}
 
 .basket .discount_container {
     margin-top: 10px;

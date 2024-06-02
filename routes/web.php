@@ -21,7 +21,7 @@ Route::post('/filter-products', 'App\Http\Controllers\ProductController@filterPr
 //Giỏ hàng
 Route::post('/add-to-cart', 'App\Http\Controllers\ProductController@add_to_cart');
 
-Route::post('/tim-kiem','App\Http\Controllers\HomeController@search');
+Route::get('/tim-kiem','App\Http\Controllers\HomeController@search');
 
 // //BE 
 // //admin
