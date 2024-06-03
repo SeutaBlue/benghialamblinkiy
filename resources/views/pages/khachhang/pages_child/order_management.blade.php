@@ -13,18 +13,27 @@
         <table class="table table-cart" id="my-orders-table">
             <thead class="thead-default">
                 <tr>
-                    <th>Đơn hàng</th>
-                    <th>Ngày</th>
-                    <th>Địa chỉ</th>
-                    <th>Giá trị đơn hàng</th>
-                    <th>TT Thanh Toán</th>
-                    <th>TT Vận Chuyển</th>
+                    <th class="donhang">Đơn hàng</th>
+                    <th class="ngay">Ngày</th>
+                    <th class="diachi">Địa chỉ</th>
+                    <th class="giatri">Giá trị đơn hàng</th>
+                    <th class="ttthanhtoan">TT Thanh Toán</th>
+                    <th class="ttvanchuyen">TT Vận Chuyển</th>
+                    <th class="chitiet">Chi tiết</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
-                    <td colspan="6">
-                        <p>Không có đơn hàng nào.</p>
+                    <td>
+                        <p>1</p>
+                    </td>
+                    <td>12/5</td>
+                    <td>78/1 Nguyễn Bỉnh Khiêm</td>
+                    <td>500000</td>
+                    <td>Chưa thanh toán</td>
+                    <td>Chưa vận chuyển </td>
+                    <td>
+                    <button type="submit" class="btn btn-update">Chi tiết</button>
                     </td>
                 </tr>
             </tbody>

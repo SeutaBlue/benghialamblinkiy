@@ -11,7 +11,7 @@
 
 <body>
     <!-- HEADER -->
-    @include('layout.Header')
+    @include('Header')
 
     <!-- SECTION -->
 

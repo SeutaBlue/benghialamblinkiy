@@ -11,7 +11,7 @@
 
 <body>
     <!-- HEADER -->
-    @include('layout.Header')
+    @include('Header')
     <!-- SECTION -->
     <section class="container_Information">
         @include('layout.user_profile_menubar')

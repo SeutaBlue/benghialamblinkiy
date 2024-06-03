@@ -3,6 +3,9 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\DB;
+use Symfony\Component\HttpFoundation\Session\Session;
 
 class ChangepassRequest extends FormRequest
 {

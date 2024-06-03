@@ -100,7 +100,7 @@ Route::group(['middleware' => 'customer'], function () {
     // update-profle
     Route::post('/update-customer/{customer_id}', 'App\Http\Controllers\CheckoutController@update_customer');
     // Các route yêu cầu đăng nhập
-    Route::get('/ho-so', 'App\Http\Controllers\CheckoutController@personal_infor');
+    Route::get('/personal_infor', 'App\Http\Controllers\CheckoutController@personal_infor');
 
     // logout
     Route::get('/logout', 'App\Http\Controllers\CheckoutController@logout');
@@ -110,14 +110,22 @@ Route::group(['middleware' => 'customer'], function () {
     Route::post('/change_pass', 'App\Http\Controllers\CheckoutController@check_change_pass');
 
     Route::get('/order_management', 'App\Http\Controllers\CheckoutController@Order_management');
+    Route::post('/upload-avatar/{customer_id}', 'App\Http\Controllers\CheckoutController@upload_avatar');
 });
+
+// Hàm lấy quận từ thành phố.
+Route::post('/get-districts', 'App\Http\Controllers\CheckoutController@fetchDistrict')->name('fetch_d');
 
 // Quên mật khẩu
 Route::get('/forgot-password', 'App\Http\Controllers\CheckoutController@forgot_password');
 Route::post('/forgot-password', 'App\Http\Controllers\CheckoutController@check_forgot_password');
 
+Route::get('/verify_otp', 'App\Http\Controllers\CheckoutController@verify_otp');
+Route::post('/verify_otp', 'App\Http\Controllers\CheckoutController@check_verify_otp');
+
 Route::get('/reset-password', 'App\Http\Controllers\CheckoutController@reset_password');
 Route::post('/reset-password', 'App\Http\Controllers\CheckoutController@check_reset_password'); 
+
 
 
 use App\Http\Controllers\ShippingController;

@@ -1,6 +1,8 @@
-<div class="userProfile">
-    <div class="img_photo">
-        <h5 class="title-account">TRANG TÀI KHOẢN</h5>
+<div class="userProfile ">
+    <div class="img_photo align ">
+        <h5 class="title-account ">TRANG TÀI KHOẢN</h5>
+        <img src="{{ URL::to('public/uploads/customers_avatar/' . $customer->customer_image) }}" alt="" style="width:100px; height: 100px;display: block; margin: 0 auto;  ; border-radius: 50%;
+            object-fit: cover;">
         <p class="hello-account">Xin chào, <span style="color:#b84c65;
  ">{{$customer->customer_name}}</span></p>
     </div>
@@ -12,7 +14,7 @@
                 </div>
             </a>
             <ul id="subMenu" class="submenu">
-                <li><a href="{{URL::to('/pages.personal_infor')}}">Thông tin cá nhân</a></li>
+                <li><a href="{{URL::to('/personal_infor')}}">Thông tin cá nhân</a></li>
                 <li><a href="{{URL::to('/change_pass')}}">Thay đổi mật khẩu</a></li>
             </ul>
         </li>

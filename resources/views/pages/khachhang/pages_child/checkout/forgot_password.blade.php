@@ -1,4 +1,4 @@
-@extends('register_format')
+@extends('pages.khachhang.register_format')
 @section('content')
 <section>
     <div class="wrapper">
@@ -10,11 +10,11 @@
                     {{ csrf_field() }}
                     <div class="forgotpass-form">
                         <!-- Phần hiển thị thông báo lỗi -->
-                        <!-- @if(session()->has('error'))
-                        <div class="alert alert-danger" role="alert">
-                            {{ session('error') }}
+                        @if (session('error'))
+                        <div class="alert alert-danger">
+                        <p style="margin: auto; text-align: center">{{ session('error') }}</p>
                         </div>
-                        @endif -->
+                        @endif
 
                         <h1 class="regist_title text-center text-uppercase h3 py-3 font-weight-bold ">ĐẶT LẠI MẬT KHẨU</h1>
                         <P style="text-align:center; font-family: 'Roboto', sans-serif;--font-serif: 'Yeseva One', cursive">Chúng tôi sẽ gửi cho bạn một email để kích hoạt việc đặt lại mật khẩu.</P>
