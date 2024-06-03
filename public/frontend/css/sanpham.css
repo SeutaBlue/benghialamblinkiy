@@ -137,12 +137,11 @@
 
 }
 
-/* .product-card
+.product-image img:hover 
 {
-  width: 260px;
+  border: 2px solid #e6858f;
+}
 
-  background-color: chartreuse;
-} */
 
 .product-info {
   width: 255px;
@@ -173,8 +172,10 @@
 }
 
 .container-fluid .product-list .products .product-card .product-info .product-name:hover {
-  color: #EF99A2;
+  color: #e6858f;
+  font-weight: medium;
 }
+
 
 .category-title-1,
 .category-title-2, 

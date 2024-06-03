@@ -72,12 +72,13 @@
 
             <div class="category">
                 <h4 class="category-title-3">Mệnh phong thủy</h4>
+                <input type="hidden" id="selectedElements" name="selectedElements" value="{{ json_encode($selectedElements) }}">
                 <ul>
-                    <li><input type="checkbox" class="checkbox_menh" name="" id=""> Kim</li>
-                    <li><input type="checkbox" class="checkbox_menh" name="" id=""> Mộc</li>
-                    <li><input type="checkbox" class="checkbox_menh" name="" id=""> Thủy</li>
-                    <li><input type="checkbox" class="checkbox_menh" name="" id=""> Hỏa</li>
-                    <li><input type="checkbox" class="checkbox_menh" name="" id=""> Thổ</li>
+                    <li><input type="checkbox" class="checkbox_element" name="element[]" value="Kim" id=""> Kim</li>
+                    <li><input type="checkbox" class="checkbox_element" name="element[]" value="Mộc" id=""> Mộc</li>
+                    <li><input type="checkbox" class="checkbox_element" name="element[]" value="Thủy" id=""> Thủy</li>
+                    <li><input type="checkbox" class="checkbox_element" name="element[]" value="Hỏa" id=""> Hỏa</li>
+                    <li><input type="checkbox" class="checkbox_element" name="element[]" value="Thổ" id=""> Thổ</li>
 
                 </ul>
             </div>
@@ -100,7 +101,7 @@
                 <input type="submit" class="filter-price" name="filter-price" value="Lọc sản phẩm">
             </div>
             </form>
-
+            <br>
         </div>
 
         <!-- DANH SÁCH SẢN PHẨM -->

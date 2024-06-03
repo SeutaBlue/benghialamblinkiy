@@ -97,30 +97,6 @@ class CategoryProduct extends Controller
     //FE
     public function show_category_product_home($category_product_id)
     {
-        // $category_product=DB::table('tbl_category_product')->where('category_status','1')->orderby('category_id','asc')->get();
-        
-        // $product_by_category=DB::table('tbl_product')->join('tbl_category_product','tbl_product.category_id','=','tbl_category_product.category_id')->where('category_status','1')->where('tbl_product.category_id',$category_product_id);
-        
-        // $min_price=DB::table('tbl_product')->min('product_price');
-        // $max_price=DB::table('tbl_product')->max('product_price');
-        // $min_price_range=$min_price-100000;
-        // $max_price_range=$max_price+100000;
-        
-        // if(isset($_GET['price_from']) && ($_GET['price_from']) )
-        // {
-        //     $min_price=$_GET['price_from'];
-        //     $max_price=$_GET['price_to'];
-            
-        //     $product_by_category=$product_by_category->where('product_status','1')->whereBetween('product_price',[$min_price,$max_price])->orderby('product_price','asc')->get();
-        // }
-        // else $product_by_category=$product_by_category->get();
-
-        // return view('pages.sanpham.show_category_product')->with('category',$category_product)->with('product',$product_by_category)
-        // ->with('min_price_value',$min_price)->with('max_price_value',$max_price)
-        // ->with('max_price_range',$max_price_range)->with('min_price_range',$max_price_range);
-        
-        //$all_product=DB::table('tbl_product')->where('product_status','1')->orderby('product_id','asc')->paginate(8);
-        
         $category_product=DB::table('tbl_category_product')->where('category_status','1')->orderby('category_id','asc')->get();
         
         $this_category_product=DB::table('tbl_category_product')->where('category_status','1')->where('category_id',$category_product_id)->first();
@@ -130,8 +106,8 @@ class CategoryProduct extends Controller
         $min_price=DB::table('tbl_product')->min('product_price');
         $max_price=DB::table('tbl_product')->max('product_price');
 
-        $min_price_range=$min_price-500000;
-        $max_price_range=$max_price+500000;
+        $min_price_range=$min_price-200000;
+        $max_price_range=$max_price+200000;
         // $selectedColors;
         $filter=[];
 

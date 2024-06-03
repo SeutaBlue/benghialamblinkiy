@@ -8,10 +8,11 @@
 
         <!-- Fonts -->
         <link href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
-
+        <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Rowdies:wght@400;700&family=Francois+One&family=Paytone+One&family=Sigmar&family=Tilt+Neon&family=Saira+Stencil+One&display=swap" rel="stylesheet">
         {{-- <style>
             body {
-                /* font-family: 'Nunito', sans-serif; */
+                font-family: 'Geologica', sans-serif;
             }
         </style> --}}
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
@@ -22,11 +23,13 @@
     <body class="antialiased">
         {{-- <header> --}}
             <div class="top-bar">
-                <div class="logo">
-                    <img class="logo-img" src="{{asset('public/frontend/images/Logo.jpg') }}"/>
-                    <p class="logo-blinkiy">BLINKIY</p>
-                    <p class="logo-phongthuy">PHONG THỦY</p>
-                </div>
+                <a href="{{ URL::to('/trang-chu') }}">
+                    <div class="logo">
+                        <img class="logo-img" src="{{asset('public/frontend/images/Logo.jpg') }}"/>
+                        <p class="logo-blinkiy">BLINKIY</p>
+                        <p class="logo-phongthuy">PHONG THỦY</p>
+                    </div>
+                </a>
                 <div class="search-bar">
                     <div class="search-bar-cover">
                         <i class="fas fa-search"></i>
@@ -101,7 +104,7 @@
     <section class="product-type-category">
         <div class="product-type-title">
             <hr>
-            <p>XU HƯỚNG TÌM KIẾM</p>
+            <p>Xu hướng tìm kiếm</p>
             <hr>
         </div>
         <div class="product-type-slide">
@@ -141,7 +144,7 @@
     
     <section class="product-category">
         <div class="container-title">
-            <p>SẢN PHẨM BÁN CHẠY</p>
+            <p>Sản phẩm bán chạy</p>
             <hr>
         </div>
         <div class="card-container">
@@ -175,7 +178,7 @@
     </div>
     <section class="product-category">
         <div class="container-title">
-            <p>SẢN PHẨM MỚI NHẤT</p>
+            <p>Sản phẩm mới nhất</p>
             <hr>
         </div>
         <div class="card-container">
@@ -211,7 +214,7 @@
     
     <section class="news-category">
         <div class="container-title">
-            <p>THÔNG TIN MỚI NHẤT</p>
+            <p>Thông tin mới nhất</p>
             <hr>
         </div>
         <div class="news-container">

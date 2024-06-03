@@ -1,5 +1,7 @@
 var cart = JSON.parse(sessionStorage.getItem('cart'));
-if (cart.length>0) {
+if (cart.length>0 || cart) {
+
+    // alert('áds');
     var cartContainer = document.querySelector('#list');
     cartContainer.innerHTML = " ";
 
@@ -164,8 +166,8 @@ if (cart.length>0) {
 }
 else
 {
-    // alert("asd");
-   
+  
+    // alert('ád');
     var cartContainer = document.querySelector('#list');
     var p = document.createElement("p");
 

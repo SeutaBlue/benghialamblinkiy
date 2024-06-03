@@ -1,3 +1,8 @@
+body
+{
+    font-family: 'Paytone One', sans-serif !important;
+    background-color: #fffefc;
+}
 /*Slider*/
 .slide-show
 {
@@ -25,14 +30,14 @@
 
 .background-img
 {
-    margin-top: 55px;
-    margin-bottom: 50px;
+    margin-top: 60px;
+    margin-bottom: 60px;
     /* max-width: 1920px; */
     width: 100%;
-    height: 120px;
+    height: 170px;
     /* max-height: 150px; */
     background-color: rgb(193, 188, 184);
-    border: 3.5px solid #DAB076;
+    border: 3px solid #DAB076;
     border-left: none;
     border-right: none;
     overflow: hidden;
@@ -57,28 +62,27 @@
     width: 100%;
     display: flex;
     align-items: center;
-    /* display: grid;
-    grid-template-columns: 33% 65%;    */
+    margin-bottom: 5px;
 }
 .container-title p
 {
     margin-top: 25px;
     margin-bottom: 25px;
     font-size: 35px;
-    font-weight: bold;
-    font-family: 'Arial';
+    font-family: 'Paytone One', sans-serif;
+    font-weight: medium;
     color: #ddab64;
     margin-left: 45px;
 }
 .container-title hr
 {
-    margin-top: 10px;
+    margin-top: 20px;
     background-image: linear-gradient(to right, #fdd5d9,#feadb5, #f9bec4);
     /* #f9bec4 */
     height: 5px;
     border: none;
     margin-right: 30px;
-    width: 60%;
+    width: 65%;
 }
 
 .card-container
@@ -130,6 +134,7 @@
     display: grid;
     grid-template-rows: 78% 22%;
 }
+
 .carousel-end
 {
     margin-top: 10px;
@@ -157,32 +162,37 @@
     grid-template-columns: 100%;
     
 }
+.product-name
+{
+    height: 20px;
+}
 .product-content a
 {
     font-size: 18px;
-    font-family: 'DM Sans';
+    /* font-family: 'Kanit', sans-serif; */
+    font-family: 'Dongle', sans-serif;
+    /* font-family: 'Signika', sans-serif; */
+    font-weight: medium;
     /* margin-top: 1px; */
-    margin-top: -2px;
+    margin-top: 0px;
     margin-bottom: 5px;
     text-decoration: none;
     color: #747474;
-    display: flex;
-    justify-content: center;
     
     margin-left: 10%;
     width: 80%;
-    display: -webkit-box;
-    -webkit-line-clamp: 1;
-    -webkit-box-orient: vertical;
+    
+    white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
 
 }
 .product-content p
 {
-    font-size: 19px;
-    font-family: 'DM Sans';
-    margin-top: 3px;
+    font-size: 18px;
+    font-weight: 600;
+    font-family: 'Dongle', sans-serif;
+    margin-top: 4px;
     color: #D0933E;
 }
 .fa-angle-right, .fa-angle-left
@@ -224,25 +234,26 @@
 
 .hotline-title
 {
-    margin-top: 40px;
-    font-size: 30px;
-    font-weight: bold;
+    margin-top: 30px;
+    font-size: 25px;
+    font-weight: 100;
     color: #DAB076;
     margin-bottom: 10px;
 }
 .phone-numbers
 {
     margin-top: 0;
-    font-size: 25px;
-    font-weight: 550;
+    font-size: 23px;
+    font-weight: 10 !important;
     color: #DAB076;
+    letter-spacing: 1px;
     margin-bottom: 10px;
 }
 .slogan
 {
     margin-top: 0;
     font-size: 23px;
-    font-weight: 650;
+    font-weight: 100 !important;
     color: #ffebebe6;
 }
 
@@ -280,12 +291,18 @@
     margin-top: 12px;
     width: 150px;
     height: 35px;
-    font-family: 'Dm Sans';
     color: #604646;
     background-color: white;
     border: 1px solid #604646;
     cursor: pointer;
-    font-size: 18px;
+    font-size: 15px;
+    /* font-family: 'Dongle', sans-serif; */
+}
+.see-more-button
+{
+    margin-top: 5px;
+    font-family: 'Paytone One', sans-serif;
+    letter-spacing: 0.5px;
 }
 .news-container-leftside button:hover
 {
@@ -310,12 +327,12 @@
 {
     display: block;
     text-decoration: none;
-    margin-top: 6px;
-    font-size: 19px;
-    font-weight: bold;
-    font-family: 'Dm Sans';
+    margin-top: -10px;
+    font-size: 18px;
+    font-weight: 700;
     color: #604646;
     width: 100%;
+    letter-spacing: 1px;
     
 }
 .a-news a:hover
@@ -325,9 +342,9 @@
 .a-news p
 {
     margin-top: 6px;
-    font-size: 13px;
-    font-family: 'Dm Sans';
+    font-size: 15px;
     color: #604646;
+    font-family: 'Dongle', sans-serif;
     width: 310px;
 }
 .a-news img
@@ -354,6 +371,7 @@
     /* background-color: aquamarine; */
     display: grid;
     grid-template-columns: 35% 30% 35%;
+    letter-spacing: 1px;
 }
 .product-type-slide
 {
@@ -369,8 +387,7 @@
     margin-top: 15px;
     margin-bottom: 25px;
     font-size: 35px;
-    font-weight: bold;
-    font-family: 'Arial';
+    font-weight: medium;
     color: #ddab64;
     text-align: center;
 }
@@ -417,16 +434,12 @@
 .type-element p
 {
     margin-top: 20px;
-    font-family: 'DM Sans';
-    font-weight: bold;
-    font-size: 25px;
+    font-size: 22px;
     width: 100%;
     color: #ddab64;
+    letter-spacing: 0.25px;
 }
-.type-element p:hover
-{
-   
-}
+
 
 @media only screen and (max-width: 46.1875em)
 {
@@ -519,7 +532,6 @@
     .product-content a
     {
         font-size: 8px;
-        font-family: 'DM Sans';
         margin-top: 1px;
         margin-bottom: 3px;
         text-decoration: none;
@@ -528,7 +540,6 @@
     .product-content p
     {
         font-size: 6px;
-        font-family: 'DM Sans';
         margin-top: 0;
         color: #D0933E;
     }
@@ -763,7 +774,6 @@
     .product-content a
     {
         font-size: 15px;
-        font-family: 'DM Sans';
         margin-top: 1px;
         margin-bottom: 5px;
         text-decoration: none;
@@ -772,7 +782,6 @@
     .product-content p
     {
         font-size: 12px;
-        font-family: 'DM Sans';
         margin-top: 0;
         color: #D0933E;
     }

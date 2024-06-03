@@ -50,10 +50,11 @@ class HomeController extends Controller
         $min_price=DB::table('tbl_product')->min('product_price');
         $max_price=DB::table('tbl_product')->max('product_price');
 
-        $min_price_range=$min_price-500000;
-        $max_price_range=$max_price+500000;
+        $min_price_range=$min_price-200000;
+        $max_price_range=$max_price+200000;
 
         $filter=[];
+        $element=[];
 
         if(isset($_GET['filter']))
         {   
@@ -74,6 +75,16 @@ class HomeController extends Controller
             $all_product=$all_product->where('product_status','1')->whereBetween('product_price',[$min_price,$max_price]);
         }
 
+        if(isset($_GET['element']))
+        {   
+            $element=$_GET['element'];
+            for($i=0; $i<count($element); $i++)
+            {
+                if($i==0) $all_product=$all_product->where('product_element',$element[$i]);
+                else $all_product=$all_product->orWhere('product_element',$element[$i]);
+            }
+        }
+
         $all_product=$all_product
         // ->orderby('created_at','desc')
         ->inRandomOrder()
@@ -82,7 +93,8 @@ class HomeController extends Controller
         return view('pages.sanpham.sanpham')->with('category',$category_product)->with('product',$all_product)
         ->with('min_price_value',$min_price)->with('max_price_value',$max_price)
         ->with('max_price_range',$max_price_range)->with('min_price_range',$min_price_range)
-        ->with('selectedColors',$filter);
+        ->with('selectedColors',$filter)
+        ->with('selectedElements',$element);
     }
 
     public function search(Request $request){
@@ -96,8 +108,8 @@ class HomeController extends Controller
         $min_price=DB::table('tbl_product')->min('product_price');
         $max_price=DB::table('tbl_product')->max('product_price');
 
-        $min_price_range=$min_price-500000;
-        $max_price_range=$max_price+500000;
+        $min_price_range=$min_price-200000;
+        $max_price_range=$max_price+200000;
 
         $filter=[];
 

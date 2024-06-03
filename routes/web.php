@@ -119,4 +119,30 @@ Route::post('/forgot-password', 'App\Http\Controllers\CheckoutController@check_f
 Route::get('/reset-password', 'App\Http\Controllers\CheckoutController@reset_password');
 Route::post('/reset-password', 'App\Http\Controllers\CheckoutController@check_reset_password'); 
 
+
+use App\Http\Controllers\ShippingController;
+use App\Http\Controllers\AdditionalController;
+use App\Http\Controllers\FileDisplayController;
+use App\Http\Controllers\OrderController;
+use App\Http\Controllers\EmailController;
+
+//thanh toan
+Route::get('/hoa-don', [OrderController::class, 'hoaDon'])->name('hoa_don');
+Route::get('/thanh-toan', [OrderController::class, 'thanhToan'])->name('thanh_toan');
+Route::post('/thanh-toan', [OrderController::class, 'submitThanhToan'])->name('submit_thanh_toan');
+// Route::post('/thanh-toan', [OrderController::class, 'online_checkout'])->name('MoMo');
+
+//bo sung thong tin sau van chuyen
+Route::get('/bo-sung', [AdditionalController::class, 'index'])->name('bo-sung.index');
+Route::post('/bo-sung', [AdditionalController::class, 'store'])->name('bo-sung.store');
+Route::get('/file-display', [FileDisplayController::class, 'index'])->name('fileDisplay');
+
+
+//van chuyen
+Route::get('/shipping', [ShippingController::class, 'index'])->name('shipping.index');
+Route::post('/shipping/fetch-district', [ShippingController::class, 'fetchDistrict'])->name('shipping.fetch_district');
+Route::post('/shipping/store', [ShippingController::class, 'store'])->name('shipping.store');
+
+//gui email
+Route::get('/test-email', [EmailController::class, 'testEmail']);
 ?>

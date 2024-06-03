@@ -3,16 +3,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="{{ asset('public/frontend/css/StyleHeaderOnly.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Rowdies:wght@400;700&family=Francois+One&family=Paytone+One&family=Sigmar&family=Tilt+Neon&family=Saira+Stencil+One&display=swap" rel="stylesheet">
+  
 
     <header class="Header">
         <div class="top-bar">
-            <div class="logo">
-                <img class="logo-img" src="{{ asset('public/frontend/images/Logo.jpg') }}">
-                {{-- <img class="logo-img" src="Logo.jpg"> --}}
-                <p class="logo-blinkiy">BLINKIY</p>
-                <p class="logo-phongthuy">PHONG THỦY</p>
-            </div>
+            <a href="{{ URL::to('/trang-chu') }}">
+                <div class="logo">
+                    <img class="logo-img" src="{{ asset('public/frontend/images/Logo.jpg') }}">
+                    <p class="logo-blinkiy">BLINKIY</p>
+                    <p class="logo-phongthuy">PHONG THỦY</p>
+                </div>
+            </a>
             <div class="search-bar">
                 <div class="search-bar-cover">
                     <i class="fas fa-search"></i>

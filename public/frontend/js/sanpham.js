@@ -9,6 +9,19 @@ document.addEventListener('DOMContentLoaded', function() {
             checkbox.checked = true;
         }
     });
+
+});
+document.addEventListener('DOMContentLoaded', function() {
+
+    var selectedElementsInput = document.getElementById('selectedElements');
+    var selectedElements = JSON.parse(selectedElementsInput.value);
+    var checkboxes = document.querySelectorAll('.checkbox_element');
+    
+    checkboxes.forEach(function(checkbox) {
+        if (selectedElements.includes(checkbox.value)) {
+            checkbox.checked = true;
+        }
+    });
 });
 
 

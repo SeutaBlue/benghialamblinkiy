@@ -24,7 +24,7 @@ setInterval(()=> {
 
 
 document.addEventListener('DOMContentLoaded', function() {
-    var productNames = document.querySelectorAll('.product-name');
+    var productNames = document.querySelectorAll('.product_card');
 
     productNames.forEach(function(productName) {
         // var maxWidth = parseInt(window.getComputedStyle(productName).maxWidth);

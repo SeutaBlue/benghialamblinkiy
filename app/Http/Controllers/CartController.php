@@ -16,7 +16,7 @@ class CartController extends Controller
     public function shopping_cart()
     {
         $customer_id = Session::get('customer_id');
-        
+      
         if($customer_id)
         {
 

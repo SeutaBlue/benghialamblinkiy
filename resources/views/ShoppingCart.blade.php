@@ -24,7 +24,7 @@
                     <div id="list" class="list">
 
                         @if ($login)
-                            @if($ShoppingCart) 
+                            @if($ShoppingCart->isEmpty())
                                 <p class="note">Bạn chưa có sản phẩm nào trong giỏ hàng, hãy thêm vào đi nào :3</p>
                             @else
                                 @foreach ($ShoppingCart as $key => $cart)
