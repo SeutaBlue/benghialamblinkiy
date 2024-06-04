@@ -36,22 +36,26 @@
                 <table class="table table-striped b-t b-light">
                     <thead>
                         <tr>
-                            <th>Số thứ tự</th>
-                            <th>Tên ảnh</th>
-                            <th>Ảnh</th>
+                            <th></th>
+                            <th >Số thứ tự</th>
+                            <th >Tên ảnh</th>
+                            <th >Ảnh</th>
                             <th>Thao tác</th>
+                            <th></th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach ($gallery as $key => $image)
                             <tr>
-                                <td>{{ $key + 1 }}</td>
+                                <td></td>
+                                <td >{{ $key + 1 }}</td>
                                 <td>{{ $image->gallery_image }}</td>
                                 <td><img src="{{ URL::to('public/uploads/gallery/' . $image->gallery_image) }}" height="100"
                                         width="100" style="object-fit: cover"></td>
                                 <td>
                                     <a onclick="return confirm('Bạn có chắc là muốn XÓA ảnh này không?')" href="{{ URL::to('/delete-gallery/'.$image->gallery_id) }}" class="active styling-edit" ui-toggle-class=""> <i class="fa fa-times text-danger text"></i></a>
                                 </td>
+                                <td></td>
                             </tr>
                         @endforeach
                     </tbody>

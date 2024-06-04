@@ -36,7 +36,7 @@
   border-top-right-radius: 5px;
   border-bottom-right-radius: 5px;
   margin-left: -1px;
-  border-color: #d0933e;
+  border-color: #DAB076;
 }
 
 .input-group {
@@ -49,13 +49,13 @@
   height: 2.75rem;
   font-size: 16px;
   font-family: 'Dongle', sans-serif;
-  border-color: #d0933e;
+  border-color: #DAB076;
 }
 .form-control.search_input_product:focus
 {
   outline: none;
   box-shadow: none;
-  border-color: #D0933E;
+  border-color: #DAB076;
 }
 
 .search_button_product:hover {
@@ -84,13 +84,15 @@
   width: 100%;
   display: flex;
   justify-content: center;
-  margin-bottom: 400px;
+  margin-bottom: 450px;
 }
 
 /* custom.css */
 
 .pagination {
-  margin-top: 80px;
+  margin-top: 70px;
+
+    padding-bottom: 20px;
 }
 
 .pagination .page-link {
@@ -114,6 +116,10 @@
   color: white;
   /* Màu trắng cho văn bản */
   font-weight: bold;
+}
+.pagination .page-link:focus {
+  outline: none;
+  box-shadow: none;
 }
 
 .pagination .page-item.active .page-link:hover {
@@ -208,7 +214,7 @@
 
 .category-title-3
 {
-  color: #D0933E;
+  color: #DAB076;
   margin: 38px 0;
 }
 .category-title-4
@@ -227,12 +233,12 @@
 }
 
 .container-fluid .filter-bar .category .category-title-1 {
-  color: #D0933E;
+  color: #DAB076;
   margin: 38px 0;
 }
 
 .container-fluid .filter-bar .category .category-title-2 {
-  color: #D0933E;
+  color: #DAB076;
   margin: 38px 0;
 }
 
@@ -248,7 +254,12 @@
   margin-bottom: 5px;
   margin-right: 8px;
 }
-.container-fluid .filter-bar .category input[type="checkbox"]::after
+
+.checkbox_element:checked
+{
+  background-color: #e6858f !important;
+}
+.container-fluid .filter-bar .category input[type="checkbox"]::checked
 {
   background-color:  #EF99A2;
 }
@@ -322,7 +333,7 @@
 }
 
 .container-fluid .product-list .navigator .page-number.active {
-  color: #d0933e;
+  color: #DAB076;
 }
 
 .footer {

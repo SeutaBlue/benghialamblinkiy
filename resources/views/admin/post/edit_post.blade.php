@@ -38,10 +38,7 @@
                                         <label for="exampleInputPassword1">Meta từ khóa</label>
                                         <textarea style="resize: none" rows="8" class="form-control" name="post_meta_keywords"  placeholder="Meta từ khóa">{{$post->post_meta_keywords}}</textarea>
                                     </div>
-                                    <div class="form-group">
-                                        <label for="exampleInputPassword1">Meta nội dung</label>
-                                        <textarea style="resize: none" rows="5" class="form-control" name="post_meta_desc"  placeholder="Meta nội dung">{{$post->post_meta_desc}}</textarea>
-                                    </div>
+                                    
                                     <div class="form-group">
                                         <label for="exampleInputEmail1">Hình ảnh bài viết</label>
                                         <input type="file" name="post_image" class="form-control" >
@@ -58,13 +55,13 @@
                                     <div class="form-group">
                                         <label for="exampleInputPassword1">Hiển thị</label>
                                         <select name="post_status" class="form-control input-sm m-bot15">
-                                        @if($post->post_status ==0){
-                                            <option selected value="0">Hiển thị</option>
-                                            <option value="1">Ẩn</option>
+                                        @if($post->post_status ==1){
+                                            <option selected value="1">Hiển thị</option>
+                                            <option value="0">Ẩn</option>
                                         }
                                         @else{
-                                            <option value="0">Hiển thị</option>
-                                            <option selected value="1">Ẩn</option>
+                                            <option value="1">Hiển thị</option>
+                                            <option selected value="0">Ẩn</option>
                                         } 
                                         @endif                                      
                                         </select>

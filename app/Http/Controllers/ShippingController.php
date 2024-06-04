@@ -10,7 +10,7 @@ class ShippingController extends Controller
 {
     public function index()
     {
-        $provinces = DB::table('tinh')->get();
+        $provinces = DB::table('provience')->get();
         return view('pages.thanhtoan.shipping', compact('provinces'));
     }
 
@@ -19,10 +19,10 @@ class ShippingController extends Controller
         Log::info('Received AJAX request', ['province' => $request->province]);
 
         if ($request->ajax()) {
-            $districts = DB::table('huyen')->where('MaTinh', $request->province)->get();
+            $districts = DB::table('district)')->where('provience_id', $request->province)->get();
             $response = '<option value="">Chọn quận, huyện</option>';
             foreach ($districts as $district) {
-                $response .= '<option value="' . $district->MaHuyen . '">' . $district->TenHuyen . '</option>';
+                $response .= '<option value="' . $district->district_id . '">' . $district->district_name . '</option>';
             }
             return response($response);
         }

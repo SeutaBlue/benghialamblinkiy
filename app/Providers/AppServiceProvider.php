@@ -27,7 +27,8 @@ class AppServiceProvider extends ServiceProvider
         view()->composer ('*', function($view)
         {
             $category_product_header=DB::table('tbl_category_product')->get();
-
+            $category_post_header = DB::table('tbl_category_post')->orderBy('cate_post_id','DESC')->where('cate_post_status','1')->get(); // k có phân trang nên mình lấy hết bằng hàm get
+            
             $min_price=DB::table('tbl_product')->min('product_price');
             $max_price=DB::table('tbl_product')->max('product_price');
             $min_price_range=$min_price-100000;
@@ -43,7 +44,8 @@ class AppServiceProvider extends ServiceProvider
             $view
             // ->with('min_price_value',$min_price)->with('max_price_value',$max_price)
             // ->with('max_price_range',$max_price_range)->with('min_price_range',$min_price_range)
-            ->with('category_product_header',$category_product_header);
+            ->with('category_product_header',$category_product_header)
+            ->with('category_post_header',$category_post_header);
         });
     }
 

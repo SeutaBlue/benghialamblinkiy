@@ -42,15 +42,12 @@
                 <input type="checkbox"><i></i>
               </label>
             </th> -->
-            <th>Tên</th>
+            <th style="width:50px;">Tên</th>
             <th>Hình ảnh</th>
-            <th>Slug</th>
-            <th>Mô tả</th>
-            <th>Từ khóa </th>
+            <th style="width:50px;">Mô tả</th>
             <th>Danh mục</th>
-            <th>Trạng thái</th>
-            
-            <th style="width:30px;"></th>
+            <th>Trạng thái</th>           
+            <th style="width:90px;">Thao tác</th>
           </tr>
         </thead>
         <tbody>
@@ -59,21 +56,21 @@
             <!-- <td><label class="i-checks m-b-none"><input type="checkbox" name="post[]"><i></i></label></td> -->
             <td>{{ $post->post_title}}</td>
             <td><img src="{{asset('public/uploads/post/'.$post->post_image)}}" height="100" width="100"></td>
-            <td>{{ $post->post_slug}}</td>
             <td>{!!$post->post_desc!!}</td> 
             <!-- chuyen thanh html k bi loi -->
-            <td>{{ $post->post_meta_keywords}}</td>
-            <td>{{ $post->cate_post->cate_post_name }}</td> <!--Lay ra ten danh muc thay vi id danh muc trong table cate_post-->
+            <td>{{ $post->cate_post->cate_post_name }}</td> <!--Lay ra ten danh muc thay vi id danh muc trong table cate_post, vì trường catepostname k có trong table post-->
             <td>
-                @if($post->post_status==0)
-                    Hiển thị  
-                @else
-                    Ẩn               
-                @endif
+                
+            @if($post->post_status == 1) 
+                <i style="color:green; cursor: pointer" class="fa-solid fa-eye update-post-status" data-id="{{$post->post_id}}" data-status="0"></i>          
+            @else 
+                <i style="color:red; cursor: pointer" class="fa-solid fa-eye-slash update-post-status" data-id="{{$post->post_id}}" data-status="1"></i>          
+            @endif
+
             </td>          
             <td>
               <a href="{{URL::to('/edit-post/'.$post->post_id)}}" class="active styling-edit" ui-toggle-class="">
-                <i class="fa fa-pencil-square-o text-success text-active"></i></a>
+              <i class="fa-solid fa-pen-to-square"></i></a>
               <a onclick="return confirm('Bạn có chắc là muốn xóa bài viết này không?')" href="{{URL::to('/delete-post/'.$post->post_id)}}" class="active styling-edit" ui-toggle-class="">
                 <i class="fa fa-times text-danger text"></i>
               </a>
@@ -87,7 +84,6 @@
       <div class="row">
         
         <div class="col-sm-5 text-center">
-          <small class="text-muted inline m-t-sm m-b-sm">showing 20-30 of 50 items</small>
         </div>
         <div class="col-sm-7 text-right text-center-xs">                
           <ul class="pagination pagination-sm m-t-none m-b-none">
@@ -98,4 +94,42 @@
     </footer>
   </div>
 </div>
+<script>
+$(document).ready(function(){
+    $('.update-post-status').click(function(event){
+        event.preventDefault();
+        var postId = $(this).data('id'); // lấy ID bài viết
+        var postStatus = $(this).data('status'); // lấy trạng thái mới
+        var element = $(this);
+        $.ajax({
+            url: "{{ url('/update-post-status') }}", // đường dẫn tới route xử lý cập nhật
+            method: 'GET',
+            data:{post_id: postId, post_status: postStatus},
+            success:function(data){              
+                if(postStatus == 1) {
+                  element.removeClass('fa-eye-slash').addClass('fa-eye').css('color', 'green').data('status', 0);
+                  Swal.fire({
+                    icon: 'success',
+                    title: 'Thành công',
+                    text: 'Hiển thị bài viết thành công!'
+                  });
+                } 
+                else {
+                  element.removeClass('fa-eye').addClass('fa-eye-slash').css('color', 'red').data('status', 1);
+                  Swal.fire({
+                    icon: 'success',
+                    title: 'Thành công',
+                    text: 'Ẩn bài viết thành công!'
+                  });
+                }
+                
+            },
+            error: function(jqXHR, textStatus, errorThrown) {
+              console.log('AJAX call failed: ' + textStatus + ', ' + errorThrown);
+            }
+        });
+    });
+});
+</script>
+
 @endsection

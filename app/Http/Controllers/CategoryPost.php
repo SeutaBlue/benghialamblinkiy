@@ -39,14 +39,6 @@ class CategoryPost extends Controller
         $this->AuthLogin();// ktra xác thực người dùng
     	return view('admin.category_post.add_category');
     }
-    public function all_category_post(){
-        $this->AuthLogin();
-        $category_post = CatePost::orderBy('cate_post_id','DESC')->paginate(5);
-        //lấy tất cả các danh mục bài viết sắp xếp theo 'cate_post_id' giảm dần, phần thành 5 mục 1 trang
-        return view('admin.category_post.list_category')->with(compact('category_post'));
-
-
-    }
     public function save_category_post(Request $request){ // lấy data từ bên form add_category_blade qua
         $this->AuthLogin();
     	$data = $request->all();//lấy toàn bộ dữ liệu gửi từ form
@@ -62,9 +54,9 @@ class CategoryPost extends Controller
     }
     public function edit_category_post($category_post_id){
         $this->AuthLogin();
-        $category_post =  CatePost::find($category_post_id);// tim bai viet dua tren id
-        
+        $category_post =  CatePost::find($category_post_id);// tim bai viet dua tren id 
         return view('admin.category_post.edit_category')->with(compact('category_post'));
+        // hàm compact được sử dụng để truyền biến $category_post vào view, cho phép truy cập dữ liệu danh mục bài viết trong view và hiển thị chúng,
     }
 
     public function update_category_post(Request $request,$cate_id){
@@ -80,41 +72,44 @@ class CategoryPost extends Controller
         Session::put('message','Cập nhật danh mục bài viết thành công');
     	return Redirect('/all-category-post');// chuyển hướng ng dùng trở lại trang trước
     }
-    public function danh_muc_bai_viet(Request $request,$post_slug){
-        $category_post = CatePost::orderBy('cate_post_id','DESC')->get();
-
-        $catego_post = CatePost::where('cate_post_slug', $post_slug)->first();// lấy tên danh mục khi nhấp vào danh mục tương ứng
-
-        $catepost = CatePost::where('cate_post_slug',$post_slug)->take(1)->get();
-        foreach($catepost as $key =>$cate){
-        //seo 
-            $meta_desc = $cate->cate_post_desc; 
-            $meta_keywords = $cate->cate_post_slug;
-            $meta_title = $cate->cate_post_name;
-            $cate_id = $cate->cate_post_id;
-            $url_canonical = $request->url();
-            //--seo
-        }
-        $post = Post::with('cate_post')->where('post_status',0)->where('cate_post_id',$cate_id)->paginate(10);
-
-        // return view('pages.baiviet.danhmucbaiviet')->with('category',$cate_product)->with('brand',$brand_product)->with('meta_desc',$meta_desc)
-        // ->with('meta_keywords',$meta_keywords)->with('meta_title',$meta_title)->with('url_canonical',$url_canonical)->with('slider',$slider)->
-        // with('post',$post)->with('category_post',$category_post);
-        return view('pages.baiviet.danhmucbaiviet')->with('meta_desc',$meta_desc)
-        ->with('meta_keywords',$meta_keywords)->with('meta_title',$meta_title)->with('url_canonical',$url_canonical)->
-        with('post',$post)->with('category_post',$category_post)->with('catego_post',$catego_post); 
+    public function all_category_post(){
+        $this->AuthLogin();
+        $category_post = CatePost::orderBy('cate_post_id','DESC')->paginate(5);
+        //lấy tất cả các danh mục bài viết sắp xếp theo 'cate_post_id' giảm dần, phần thành 5 mục 1 trang
+        return view('admin.category_post.list_category')->with(compact('category_post'));
     }
+    
     public function delete_category_post($cate_id){
         $category_post =  CatePost::find($cate_id);// tim bai viet dua tren id
         $category_post->delete();
         Session::put('message','Xóa danh mục bài viết thành công');
         return Redirect::to('/all-category-post');
     }  
-    public function show($slug) {
-        $currentCategory = CatePost::where('cate_post_slug', $slug)->firstOrFail();
-        $posts = $currentCategory->post()->get();
-    
-        return view('/danh-muc-bai-viet/{$slug}', compact('currentCategory', 'posts'));
+
+    // public function unactive_catepost($cate_post_id){
+    //     $this->AuthLogin();
+    //     CatePost::where('cate_post_id',$cate_post_id)->update(['cate_post_status'=>0]);
+    //     Session::put('message','Ẩn danh mục bài viết thành công');
+    //     return Redirect::to('all-category-post');
+
+    // }
+    // public function active_catepost($cate_post_id){
+    //     $this->AuthLogin();
+    //     CatePost::where('cate_post_id',$cate_post_id)->update(['cate_post_status'=>1]);
+    //     Session::put('message','Hiển thị danh mục bài viết thành công');
+    //     return Redirect::to('all-category-post');
+
+    // }
+    public function import_csv(){
+
     }
-    
+    public function export_csv(){
+        
+    }
+    public function update_cate_post_status(Request $request){
+        $this->AuthLogin();
+        $id = $request->cate_post_id;
+        $status = $request->cate_post_status;   
+        DB::table('tbl_category_post')->where('cate_post_id', $id)->update(['cate_post_status' => $status]);   
+    }
 }

@@ -66,7 +66,7 @@
                     <li class="mainmenu-li">
                         <a class="menu-bar-title" href="{{ URL::to('/san-pham') }}">SẢN PHẨM</a>
                         <ul class="product-submenu">
-                            @foreach ($category as $key => $cate)
+                            @foreach ($category_product_header as $key => $cate)
                                 <li><a href="{{ URL::to('/danh-muc-san-pham/'.$cate->category_id) }}">{{ $cate->category_name }}</a></li>
                             @endforeach
                         </ul>
@@ -75,11 +75,11 @@
                         <a class="menu-bar-title" href="">GIỚI THIỆU</a>
                     </li>
                     <li class="mainmenu-li">
-                        <a class="menu-bar-title" href="">BLOG</a>
+                        <a class="menu-bar-title" href="{{ URL::to('/tat-ca-bai-viet') }}">BLOG</a>
                         <ul class="product-submenu">
-                            <li><a href="">Cung-Mệnh</a></li>
-                            <li><a href="">Cẩm nang Blinkiy</a></li>
-                            <li><a href="">Chuyện thầm kín của Nghĩa</a></li>
+                            @foreach ($category_post_header as $key => $cate)
+                                <li><a href="{{ URL::to('/danh-muc-bai-viet/'.$cate->cate_post_slug) }}">{{ $cate->cate_post_name }}</a></li>
+                            @endforeach
                         </ul>
                     </li>
                     <li class="mainmenu-li">
@@ -207,6 +207,7 @@
     </section>
     
     <div class="hotline">
+        {{-- <img src="{{ URL::to('public/frontend/images/footer.png') }}"> --}}
         <p class="hotline-title">Hotline</p>
         <p class="phone-numbers">0123456789</p>
         <p class="slogan">“Your order was made with love”</p>
@@ -220,33 +221,25 @@
         <div class="news-container">
             <div class="news-container-leftside">
                 <img src="{{asset('public/frontend/images/newsimg.jpg') }}">
-                <button class="see-more-button">Xem thêm</button>
+                <button type="submit" class="see-more-button" onclick="window.location.href='{{ URL::to('/tat-ca-bai-viet') }}'">Xem thêm</button>
             </div>
             <div class="news-container-rightside">
-                <div class="a-news">
-                    <img src="N1.jpg">
-                    <a href="">Tiêu đề bài báo</a>
-                    <p>Nội dung review bài báo</p>
-                </div>
-                <div class="a-news">
-                    <img src="N2.jpg">
-                    <a href="">Tiêu đề bài báo</a>
-                    <p>Nội dung review bài báo</p>
-                </div>
-                <div class="a-news">
-                    <img src="N3.jpg">
-                    <a href="">Tiêu đề bài báo</a>
-                    <p>Nội dung review bài báo aaaaaaaaaaaaaaaaaa aaaaaaaaaaaaaaaaaa aaaaa aaa aaaaaaaaaaaaa</p>
-                </div>
-                <div class="a-news">
-                    <img src="N4.jpg">
-                    <a href="">Tiêu đề bài báo</a>
-                    <p>Nội dung review bài báo</p>
-                </div>
+                @foreach($all_post as $key => $post)
+                {{-- <a href="{{ URL::to('/bai-viet/'.$post->post_slug) }}"> --}}
+                    <div class="a-news">
+                        <a href="{{ URL::to('/bai-viet/'.$post->post_slug) }}"><img src="{{asset('public/uploads/post/'.$post->post_image) }}"></a>
+                        <a class="post_title" href="{{ URL::to('/bai-viet/'.$post->post_slug) }}">{{ $post->post_title }}</a>
+                        <a class="post_desc" href="{{ URL::to('/bai-viet/'.$post->post_slug) }}">{{ $post->post_desc }}</p></a>
+                    </div>
+                
+                @endforeach
             </div>
         </div>
+        <br><br>
     </section>
-    
+   
+    @include('Footer')
+
     <script type="text/javascript" src="{{asset('public/frontend/js/ScriptCardSlider.js') }}"></script>
     <script type="text/javascript" src="{{asset('public/frontend/js/ScriptHomePage.js') }}"></script>
     </body>

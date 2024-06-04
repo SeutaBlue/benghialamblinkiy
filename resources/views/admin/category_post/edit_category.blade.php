@@ -28,17 +28,17 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInputPassword1">Mô tả danh mục bài viết </label>
-                                    <textarea style="resize: none" rows="8" value="{{$category_post->cate_post_desc}}" class="form-control" name="cate_post_desc" id="exampleInputPassword1" placeholder="Mô tả danh mục"></textarea>
+                                    <textarea style="resize: none" rows="8" value="{{$category_post->cate_post_desc}}" class="form-control" name="cate_post_desc" id="exampleInputPassword1" placeholder="Mô tả danh mục">{{$category_post->cate_post_desc}}</textarea>
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInputPassword1">Hiển thị</label>
                                       <select name="cate_post_status" class="form-control input-sm m-bot15">
-                                        @if($category_post->cate_post_status==0)
-                                            <option selected value="0">Hiển thị</option>
-                                            <option value="1">Ẩn</option>
+                                        @if($category_post->cate_post_status==1)
+                                            <option selected value="1">Hiển thị</option>
+                                            <option value="0">Ẩn</option>
                                         @else
-                                            <option value="0">Hiển thị</option>
-                                            <option selected value="1">Ẩn</option>
+                                            <option value="1">Hiển thị</option>
+                                            <option selected value="0">Ẩn</option>
                                         @endif
                                             
                                     </select>

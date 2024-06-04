@@ -39,10 +39,7 @@
                                         <label for="exampleInputPassword1">Meta từ khóa</label>
                                         <textarea style="resize: none" rows="5" class="form-control" name="post_meta_keywords" id="exampleInputPassword1" placeholder="Meta từ khóa"></textarea>
                                     </div>
-                                    <div class="form-group">
-                                        <label for="exampleInputPassword1">Meta nội dung</label>
-                                        <textarea style="resize: none" rows="5" class="form-control" name="post_meta_desc" id="exampleInputPassword1" placeholder="Meta nội dung"></textarea>
-                                    </div>
+                                    
                                     <div class="form-group">
                                         <label for="exampleInputEmail1">Hình ảnh bài viết</label>
                                         <input type="file" name="post_image" class="form-control" id="exampleInputEmail1">
@@ -60,8 +57,8 @@
                                     <div class="form-group">
                                         <label for="exampleInputPassword1">Hiển thị</label>
                                         <select name="post_status" class="form-control input-sm m-bot15">
-                                                <option value="0">Hiển thị</option>
-                                                <option value="1">Ẩn</option>
+                                                <option value="1">Hiển thị</option>
+                                                <option value="0">Ẩn</option>
                                                 
                                         </select>
                                     </div>

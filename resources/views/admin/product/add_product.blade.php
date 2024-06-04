@@ -59,15 +59,54 @@
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputPassword1">Danh mục sản phẩm</label>
-                                <select name="cate_product" class="form-control input-sm m-bot15">
+                                <select id="cate_product" name="cate_product" class="form-control input-sm m-bot15"
+                                    onchange="go()">
                                     @foreach ($category_product as $key => $cate)
                                         <option value="{{ $cate->category_id }}">{{ $cate->category_name }}</option>
                                     @endforeach
                                 </select>
+                                <input type="hidden" id="size_list" value="{{ $size }}">
+                                <script>
+                                    function go() {
+                                        document.getElementById('size-container').innerHTML = '';
+                                        var cate = document.getElementById('cate_product').value;
+                                        // var sizelist=document.getElementById('size_list').value;
+                                        var sizeValues = {!! json_encode($size) !!};
+
+                                        for (var i = 0; i < sizeValues.length; i++) 
+                                        {
+
+                                            if ((cate != 1 && cate!=2 && cate != 4) && i > 0 ) break;
+                                        
+                                            var div = document.createElement("div");
+                                            div.classList.add("form-group");
+                                            // Tạo nhãn
+                                            var label = document.createElement("label");
+
+                                            label.textContent = "Số lượng hàng Size " + sizeValues[i].size_value;
+                                            // Tạo input number
+                                            var input = document.createElement("input");
+                                            input.type = "number";
+                                            input.name = "product_size_sl[]";
+                                            input.classList.add("form-control");
+                                            input.min = "0";
+                                            input.step = "1";
+                                            input.value = "0";
+
+                                            // Thêm input và label vào div
+                                            div.appendChild(label);
+                                            div.appendChild(input);
+
+                                            // Chèn div vào container
+                                            document.getElementById("size-container").appendChild(div);
+                                        }
+                                    }
+                                </script>
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputPassword1">Mô tả sản phẩm</label>
-                                <textarea style="resize: none" rows="5" name="product_desc" class="form-control" placeholder="Mô tả sản phẩm" id="noidung"></textarea>
+                                <textarea style="resize: none" rows="5" name="product_desc" class="form-control" placeholder="Mô tả sản phẩm"
+                                    id="noidung"></textarea>
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputPassword1">Nội dung sản phẩm</label>
@@ -75,14 +114,16 @@
                                     placeholder="Nội dung sản phẩm" id="tomtat"></textarea>
                             </div>
 
-                            @foreach ($size as $key => $size_val)
-                                <div class="form-group">
-                                    <label for="exampleInputPassword1">Số lượng hàng Size
-                                        {{ $size_val->size_value }}</label>
-                                    <input type="number" name="product_size_sl[]" class="form-control" min="0"
-                                        step="1" value="0">
-                                </div>
-                            @endforeach
+                            <div id="size-container">
+                                @foreach ($size as $key => $size_val)
+                                    <div class="form-group">
+                                        <label for="exampleInputPassword1">Số lượng hàng Size
+                                            {{ $size_val->size_value }}</label>
+                                        <input type="number" name="product_size_sl[]" class="form-control" min="0"
+                                            step="1" value="0">
+                                    </div>
+                                @endforeach
+                            </div>
                             <div class="form-group">
                                 <label for="exampleInputPassword1">Hiển thị</label>
                                 <select name="product_status" class="form-control input-sm m-bot15">

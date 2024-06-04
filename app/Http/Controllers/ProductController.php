@@ -36,7 +36,7 @@ class ProductController extends Controller
         $this->AuthLogin();
         $all_product = DB::table('tbl_product')
         ->join('tbl_category_product','tbl_category_product.category_id','=','tbl_product.category_id')
-        ->orderby('tbl_product.product_id','asc')->get();
+        ->orderby('tbl_product.product_id','asc')->paginate(10);
         $manager_product = view('admin.product.all_product')->with('all_product',$all_product );
         return view('admin_layout')->with('admin.product.all_product',$manager_product) ;
     }
@@ -89,21 +89,21 @@ class ProductController extends Controller
         Session::put('message','Thêm sản phẩm thành công');
         return Redirect::to('add-product');
     }
-    public function unactive_product($product_id)
-    {
-        $this->AuthLogin();
-        DB::table('tbl_product')->where('product_id',$product_id)->update(['product_status'=>0]);
-        //trỏ đến table where có id phù hợp với $category_product_id chuyển vào và cập nhật
-        Session::put('message','Không kích hoạt (ẩn) sản phẩm thành công');
-        return Redirect::to('all-product');
-    }
-    public function active_product($product_id)
-    {
-        $this->AuthLogin();
-        DB::table('tbl_product')->where('product_id',$product_id)->update(['product_status'=>1]);
-        Session::put('message','Kích hoạt (hiển thi) sản phẩm thành công');
-        return Redirect::to('all-product');
-    }
+    // public function unactive_product($product_id)
+    // {
+    //     $this->AuthLogin();
+    //     DB::table('tbl_product')->where('product_id',$product_id)->update(['product_status'=>0]);
+    //     //trỏ đến table where có id phù hợp với $category_product_id chuyển vào và cập nhật
+    //     Session::put('message','Không kích hoạt (ẩn) sản phẩm thành công');
+    //     return Redirect::to('all-product');
+    // }
+    // public function active_product($product_id)
+    // {
+    //     $this->AuthLogin();
+    //     DB::table('tbl_product')->where('product_id',$product_id)->update(['product_status'=>1]);
+    //     Session::put('message','Kích hoạt (hiển thi) sản phẩm thành công');
+    //     return Redirect::to('all-product');
+    // }
     public function edit_product($product_id)
     {
         $this->AuthLogin();
@@ -173,7 +173,9 @@ class ProductController extends Controller
         ->join('tbl_size','tbl_size.size_id','=','tbl_product_details.size_id')
         ->get();
 
-        $manager_product = view('admin.product.show_product_details')->with('product',$product );
+        $product_img=DB::table('tbl_product')->where('product_id',$product_id)->first();
+
+        $manager_product = view('admin.product.show_product_details')->with('product',$product )->with('product_img',$product_img);
         return view('admin_layout')->with('admin.product.show_product_details',$manager_product) ;
     }
 
@@ -216,7 +218,12 @@ class ProductController extends Controller
         Session::put('message','Cập nhật chi tiết sản phẩm thành công');
         return Redirect::to('show-product-details/'.$product_id);
     }
-    
+    public function update_product_status(Request $request){
+        $this->AuthLogin();
+        $product_id = $request->product_id;
+        $product_status = $request->product_status;   
+        DB::table('tbl_product')->where('product_id', $product_id)->update(['product_status' => $product_status]);   
+    }    
 
     //FE
     public function show_inside_product($product_id)

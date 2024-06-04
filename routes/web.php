@@ -70,10 +70,12 @@ Route::get('/gio-hang','App\Http\Controllers\CartController@shopping_cart');
 Route::get('/add-category-post','App\Http\Controllers\CategoryPost@add_category_post');
 Route::post('/save-category-post','App\Http\Controllers\CategoryPost@save_category_post');
 Route::get('/all-category-post','App\Http\Controllers\CategoryPost@all_category_post');
-Route::get('/danh-muc-bai-viet/{cate_post_slug}','App\Http\Controllers\CategoryPost@danh_muc_bai_viet');// khi gõ danh_muc_bai_viet/cate_post_slug thì trả về bài viết đó
 Route::get('/edit-category-post/{category_post_id}','App\Http\Controllers\CategoryPost@edit_category_post');// khi gõ danh_muc_bai_viet/cate_post_slug thì trả về bài viết đó
 Route::post('/update-category-post/{cate_id}','App\Http\Controllers\CategoryPost@update_category_post');
 Route::get('/delete-category-post/{cate_id}','App\Http\Controllers\CategoryPost@delete_category_post');
+
+// Route::get('/unactive-cate-post/{cate_post_id}','App\Http\Controllers\CategoryPost@unactive_catepost');
+// Route::get('/active-cate-post/{cate_post_id}','App\Http\Controllers\CategoryPost@active_catepost');
 
 // Bai viet
 Route::get('/add-post','App\Http\Controllers\PostController@add_post');
@@ -83,9 +85,21 @@ Route::get('/delete-post/{post_id}','App\Http\Controllers\PostController@delete_
 Route::get('/edit-post/{post_id}','App\Http\Controllers\PostController@edit_post'); // xoa theo id
 Route::post('/update-post/{post_id}','App\Http\Controllers\PostController@update_post'); // xoa theo id
 
+// Route::get('/unactive-post/{post_id}','App\Http\Controllers\PostController@unactive_post');
+// Route::get('/active-post/{post_id}','App\Http\Controllers\PostController@active_post');
+
 //Hien thi danh muc bai viet
-Route::get('/danh-muc-bai-viet/{cate_post_slug}','App\Http\Controllers\CategoryPost@danh_muc_bai_viet');// khi gõ danh_muc_bai_viet/cate_post_slug thì trả về bài viết đó
+Route::get('/tat-ca-bai-viet','App\Http\Controllers\PostController@tatcabaiviet');
+
+// Update status
+Route::get('/update-post-status', 'App\Http\Controllers\PostController@update_post_status');
+Route::get('/update-product-status', 'App\Http\Controllers\ProductController@update_product_status');
+Route::get('/update-cate-product-status', 'App\Http\Controllers\CategoryProduct@update_cate_product_status');
+Route::get('/update-cate-post-status', 'App\Http\Controllers\CategoryPost@update_cate_post_status');
+
 Route::get('/bai-viet/{post_slug}','App\Http\Controllers\PostController@bai_viet');
+Route::get('/danh-muc-bai-viet/{cate_post_slug}','App\Http\Controllers\PostController@danh_muc_bai_viet');// khi gõ danh_muc_bai_viet/cate_post_slug thì trả về bài viết đó
+// import excel 
 
 // login
 Route::get('/login', 'App\Http\Controllers\CheckoutController@login');

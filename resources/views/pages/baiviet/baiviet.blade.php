@@ -1,30 +1,24 @@
-@extends('copy_layout')
-@section('content2')
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bài viết</title>
+    <link href="{{asset('public/frontend/css/bootstrap.min.css')}}" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"> 
+	<link href="{{asset('public/frontend/css/blog_page.css')}}" rel="stylesheet"> 
+    <link href="{{asset('public/backend/css/style-responsive.css')}}" rel="stylesheet"> 
+    <link href="{{asset('public/frontend/css/sanpham.css')}}" rel="stylesheet"> 
+    <link href="{{asset('public/frontend/css/sweetalert.css')}}" rel="stylesheet"> 
+
+</head>
+<body>
+    @include('Header')
 <div class="post_main">
-    <div class="relation ">
-        <div class="relate_header">
-            <h2><b>Bài viết khác</b></h2>            
-        </div>
-        
-        <div style="background-color:rgb(206, 91, 56);height:2px;margin-left:4rem"></div>     
-        <div class="related_link">
-            <ul>
-                @foreach($lienquan as $key => $baiviet_lienquan)
-                <div style="display:flex">
-                    <img style="width:6rem; height:6rem;margin-right:1.3rem" src="{{asset('public/uploads/post/'.$baiviet_lienquan->post_image)}}" alt="{{$baiviet_lienquan->post_slug}}"/>
-                    <li style="list-style:none; font-size:18px">
-                        <a href="{{url('/bai-viet/'.$baiviet_lienquan->post_slug)}}"><b>{{$baiviet_lienquan->post_title}}</b></a>
-                        <div style="overflow:hidden">{!!$baiviet_lienquan->post_desc!!}</div>
-                    </li>                   
-                </div>
-                <hr>
-                @endforeach
-            </ul>
-        </div>
-    </div>
+    
     <div class="post_layout">
         <div class="post_header">
-            <h2> {{$meta_title}}</h2>
+            <h2><b> {{$meta_title}}</b></h2>
         </div>
         <div class="post_contents">
         @foreach($post as $key=>$p)
@@ -65,34 +59,35 @@
             <div class="foru">
                 <div class="foru_header"><h2 style="color:#5f4100;"><b>FOR YOU</b></h2></div>
                 <div class="foru_links">
-                    <ul>
-                        <!-- <li>
-                            <i class="fa-solid fa-angles-left" style="color:rgb(206, 158, 56)"></i>
-                            <a href="#">Cung - mệnh</a>
-                        </li>
-                        <li>
-                            <i class="fa-solid fa-angles-left" style="color:rgb(206, 158, 56)"></i>
-                            <a href="#">Cẩm nang Blinky</a>
-                        </li>
-                        <li>
-                            <i class="fa-solid fa-angles-left" style="color:rgb(206, 158, 56)"></i>
-                            <a href="#">Tất cả bài viết</a>
-                        </li> -->
-                        
+                    <ul>                       
                         @foreach($category_post as $key => $danhmucbaiviet)
                         <li>
                         <i class="fa-solid fa-angles-left" style="color:rgb(206, 158, 56)"></i>
-                            <a href="{{URL::to('/danh-muc-bai-viet/'.$danhmucbaiviet->cate_post_slug)}}">{{$danhmucbaiviet->cate_post_name}}</a>
+                            <a href="{{URL::to('/danh-muc-bai-viet/'.$danhmucbaiviet->cate_post_slug)}}"><b>{{$danhmucbaiviet->cate_post_name}}</b></a>
                         </li>
                         @endforeach
                     </ul>
                 </div>
             </div>
             <hr>
-            <div class="watch_most">
-                <div class="watch_most_header"><h2>Xem nhiều</h2></div>
-                <div class="watch_most_links">
-                   
+            <div class="relation">
+                <div class="relate_header">
+                    <h2 style="color:#5f4100;"><b>Bài viết khác</b></h2>            
+                </div>
+                
+                <div style="background-color:rgb(206, 91, 56);height:2px;margin-left:4rem"></div>     
+                <div class="related_link">
+                    <ul>
+                        @foreach($lienquan as $key => $baiviet_lienquan)
+                        <div style="display:flex">
+                            <img style="width:6rem; height:6rem;margin-right:1.3rem" src="{{asset('public/uploads/post/'.$baiviet_lienquan->post_image)}}" alt="{{$baiviet_lienquan->post_slug}}"/>
+                            <li style="list-style:none; font-size:18px">
+                                <a href="{{url('/bai-viet/'.$baiviet_lienquan->post_slug)}}"><b>{{$baiviet_lienquan->post_title}}</b></a>
+                            </li>                   
+                        </div>
+                        <hr>
+                        @endforeach
+                    </ul>
                 </div>
             </div>
 
@@ -100,4 +95,4 @@
     
     
 </div>   
-@endsection
+</body></html>

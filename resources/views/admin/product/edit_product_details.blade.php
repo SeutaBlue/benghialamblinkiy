@@ -6,6 +6,7 @@
                 <header class="panel-heading">
                     Cập nhật sản phẩm
                 </header>
+                
                 <div class="panel-body">
                     <?php
                         $message = Session::get('message'); // hàm get để lấy biến có tên là 'message' ở bên AdminController

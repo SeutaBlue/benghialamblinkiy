@@ -305,6 +305,7 @@ class CheckoutController extends Controller
         if ($get_image) {
             $customer_id = Session::get('customer_id');
             $old_image_name = DB::table('tbl_customers')->where('customer_id', $customer_id)->value('customer_image');
+            
             if( $old_image_name)
             {
                 $filePath = 'public/uploads/customers_avatar/' . $old_image_name;

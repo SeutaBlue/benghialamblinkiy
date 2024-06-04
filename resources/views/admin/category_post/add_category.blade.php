@@ -33,18 +33,21 @@
                                 <div class="form-group">
                                     <label for="exampleInputPassword1">Hiển thị</label>
                                       <select name="cate_post_status" class="form-control input-sm m-bot15">
-                                            <option value="0">Hiển thị</option>
-                                            <option value="1">Ẩn</option>
+                                            <option value="1">Hiển thị</option>
+                                            <option value="0">Ẩn</option>
                                             
                                     </select>
                                 </div>
-                               
-                                <button type="submit" name="add_post_cate" class="btn btn-info">Thêm danh mục bài viết </button>
+                                
+                                <button id="add_post" type="submit" name="add_post_cate" class="btn btn-info">Thêm danh mục bài viết </button>
                                 </form>
+                                
                             </div>
 
                         </div>
                     </section>
 
             </div>
+            
+            
 @endsection

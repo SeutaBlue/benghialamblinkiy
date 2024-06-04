@@ -36,3 +36,18 @@ document.addEventListener('DOMContentLoaded', function() {
         // }
     });
 });
+
+document.addEventListener('DOMContentLoaded', function() {
+    var posts = document.querySelectorAll('.post_title');
+    
+
+    posts.forEach(function(post) {
+        // var maxWidth = parseInt(window.getComputedStyle(productName).maxWidth);
+
+        // // Nếu chiều rộng của tiêu đề lớn hơn chiều rộng tối đa
+        // if (productName.scrollWidth > maxWidth) {
+            // Thêm thuộc tính title để hiển thị tiêu đề đầy đủ khi di chuột qua
+            post.setAttribute('title', post.innerText);
+        // }
+    });
+});

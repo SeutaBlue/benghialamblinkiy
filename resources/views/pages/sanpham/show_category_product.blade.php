@@ -113,7 +113,7 @@
                 <input type="submit" class="filter-price" name="filter-price" value="Lọc sản phẩm">
             </div>
             </form>
-
+            <br>
         </div>
 
         <!-- DANH SÁCH SẢN PHẨM -->
@@ -131,18 +131,6 @@
                 </div>
                 <!--Style lại class "search-bar" thành "search_product",style lại "input-group" , thêm class "search_button_product" và "search_input_product"-->
             </form>
-            {{-- <div class="search-bar">
-                <div class="input-group flex-nowrap">
-                    <span class="input-group-text" id="addon-wrapping"><svg xmlns="http://www.w3.org/2000/svg"
-                            width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
-                            <path
-                                d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0" />
-                        </svg></span>
-
-                    <input type="text" class="form-control" placeholder="Tìm kiếm sản phẩm"
-                        aria-describedby="addon-wrapping">
-                </div>
-            </div> --}}
 
             <!-- SẢN PHẨM -->
             <div id="products" class="products">
@@ -167,12 +155,14 @@
             <div class="navigator">
                 {{ $product->links('pagination::bootstrap-4') }}
             </div>
-
+            <br>
         </div>
     </div>
     </div>
 
     </section>
+
+    @include('Footer')
     {{-- <script type="text/javascript">
         function MakeFilter() {
                 //alert("sdaa");

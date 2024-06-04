@@ -87,7 +87,7 @@
                             </button> --}}
                             @foreach ($size as $key => $size_pro)
                                 @if ($size_pro->SL > 0)
-                                    <button type="button" class="size" value="{{ $size_pro->size_id }}"
+                                    <button type="button" class="size" value="{{ $size_pro->size_value }}"
                                         onclick="selectSize(this, {{ $size_pro->size_value }}, {{ $size_pro->SL }})">{{ $size_pro->size_value }}
                                     </button>
                                 @else
@@ -208,25 +208,25 @@
             <div class="Product_description">
                 <div class="description_heading">
                     <br>
-                    <h4>MÔ TẢ SẢN PHẨM</h4>
+                    <h4>Mô tả sản phẩm</h4>
                     <hr>
                 </div>
                 <br>
                 <div class="restof_description">
-                    <p>
+                    {{-- <p>
                         <b>Sơ lược:&nbsp;</b>
-                    </p>
+                    </p> --}}
                     <p class="text_content">
-                        <span style="font-family: 'Arial',sans-serif;">
+                        <span style="font-family: 'Dongle', sans-serif;">
                             {!! $pro->product_content !!}
                         </span>
                     </p>
                     <br>
-                    <p>
+                    {{-- <p>
                         <b>Mô tả chi tiết:&nbsp;</b>
-                    </p>
+                    </p> --}}
                     <p class="text_content">
-                        <span style="font-family: 'Arial',sans-serif;">
+                        <span style="font-family: 'Dongle', sans-serif;">
                             {!! $pro->product_desc !!}
                         </span>
                     </p>
@@ -240,7 +240,7 @@
     <div class="related_product">
         <section class="product-category">
             <div class="container-title">
-                <p>SẢN PHẨM LIÊN QUAN</p>
+                <p>Sản phẩm liên quan</p>
                 <hr>
             </div>
 
@@ -273,9 +273,7 @@
         </section>
     </div>
 
-    <footer>
-
-    </footer>
+    @include('Footer')
 
     {{-- </section> --}}
     <script type="text/javascript" src="{{ asset('public/frontend/js/InsightProduct.js') }}"></script>

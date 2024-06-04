@@ -51,21 +51,21 @@ class CategoryProduct extends Controller
         Session::put('message','Thêm danh mục sản phẩm thành công');
         return Redirect::to('add-category-product');
     }
-    public function unactive_category_product($category_product_id)
-    {
-        $this->AuthLogin();
-        DB::table('tbl_category_product')->where('category_id',$category_product_id)->update(['category_status'=>0]);
-        //trỏ đến table where có id phù hợp với $category_product_id chuyển vào và cập nhật
-        Session::put('message','Không kích hoạt (ẩn) danh mục sản phẩm thành công');
-        return Redirect::to('all-category-product');
-    }
-    public function active_category_product($category_product_id)
-    {
-        $this->AuthLogin();
-        DB::table('tbl_category_product')->where('category_id',$category_product_id)->update(['category_status'=>1]);
-        Session::put('message','Kích hoạt (hiển thị) danh mục sản phẩm thành công');
-        return Redirect::to('all-category-product');
-    }
+    // public function unactive_category_product($category_product_id)
+    // {
+    //     $this->AuthLogin();
+    //     DB::table('tbl_category_product')->where('category_id',$category_product_id)->update(['category_status'=>0]);
+    //     //trỏ đến table where có id phù hợp với $category_product_id chuyển vào và cập nhật
+    //     Session::put('message','Không kích hoạt (ẩn) danh mục sản phẩm thành công');
+    //     return Redirect::to('all-category-product');
+    // }
+    // public function active_category_product($category_product_id)
+    // {
+    //     $this->AuthLogin();
+    //     DB::table('tbl_category_product')->where('category_id',$category_product_id)->update(['category_status'=>1]);
+    //     Session::put('message','Kích hoạt (hiển thị) danh mục sản phẩm thành công');
+    //     return Redirect::to('all-category-product');
+    // }
     public function edit_category_product($category_product_id)
     {
         $this->AuthLogin();
@@ -93,6 +93,13 @@ class CategoryProduct extends Controller
         Session::put('message','Xóa danh mục sản phẩm thành công');
         return Redirect::to('all-category-product');
     }
+    public function update_cate_product_status(Request $request){
+        $this->AuthLogin();
+        $id = $request->category_id;
+        $status = $request->category_status;   
+        DB::table('tbl_category_product')->where('category_id', $id)->update(['category_status' => $status]);   
+    }
+
 
     //FE
     public function show_category_product_home($category_product_id)

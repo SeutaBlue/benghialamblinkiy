@@ -6,7 +6,6 @@ body
     margin-bottom: 0;
     display: flex;
     flex-direction: column;
-    font-family: 'DM Sans';
     /* font-family: 'Nunito', sans-serif; */
 }
 /*Top-bar*/
@@ -151,7 +150,6 @@ i.fa-user, i.fa-cart-shopping, i.fa-heart
 {
     color: #d4868d;
     text-decoration: none;
-    /* font-weight: bold; */
     font-weight: light;
     font-size: 19px;
 }

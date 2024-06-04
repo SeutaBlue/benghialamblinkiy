@@ -12,11 +12,6 @@ body
     margin-bottom: 0;
     display: flex;
     flex-direction: column;
-    font-family: 'DM Sans';
-}
-.orderItem
-{
-    color: #cfe411;
 }
 
 .process {
@@ -71,7 +66,6 @@ body
 .basket_container {
     width: 100%;
     display: flex;
-    font-family: 'DM Sans';
 }
 
 .cart {
@@ -83,11 +77,11 @@ body
     margin-top: 20px;
     margin-bottom: 30px;
     margin-left: 2%;
-    font-size: 32px;
-    font-weight: bold;
-    /* color: #b84c65; */
-    /* color: #EF99A2; */
+    font-size: 30px;
+    font-weight: medium;
     color: #EF99A2;
+    font-family: 'Paytone One', sans-serif;
+    letter-spacing: 1.5px;
 }
 
 .basket ul {
@@ -119,24 +113,29 @@ body
     color: rgba(62, 41, 41, 1);
     width: 100%;
     text-align: center;
-    font-size: 150%;
-    font-weight: bold;
-    /* color: #DE8E96; */
+    font-size: 145%;
+    font-weight: medium;
+    font-family: 'Paytone One', sans-serif;
     color: #EF99A2;
+    letter-spacing: 1.5px;
 }
 .order_item
 {
     margin-bottom: 20px;
+    font-family: 'Dongle', sans-serif;
+    letter-spacing: 0.1px;
+    line-height: 22px;
+    font-size: 14.5px;
 }
 .basket .info hr {
     margin-top: 20px;
     width: 80%;
 }
 .order_items{
-    margin-left: 8%;
+    margin-left: 9.5%;
     width: 85%;
     /* background-color: #cfe411; */
-    margin-top: 8%;
+    margin-top: 7.5%;
 }
 .basket .total_container {
     display: flex;
@@ -157,9 +156,13 @@ body
 }
 .basket .info .total_title
 {
+    font-family: 'Dongle', sans-serif;
+    color: #503A3A;
     width: 100%;
+    font-weight: medium;
 }
 .basket .info .all_total {
+    font-family: 'Dongle', sans-serif;
     width: 100%;
     font-size: 20px;
     text-align: right;
@@ -174,17 +177,19 @@ body
     margin-left: 20px;
     font-size: 19px;
     color: #3E2929;
+    font-family: 'Dongle', sans-serif;
+    letter-spacing: 0.2px;
 }
 
 .basket .discount_container {
-    margin-top: 10px;
+    margin-top: 15px;
     display: flex;
     margin-bottom: 1px;
     width: 90%;
     height: 15%;
     margin-left: auto;
     margin-right: auto;
-    font-family: 'DM Sans';
+
 }
 
 .basket .discount_container input {
@@ -193,7 +198,7 @@ body
     border: 1px solid #ccc;
     width: 75.6%;
     border-radius: 5px 0 0 5px;
-    font-family: 'DM Sans';
+
 }
 
 .basket .discount_container button {
@@ -205,7 +210,7 @@ body
     font-size: 12px;
     width: 35%;
     border-radius: 0 5px 5px 0;
-    font-family: 'DM Sans';
+
 }
 
 .basket .discount_container button:hover {
@@ -227,10 +232,10 @@ body
     font-size: 25px;
     text-align: center;
     
-}
+}   
 
 .basket .pay button {
-    margin-top: 15px;
+    margin-top: 23px;
     padding: 3.2% 5%;
     background-color: #f28b95;
     color: #fff;
@@ -238,10 +243,11 @@ body
     cursor: pointer;
     width: 90%;
     height: auto;
-    font-size: 18px;
+    font-size: 15px;
     border-radius: 5px;
-    font-family: 'DM Sans';
-    font-weight: bold;
+    letter-spacing: 1px;
+    font-weight: lighter;
+    font-family: 'Paytone One', sans-serif;
 }
 /* .pay button
 {
@@ -256,6 +262,7 @@ body
     text-align: center;
     margin-top: 10px;
     font-weight: bold;
+
 }
 
 .basket .continue a {
@@ -263,7 +270,12 @@ body
     /* color: #007bff; */
     display: inline-block;
     padding: 3% 6%;
-    color: #3E2929;
+    /* color: #3E2929; */
+    color: #503A3A;
+    font-size: 14px;
+    letter-spacing: 0.5px;
+    font-weight: lighter;
+    font-family: 'Paytone One', sans-serif;
 }
 
 .basket .continue a:hover {
@@ -325,7 +337,6 @@ footer a:hover {
     margin-top: -15px;
     padding-left: 3%;
     width: 95%;
-    /* font-family: "Times New Roman", Times, serif !important; */
 }
 .item {
     background-color: #FCFCFB;
@@ -349,13 +360,13 @@ footer a:hover {
     /* margin-right: 10px; */
 }
 .img_product{
-    /* background-color: #cfe411; */
-    /* background-color: #cfe411; */
+
     width: 100%;
     height: 100%;
     margin: auto;
     display: flex;
     align-items: center;
+
     /* padding-bottom: 15px; */
     
 }
@@ -364,12 +375,16 @@ footer a:hover {
     width: 160px;
     height: 160px;
     object-fit: cover;
+    border-radius: 2px 2px 2px 2px;
 }
 .product-name{
     width: 100%;
     height: 45px;
-    font-weight: bold;
-    font-size: 18px;
+    font-weight: 100;
+    font-size: 15px;
+    color: #503A3A;
+    font-family: 'Paytone One', sans-serif;
+    letter-spacing: 0.9px;
 }
 .name
 {
@@ -386,8 +401,8 @@ footer a:hover {
     text-decoration: none;
     /* color: #007bff; */
     display: inline-block;
-    color: #3E2929;
-    margin-bottom: 5px;
+    /* color: #3E2929; */
+    margin-bottom: 9px;
 }
 
 .name a:hover {
@@ -398,8 +413,9 @@ footer a:hover {
     /* background-color: aquamarine; */
     width: 100%;
     height: 25px;
-    font-size: 16px;
-    color: #3E2929;
+    font-size: 14px;
+    color: #503A3A;
+    font-family: 'Dongle', sans-serif;
     /* padding-top: 5px; */
 }
 /* custom input number */
@@ -418,14 +434,18 @@ footer a:hover {
 }
 .price_text
 {
+    color:#503A3A;    
     font-size: 20px;
-    color: #3E2929;
+    font-weight: medium;
+    font-family: 'Dongle', sans-serif;
 }
 .total{
     color: #E6A244;
     /* color: #EF99A2; */
     font-weight: medium;
+
     font-size: 20px;
+    font-family: 'Dongle', sans-serif;
     display: flex;
     justify-content: right;
     /* align-items: right; */
@@ -440,7 +460,8 @@ footer a:hover {
 .quantity_values {
     width: 25px;
     text-align: center;
-    border: 1px solid black;
+    border: 1px solid  #503A3A;
+    font-family: 'Dongle', sans-serif;
     border-left: none;
     border-right: none;
 }
@@ -469,8 +490,6 @@ input[type=number]::-webkit-outer-spin-button {
     border-radius: 0 2.5px 2.5px 0;
 }
 .remove {
-    color: #3E2929;
-    /* color: #EF99A2; */
     height: 20px;
     width: 15%;
     display: grid;
@@ -479,6 +498,8 @@ input[type=number]::-webkit-outer-spin-button {
     margin-bottom: 0px;
     cursor: pointer;
     font-size: 17px;
+    font-family: 'Dongle', sans-serif;
+    color: #503A3A;
 }
 .fa-trash
 {

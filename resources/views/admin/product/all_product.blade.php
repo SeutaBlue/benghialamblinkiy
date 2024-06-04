@@ -5,27 +5,7 @@
       <div class="panel-heading">
         Liệt kê sản phẩm
       </div>
-      <div class="row w3-res-tb">
-        <div class="col-sm-5 m-b-xs">
-          <select class="input-sm form-control w-sm inline v-middle">
-            <option value="0">Bulk action</option>
-            <option value="1">Delete selected</option>
-            <option value="2">Bulk edit</option>
-            <option value="3">Export</option>
-          </select>
-          <button class="btn btn-sm btn-default">Apply</button>                
-        </div>
-        <div class="col-sm-4">
-        </div>
-        <div class="col-sm-3">
-          <div class="input-group">
-            <input type="text" class="input-sm form-control" placeholder="Search">
-            <span class="input-group-btn">
-              <button class="btn btn-sm btn-default" type="button">Go!</button>
-            </span>
-          </div>
-        </div>
-      </div>
+
       <div class="table-responsive">
                     <?php
                         $message = Session::get('message'); // hàm get để lấy biến có tên là 'message' ở bên AdminController
@@ -36,48 +16,38 @@
                     ?>
         <table class="table table-striped b-t b-light">
           <thead>
-            <tr>
-              <th style="width:20px;">
-                <label class="i-checks m-b-none">
-                  <input type="checkbox"><i></i>
-                </label>
+            <tr style="height: 50px">
+              <th style=" display: table-cell; vertical-align: middle; width:50px;">STT
               </th>
-              <th>Tên sản phẩm</th>
-              <th>Giá</th>
-              {{-- <th>Kích cỡ</th> --}}
-              <th>Màu sắc</th>
-              <th>Hình ảnh sản phẩm</th>
-              <th>Danh mục sản phẩm</th>
-              <th>Hiển thị</th>
-              <th>Thao tác</th>
-              <th style="width:30px;"></th>
+              <th style=" display: table-cell; vertical-align: middle; width: 425px;">Tên sản phẩm</th>
+              <th style=" display: table-cell; vertical-align: middle;">Giá</th>
+              <th style=" display: table-cell; vertical-align: middle;">Màu sắc</th>
+              <th style=" display: table-cell; vertical-align: middle;">Hình ảnh sản phẩm</th>
+              <th style=" display: table-cell; vertical-align: middle;">Danh mục sản phẩm</th>
+              <th style=" display: table-cell; vertical-align: middle;">Hiển thị</th>
+              <th style=" display: table-cell; vertical-align: middle;">Thao tác</th>
+            
             </tr>
           </thead>
           <tbody>
             @foreach ($all_product as $key => $pro)
             <tr>
-              <td><label class="i-checks m-b-none"><input type="checkbox" name="post[]"><i></i></label></td>
-              <td>{{$pro->product_name }}</td>
-              <td>{{$pro->product_price }}</td>
-              <td>{{$pro->product_color }}</td>
-              <td><img src="public/uploads/product/{{$pro->product_image }}" height="100" width="100" style="object-fit: cover"></td>
-              <td>{{$pro->category_name }}</td>
-              <td>
+              <td style=" display: table-cell; text-align: center; vertical-align: middle;">{{ $key + 1 }}</td>
+              <td style=" display: table-cell; vertical-align: middle;">{{$pro->product_name }}</td>
+              <td style=" display: table-cell; vertical-align: middle;">{{$pro->product_price }}</td>
+              <td style=" display: table-cell; vertical-align: middle;">{{$pro->product_color }}</td>
+              <td style=" display: table-cell; text-align: center; vertical-align: middle;"><img src="public/uploads/product/{{$pro->product_image }}" height="100" width="100" style="object-fit: cover"></td>
+              <td style=" display: table-cell; text-align: center; vertical-align: middle;">{{$pro->category_name }}</td>
+              <td style=" display: table-cell; text-align: center; vertical-align: middle;">
                 <span class="text-ellipsis">
-                    <?php
-                        if($pro->product_status==1) {
-                    ?>    
-                        <a href="{{URL::to('/unactive-product/'.$pro->product_id)}}"><span class='fa-thumb-styling fa fa-thumbs-up'></span></a>
-                    <?php
-                        }else if($pro->product_status==0) {
-                    ?>    
-                        <a href="{{URL::to('/active-product/'.$pro->product_id)}}"><span class='fa-thumb-styling fa fa-thumbs-down'></span></a>
-                    <?php
-                        }
-                    ?>
+                    @if($pro->product_status == 1) 
+                      <i style="color:green; cursor: pointer" class="fa-solid fa-eye update-pro-status" data-id="{{$pro->product_id}}" data-status="0"></i>          
+                    @else 
+                      <i style="color:red; cursor: pointer" class="fa-solid fa-eye-slash update-pro-status" data-id="{{$pro->product_id}}" data-status="1"></i>          
+                    @endif    
 
                 </span></td>
-              <td>
+              <td style=" display: table-cell; text-align: center; vertical-align: middle;">
                 <a href="{{ URL::to('/edit-product/'.$pro->product_id) }}" class="active styling-edit" ui-toggle-class=""><i class="fa fa-pencil-square-o text-success text-active"></i></a><br>
                 <a href="{{ URL::to('/show-product-details/'.$pro->product_id) }}" class="active styling-edit" ui-toggle-class=""><i class="fa-solid fa-box"></i></a><br>
                 <a href="{{ URL::to('/add-gallery/'.$pro->product_id) }}" ><i class="fa fa-solid fa-image" style="color: #9E75FF"></i><br>
@@ -87,8 +57,14 @@
             @endforeach
           </tbody>
         </table>
-      </div>
-      <footer class="panel-footer">
+        
+      </div >
+      <footer class="panel-footer" style="height: 100px; display: flex; justify-content: center; align-items: center;">
+        <div  >
+          {{ $all_product->links('pagination::bootstrap-4') }}
+        </div>
+      </footer>
+      {{-- <footer class="panel-footer">
         <div class="row">
           
           <div class="col-sm-5 text-center">
@@ -105,7 +81,46 @@
             </ul>
           </div>
         </div>
-      </footer>
+      </footer> --}}
     </div>
   </div>
+
+<script>
+  $(document).ready(function(){
+      $('.update-pro-status').click(function(event){
+          event.preventDefault();
+          var proId = $(this).data('id'); // lấy ID bài viết
+          var proStatus = $(this).data('status'); // lấy trạng thái mới
+          var element = $(this);
+          $.ajax({
+              url: "{{ url('/update-product-status') }}", // đường dẫn tới route xử lý cập nhật
+              method: 'GET',
+              data:{product_id: proId, product_status: proStatus},
+              success:function(data){              
+                  if(proStatus == 1) {
+                    element.removeClass('fa-eye-slash').addClass('fa-eye').css('color', 'green').data('status', 0);
+                    Swal.fire({
+                      icon: 'success',
+                      title: 'Thành công',
+                      text: 'Hiển thị sản phẩm thành công!'
+                    });
+                  } 
+                  else {
+                    element.removeClass('fa-eye').addClass('fa-eye-slash').css('color', 'red').data('status', 1);
+                    Swal.fire({
+                      icon: 'success',
+                      title: 'Thành công',
+                      text: 'Ẩn sản phẩm thành công!'
+                    });
+                  }
+                  
+              },
+              error: function(jqXHR, textStatus, errorThrown) {
+                console.log('AJAX call failed: ' + textStatus + ', ' + errorThrown);
+              }
+          });
+      });
+  });
+  </script>
+
 @endsection

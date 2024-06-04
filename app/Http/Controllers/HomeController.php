@@ -5,11 +5,13 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use DB; // sử dụng database
 use App\Http\Requests;
+use App\Models\CatePost;
+use App\Models\Post;
 use Session; // thu vien sdung session
 use Illuminate\Support\Facades\Redirect; 
 session_start();
 
-use App\Models\CatePost;
+
 class HomeController extends Controller
 {
     public function index(Request $request)
@@ -24,6 +26,9 @@ class HomeController extends Controller
         ->get();
         // $new_products=$new_products->inRandomOrder()->get();
 
+        $category_post = CatePost::orderBy('cate_post_id','DESC')->where('cate_post_status','1')->get(); // k có phân trang nên mình lấy hết bằng hàm get
+        $all_post = Post::where('post_status','1')->inRandomOrder()->limit(4)->get();
+
         $pro1=DB::table('tbl_product')->where('category_id','1')->where('product_status','1')->inRandomOrder()->first();
         $pro2=DB::table('tbl_product')->where('category_id','2')->where('product_status','1')->inRandomOrder()->first();
         $pro3=DB::table('tbl_product')->where('category_id','3')->where('product_status','1')->inRandomOrder()->first();
@@ -32,6 +37,8 @@ class HomeController extends Controller
 
         return view('welcome')
         ->with('category',$category_product)
+        ->with('category_post',$category_post)
+        ->with('all_post',$all_post)
         ->with('best_sellers',$best_sellers)
         ->with('new_products',$new_products)
         ->with('pro1',$pro1)

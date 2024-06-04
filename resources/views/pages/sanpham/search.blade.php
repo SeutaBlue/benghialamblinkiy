@@ -98,7 +98,7 @@
                     <input type="submit" class="filter-price" name="filter-price" value="Lọc sản phẩm">
                 </div>
                 </form>
-    
+                <br>
             </div>
 
             <!-- DANH SÁCH SẢN PHẨM -->
@@ -132,17 +132,18 @@
                         </div>
                     </div>
                     @endforeach
-                {{-- <br> --}}
+
                 </div>
                 <div class="navigator">
                     {{ $search_product->links('pagination::bootstrap-4') }}
                 </div>
-
+                <br>
             </div>
         </div>
         </div>
     </section>
-
+    
+    @include('Footer')
  
 <script src="{{ asset('public/frontend/js/sanpham.js') }}"></script>
 <script src="https://code.jquery.com/jquery-3.7.1.js"></script>

@@ -21,6 +21,7 @@
     {{-- <script src = "https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script> --}}
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
+    {{-- <section> --}}
     <div class="container-fluid"> <!-- /*CHỌN LOẠI HIỂN THỊ*/ -->
         <div class="filter-bar">
             <!-- /*BỘ LỌC DANH MỤC SẢN PHẨM*/ -->
@@ -95,13 +96,13 @@
                 <input type="hidden" class="price_to" name="price_to" id="price_to" value="{{ $max_price_value }}">
 
             </div>
-            <br><br>
+            <br>
             {{-- <hr> --}}
             <div class="filter-submit">
                 <input type="submit" class="filter-price" name="filter-price" value="Lọc sản phẩm">
             </div>
             </form>
-            <br>
+            <br><br><br>
         </div>
 
         <!-- DANH SÁCH SẢN PHẨM -->
@@ -141,12 +142,14 @@
             <div class="navigator">
                 {{ $product->links('pagination::bootstrap-4') }}
             </div>
-
+            <br>
         </div>
     </div>
     </div>
 
-    </section>
+    {{-- </section> --}}
+    {{-- <br><br> --}}
+    @include('Footer')
  
         <script src="{{ asset('public/frontend/js/sanpham.js') }}"></script>
         <script src="https://code.jquery.com/jquery-3.7.1.js"></script>

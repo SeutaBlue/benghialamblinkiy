@@ -22,7 +22,6 @@
                 <div class="cart_container">
                     <div class="shopping-cart-title">Giỏ hàng của bạn</div>
                     <div id="list" class="list">
-
                         @if ($login)
                             @if($ShoppingCart->isEmpty())
                                 <p class="note">Bạn chưa có sản phẩm nào trong giỏ hàng, hãy thêm vào đi nào :3</p>
@@ -106,13 +105,14 @@
                         <button class="pay_button">Thanh toán</button>
                     </div>
                     <div class="continue">
-                        <a href="#"><i class="fas fa-angle-double-left"></i> Tiếp tục mua hàng</a>
+                        <a href="{{ URL::to('/san-pham') }}"><i class="fas fa-angle-double-left"></i> Tiếp tục mua hàng</a>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
+    @include('Footer')
 
     <script src="{{ asset('public/frontend/js/ScriptShoppingCart.js') }}"></script>
     <script>
