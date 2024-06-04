@@ -76,7 +76,7 @@ class GalleryController extends Controller
             }
         }
 
-        Session::put('message','Thêm hình ảnh thành công');
+        Session::put('message_gallery','Thêm hình ảnh thành công');
         return Redirect::to('add-gallery/'.$product_id);
 
     }

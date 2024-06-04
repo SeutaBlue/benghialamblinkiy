@@ -102,7 +102,7 @@
                     </div>
 
                     <div class="pay">
-                        <button class="pay_button">Thanh toán</button>
+                        <button class="pay_button" onclick="window.location.href='{{ URL::to('/shipping') }}'">Thanh toán</button>
                     </div>
                     <div class="continue">
                         <a href="{{ URL::to('/san-pham') }}"><i class="fas fa-angle-double-left"></i> Tiếp tục mua hàng</a>

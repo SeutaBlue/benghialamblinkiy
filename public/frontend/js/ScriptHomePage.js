@@ -39,7 +39,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
 document.addEventListener('DOMContentLoaded', function() {
     var posts = document.querySelectorAll('.post_title');
-    
 
     posts.forEach(function(post) {
         // var maxWidth = parseInt(window.getComputedStyle(productName).maxWidth);

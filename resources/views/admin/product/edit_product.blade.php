@@ -7,14 +7,6 @@
                     Cập nhật sản phẩm
                 </header>
                 <div class="panel-body">
-                    <?php
-                    $message = Session::get('message'); // hàm get để lấy biến có tên là 'message' ở bên AdminController
-                    if ($message) {
-                        // neu ton tai message
-                        echo '<span class="text-alert">' . $message . '</span>'; // in ra tin nhan
-                        Session::put('message', null); //cho hien thi 1 lan thoi
-                    }
-                    ?>
                     <div class="position-center">
                         @foreach ($edit_product as $key => $pro)
                             <form role="form" action="{{ URL::to('/update-product/' . $pro->product_id) }}" method="POST"

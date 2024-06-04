@@ -7,13 +7,19 @@
                     Thêm danh mục sản phẩm
                 </header>
                 <div class="panel-body">
+                    @if(Session::get('message'))
+                    <script>
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Thành công',
+                            text: '{{ Session::get('message') }}'
+                        });
+                        
+                    </script>
                     <?php
-                        $message = Session::get('message'); // hàm get để lấy biến có tên là 'message' ở bên AdminController
-                        if($message){ // neu ton tai message
-                            echo '<span class="text-alert">'.$message.'</span>' ; // in ra tin nhan
-                            Session::put('message',null); //cho hien thi 1 lan thoi
-                        }
+                        Session::put('message',null);
                     ?>
+                    @endif
                     <div class="position-center">
                         <form role="form" action="{{ URL::to('/save-category-product') }}" method="POST">
                             {{ csrf_field() }} 

@@ -43,6 +43,25 @@ class ProductController extends Controller
     public function save_product(Request $request)
     {
         $this->AuthLogin();
+
+        // $rq = $request->all();
+        // $fieldsToCheck = ['product_name', 'product_price', 'product_desc', 'product_status', 'product_content', 'product_color', 'product_element', 'cate_product', 'product_image']; // Danh sách các trường cần kiểm tra
+        // $nonEmptyCount = 0;
+
+        // foreach ($fieldsToCheck as $field) {
+        //     if (!empty($rq[$field])) {
+        //         $nonEmptyCount++;
+        //     }
+        // }
+        // $validatedData = $request->validate([
+        //     'name' => 'required|string|max:255',
+        //     'email' => 'required|string|email|max:255|unique:users',
+        //     'password' => 'required|string|min:8|confirmed',
+        // ]);
+
+        // if($nonEmptyCount ==9)
+        // {
+
         $data=array();
         $data['product_name']=$request->product_name;
         $data['product_price']=$request->product_price;
@@ -88,6 +107,12 @@ class ProductController extends Controller
 
         Session::put('message','Thêm sản phẩm thành công');
         return Redirect::to('add-product');
+        // }
+        // else
+        // {
+        //     Session::put('message','KHÔNG');
+        //     return Redirect::to('add-product');
+        // }
     }
     // public function unactive_product($product_id)
     // {

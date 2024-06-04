@@ -7,13 +7,21 @@
       </div>
 
       <div class="table-responsive">
-                    <?php
-                        $message = Session::get('message'); // hàm get để lấy biến có tên là 'message' ở bên AdminController
-                        if($message){ // neu ton tai message
-                            echo '<span class="text-alert">'.$message.'</span>' ; // in ra tin nhan
-                            Session::put('message',null); //cho hien thi 1 lan thoi
-                        }
-                    ?>
+                      
+        @if(Session::get('message'))
+        <script>
+            Swal.fire({
+                icon: 'success',
+                title: 'Thành công',
+                text: '{{ Session::get('message') }}'
+            });
+            // Session::get('message')=null;
+        </script>
+        <?php
+          Session::put('message',null);
+        ?>
+        @endif
+        
         <table class="table table-striped b-t b-light">
           <thead>
             <tr style="height: 50px">
@@ -32,7 +40,8 @@
           <tbody>
             @foreach ($all_product as $key => $pro)
             <tr>
-              <td style=" display: table-cell; text-align: center; vertical-align: middle;">{{ $key + 1 }}</td>
+              <td style=" display: table-cell; text-align: center; vertical-align: middle;">
+                {{ ($all_product->currentPage() - 1) * $all_product->perPage() + $key + 1 }}</td>
               <td style=" display: table-cell; vertical-align: middle;">{{$pro->product_name }}</td>
               <td style=" display: table-cell; vertical-align: middle;">{{$pro->product_price }}</td>
               <td style=" display: table-cell; vertical-align: middle;">{{$pro->product_color }}</td>
@@ -60,7 +69,7 @@
         
       </div >
       <footer class="panel-footer" style="height: 100px; display: flex; justify-content: center; align-items: center;">
-        <div  >
+        <div >
           {{ $all_product->links('pagination::bootstrap-4') }}
         </div>
       </footer>
