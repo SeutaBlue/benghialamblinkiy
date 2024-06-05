@@ -144,6 +144,7 @@ Route::post('/reset-password', 'App\Http\Controllers\CheckoutController@check_re
 
 use App\Http\Controllers\ShippingController;
 use App\Http\Controllers\AdditionalController;
+use App\Http\Controllers\BoSungController;
 use App\Http\Controllers\FileDisplayController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\EmailController;
@@ -155,8 +156,10 @@ Route::post('/thanh-toan', [OrderController::class, 'submitThanhToan'])->name('s
 // Route::post('/thanh-toan', [OrderController::class, 'online_checkout'])->name('MoMo');
 
 //bo sung thong tin sau van chuyen
-Route::get('/bo-sung', [AdditionalController::class, 'index'])->name('bo-sung.index');
-Route::post('/bo-sung', [AdditionalController::class, 'store'])->name('bo-sung.store');
+Route::get('/bo-sung', [BoSungController::class, 'index'])->name('bo-sung.index');
+Route::post('/bo-sung', [BoSungController::class, 'store'])->name('bo-sung.store');
+// Route::get('/bo-sung', [AdditionalController::class, 'index'])->name('bo-sung.index');
+// Route::post('/bo-sung', [AdditionalController::class, 'store'])->name('bo-sung.store');
 Route::get('/file-display', [FileDisplayController::class, 'index'])->name('fileDisplay');
 
 

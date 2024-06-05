@@ -4,28 +4,31 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
+        <link rel="icon" href="public/frontend/images/logo_title.jpg" type="image/x-icon">
         <title>Trang Chủ | Blinkiy</title>
 
         <!-- Fonts -->
         <link href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css2?family=Rowdies:wght@400;700&family=Francois+One&family=Paytone+One&family=Sigmar&family=Tilt+Neon&family=Saira+Stencil+One&display=swap" rel="stylesheet">
-        {{-- <style>
-            body {
-                font-family: 'Geologica', sans-serif;
-            }
-        </style> --}}
+    
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
         <link href="{{asset('public/frontend/css/StyleHomePage.css')}}" rel="stylesheet">
-        <link href="{{asset('public/frontend/css/StyleHeader.css')}}" rel="stylesheet">
+        <link href="{{asset('public/frontend/css/StyleHeader.css')}}" rel="stylesheet">  
         
-    </head>
-    <body class="antialiased">
+</head>
+<body class="antialiased">
         {{-- <header> --}}
+            <input type="hidden" value="{{$my_customer}}" id="this-customer">
+            @if($my_customer)
+        
+                <script type="text/javascript" src="{{asset('public/frontend/js/CartQuantity.js') }}"></script>
+           
+             @endif
             <div class="top-bar">
                 <a href="{{ URL::to('/trang-chu') }}">
                     <div class="logo">
-                        <img class="logo-img" src="{{asset('public/frontend/images/Logo.jpg') }}"/>
+                        <img class="logo-img" src="{{asset('public/frontend/images/logo_title.jpg') }}"/>
                         <p class="logo-blinkiy">BLINKIY</p>
                         <p class="logo-phongthuy">PHONG THỦY</p>
                     </div>
@@ -38,20 +41,23 @@
                 </div>
                 <div class="top-bar-options">
                     <div class="top-bar-options-object">
-                        <a href="{{ URL::to('/ho-so') }}">
+                        <a href="{{ URL::to('/ho-so') }}" class="icon_option">
                             <i class="fa-solid fa-user"></i>
                         </a>
                         <a class="top-bar-options-object-title" href="{{ URL::to('/ho-so') }}">Tài khoản</a>
                     </div>
                     <div class="top-bar-options-object">
-                        <a href="">
+                        <a href="" class="icon_option">
                             <i class="fa-solid fa-heart"></i>
                         </a>
                         <a class="top-bar-options-object-title" href="">Yêu thích</a>
                     </div>
                     <div class="top-bar-options-object">
-                        <a href="{{ URL::to('/gio-hang') }}">
-                            <i class="fa-solid fa-cart-shopping"></i>
+                        <a href="{{ URL::to('/gio-hang') }}" >
+                            <div id="cart-shopping">
+                                <i class="fa-solid fa-cart-shopping"></i>
+                                <span class="cart-shopping-quantity">99</span>
+                            </div>
                         </a>
                         <a class="top-bar-options-object-title" href="{{ URL::to('/gio-hang') }}">Giỏ hàng</a>
                     </div>
@@ -240,7 +246,8 @@
    
     @include('Footer')
 
-    <script type="text/javascript" src="{{asset('public/frontend/js/ScriptCardSlider.js') }}"></script>
-    <script type="text/javascript" src="{{asset('public/frontend/js/ScriptHomePage.js') }}"></script>
+    
+    {{-- <script type="text/javascript" src="{{asset('public/frontend/js/ScriptCardSlider.js') }}"></script> --}}
+    {{-- <script type="text/javascript" src="{{asset('public/frontend/js/ScriptHomePage.js') }}"></script> --}}
     </body>
 </html>

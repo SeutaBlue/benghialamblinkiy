@@ -8,10 +8,14 @@
   
 
     <header class="Header">
+        <input type="hidden" value="{{ $my_customer }}" id="this-customer">
+            <script>
+                console.log(document.getElementById('this-customer').value);
+            </script>
         <div class="top-bar">
             <a href="{{ URL::to('/trang-chu') }}">
                 <div class="logo">
-                    <img class="logo-img" src="{{ asset('public/frontend/images/Logo.jpg') }}">
+                    <img class="logo-img" src="{{ asset('public/frontend/images/logo_title.jpg') }}">
                     <p class="logo-blinkiy">BLINKIY</p>
                     <p class="logo-phongthuy">PHONG THỦY</p>
                 </div>
@@ -25,20 +29,23 @@
             </div>
             <div class="top-bar-options">
                 <div class="top-bar-options-object">
-                    <a href="{{ URL::to('/ho-so') }}">
+                    <a href="{{ URL::to('/ho-so') }}" class="icon_option">
                         <i class="fa-solid fa-user"></i>
                     </a>
                     <a class="top-bar-options-object-title" href="{{ URL::to('/ho-so') }}">Tài khoản</a>
                 </div>
                 <div class="top-bar-options-object">
-                    <a href="">
+                    <a href="" class="icon_option">
                         <i class="fa-solid fa-heart"></i>
                     </a>
                     <a class="top-bar-options-object-title" href="">Yêu thích</a>
                 </div>
                 <div class="top-bar-options-object">
-                    <a href="{{ URL::to('/gio-hang') }}">
-                        <i class="fa-solid fa-cart-shopping"></i>
+                    <a href="{{ URL::to('/gio-hang') }}" >
+                        <div id="cart-shopping">
+                            <i class="fa-solid fa-cart-shopping"></i>
+                            <span class="cart-shopping-quantity">99</span>
+                        </div>
                     </a>
                     <a class="top-bar-options-object-title" href="{{ URL::to('/gio-hang') }}">Giỏ hàng</a>
                 </div>
