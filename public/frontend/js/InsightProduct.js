@@ -30,12 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
         extraImages.forEach((img) => img.classList.remove('active'));
 
         if (index === -1) {
-
             mainImage.src = imgsrc;
-            // alert("sad");
-            // console.log(imgsrc)
-            //mainImage.src="{{ URL::to('public/uploads/product/' . $pro->product_image) }}"
-            //mainImage.src = 'https://via.placeholder.com/460x460'; 
         } else {
             mainImage.src = extraImages[index % extraImages.length].src;
             // Thêm lớp active vào hình ảnh phụ tương ứng
@@ -135,25 +130,25 @@ listcard.forEach((item, i) => {
 })
 
 // Favorite button
-function toggleFavorite() {
-    var heartSvg = document.getElementById("heart_svg");
-    var heartPath = document.getElementById("heart_path");
+// function toggleFavorite() {
+//     var heartSvg = document.getElementById("heart_svg");
+//     var heartPath = document.getElementById("heart_path");
 
-    // Kiểm tra xem trạng thái hiện tại của biểu tượng
-    if (heartSvg.classList.contains("bi-heart")) {
-        // thay đổi sang biểu tượng trái tim đầy
-        heartSvg.classList.remove("bi-heart");
-        heartSvg.classList.add("bi-heart-fill");
-        // Thay đổi dòng path để tô đậm trái tim
-        heartPath.setAttribute("d", "M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314");
-    } else {
-        // Thay đổi sang biểu tượng trái tim rỗng
-        heartSvg.classList.remove("bi-heart-fill");
-        heartSvg.classList.add("bi-heart");
-        // Thay đổi dòng path để trái tim trở về rỗng
-        heartPath.setAttribute("d", "m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143q.09.083.176.171a3 3 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15");
-    }
-}
+//     // Kiểm tra xem trạng thái hiện tại của biểu tượng
+//     if (heartSvg.classList.contains("bi-heart")) {
+//         // thay đổi sang biểu tượng trái tim đầy
+//         heartSvg.classList.remove("bi-heart");
+//         heartSvg.classList.add("bi-heart-fill");
+//         // Thay đổi dòng path để tô đậm trái tim
+//         heartPath.setAttribute("d", "M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314");
+//     } else {
+//         // Thay đổi sang biểu tượng trái tim rỗng
+//         heartSvg.classList.remove("bi-heart-fill");
+//         heartSvg.classList.add("bi-heart");
+//         // Thay đổi dòng path để trái tim trở về rỗng
+//         heartPath.setAttribute("d", "m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143q.09.083.176.171a3 3 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15");
+//     }
+// }
 
 // Select color input type checkbox
 function selectOnlyThis(checkbox) {

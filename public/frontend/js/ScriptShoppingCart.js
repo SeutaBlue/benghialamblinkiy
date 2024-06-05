@@ -27,7 +27,7 @@ function createOrderItemNode(product) {
       <input type="hidden" class="order_size" value="${productSize}"\>
       <div class="order_description">${productDescription}</div>
       <div class="order_quantity">SL: ${productQuantity}</div>
-      <div class="order_price">Đơn giá: ${(productPrice * productQuantity).toLocaleString()}đ</div>
+      <div class="order_price">Thành tiền: ${(productPrice * productQuantity).toLocaleString()}đ</div>
   `;
     return orderItem;
 }

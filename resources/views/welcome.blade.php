@@ -20,11 +20,10 @@
 <body class="antialiased">
         {{-- <header> --}}
             <input type="hidden" value="{{$my_customer}}" id="this-customer">
+            <input type="hidden" value="{{$cart}}" id="number_of_cart">
             @if($my_customer)
-        
                 <script type="text/javascript" src="{{asset('public/frontend/js/CartQuantity.js') }}"></script>
-           
-             @endif
+            @endif
             <div class="top-bar">
                 <a href="{{ URL::to('/trang-chu') }}">
                     <div class="logo">

@@ -38,7 +38,7 @@
                     <a href="" class="icon_option">
                         <i class="fa-solid fa-heart"></i>
                     </a>
-                    <a class="top-bar-options-object-title" href="">Yêu thích</a>
+                    <a class="top-bar-options-object-title" href="{{ URL::to('/favourite-product') }}">Yêu thích</a>
                 </div>
                 <div class="top-bar-options-object">
                     <a href="{{ URL::to('/gio-hang') }}" >

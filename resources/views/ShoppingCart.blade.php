@@ -26,6 +26,11 @@
                             @if($ShoppingCart->isEmpty())
                                 <p class="note">Bạn chưa có sản phẩm nào trong giỏ hàng, hãy thêm vào đi nào :3</p>
                             @else
+                            <input type="hidden" value="{{ $ShoppingCart }}" id="abc">
+                                <script>
+                                    var check=document.getElementById('abc').value;
+                                    console.log(check);
+                                    </script>
                                 @foreach ($ShoppingCart as $key => $cart)
                                     <div class="item">
                                         <input type="checkbox" class="checkbox">
@@ -123,7 +128,7 @@
             const customer = document.getElementById('customer-id').value;
             const proquantity = product.querySelector('.quantity_values').value;
 
-            // alert(proquantity);
+            
             $.ajax({
                 type: 'GET',
                 url: '',

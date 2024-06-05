@@ -249,7 +249,39 @@ class ProductController extends Controller
         $product_status = $request->product_status;   
         DB::table('tbl_product')->where('product_id', $product_id)->update(['product_status' => $product_status]);   
     }    
+// Thêm nè
+public function toggleFavorite(Request $request)
+{
+    $customer_id = Session::get('customer_id');
+    $product_id = $request->product_id;
 
+    if ($customer_id) {
+        DB::table('tbl_favorite')->updateOrInsert(
+            ['customer_id' => $customer_id, 'product_id' => $product_id],
+            ['created_at' => now(), 'updated_at' => now()]
+        );
+
+        return response()->json(['success' => true]);
+    } else {
+        return response()->json(['success' => false, 'message' => 'Bạn cần đăng nhập trước!']);
+    }
+}
+
+public function removeFavorite(Request $request)
+{
+    $customer_id = Session::get('customer_id');
+    $product_id = $request->product_id;
+
+    if ($customer_id) {
+        DB::table('tbl_favorite')->where('customer_id', $customer_id)
+                                ->where('product_id', $product_id)
+                                ->delete();
+
+        return response()->json(['success' => true]);
+    } else {
+        return response()->json(['success' => false, 'message' => 'Bạn cần đăng nhập trước!']);
+    }
+}
     //FE
     public function show_inside_product($product_id)
     {
@@ -270,7 +302,6 @@ class ProductController extends Controller
             $category_id=$pro->category_id;
         }
 
-
         $related_product=DB::table('tbl_product')
         ->join('tbl_category_product','tbl_category_product.category_id','=','tbl_product.category_id')
         ->where('product_status','1')
@@ -279,6 +310,9 @@ class ProductController extends Controller
         ->orderby('tbl_product.product_id','asc')->limit(12)->get();
 
         $gallery_product=DB::table('tbl_gallery')->where('product_id',$product_id)->get();
+
+        // Truy vấn trạng thái yêu thích
+        $isFavorite = DB::table('tbl_favorite')->where('customer_id', $customer_id)->where('product_id', $product_id)->exists();
         
         return view('pages.sanpham.inside_product')
         ->with('product',$product_by_id)
@@ -286,7 +320,8 @@ class ProductController extends Controller
         ->with('cate_of_product',$category_of_product)
         ->with('size',$size_product)
         ->with('gallery_product',$gallery_product)
-        ->with('login',$customer_id);
+        ->with('login',$customer_id)
+        ->with('isFavorite',$isFavorite);
     }
 
 }
