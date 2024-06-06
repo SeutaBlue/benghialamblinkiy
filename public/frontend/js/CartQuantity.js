@@ -19,14 +19,8 @@ function countProductsInCart_Customer()
 function countProductsInCart() 
 {
     let cart = JSON.parse(sessionStorage.getItem('cart')) || [];
-    let productCount = {};
 
-    cart.forEach(item => 
-    {
-            productCount[item.product_id] = 1;
-    });
-
-    let totalItems = Object.values(productCount).reduce((sum, count) => sum + count, 0);
+    totalItems=cart.length;
     console.log(totalItems);
 
     if(totalItems<99)
@@ -39,19 +33,3 @@ function countProductsInCart()
     }
 
 }
-
-const searchInput = document.getElementById('search-bar-input');
-const searchIcon = document.getElementById('search_icon');
-const searchForm = document.getElementById('search-form');
-searchIcon.addEventListener('click', function(event) 
-{
-    alert("sdads");
-    searchForm.submit();
-});
-searchInput.addEventListener('keypress', function(event) 
-{
-    if (event.key === 'Enter') {
-        event.preventDefault(); // Ngăn chặn hành động mặc định của phím "Enter" (submit form)
-        searchForm.submit(); // Gửi form
-    }
-});

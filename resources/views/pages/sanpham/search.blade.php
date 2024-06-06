@@ -12,7 +12,8 @@
     <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.3/themes/base/jquery-ui.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.3/themes/base/jquery-ui.min.css">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>Sản phẩm | Blinkiy</title>
+    <link rel="icon" href="public/frontend/images/logo_title.jpg" type="image/x-icon">
+    <title>Blinkiy | Sản phẩm</title>
 </head>
 
 <body>

@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <link rel="icon" href="public/frontend/images/logo_title.jpg" type="image/x-icon">
-    <title>Trang Chủ | Blinkiy</title>
+    <title>Blinkiy | Trang chủ</title>
 
     <!-- Fonts -->
     <link href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
@@ -97,7 +97,7 @@
                 </ul>
             </li>
             <li class="mainmenu-li">
-                <a class="menu-bar-title" href="">GIỚI THIỆU</a>
+                <a class="menu-bar-title" href="{{ URL::to('/tat-ca-bai-viet') }}">GIỚI THIỆU</a>
             </li>
             <li class="mainmenu-li">
                 <a class="menu-bar-title" href="{{ URL::to('/tat-ca-bai-viet') }}">BLOG</a>

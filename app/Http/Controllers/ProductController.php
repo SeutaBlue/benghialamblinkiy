@@ -255,7 +255,8 @@ public function toggleFavorite(Request $request)
     $customer_id = Session::get('customer_id');
     $product_id = $request->product_id;
 
-    if ($customer_id) {
+    if ($customer_id) 
+    {
         DB::table('tbl_favorite')->updateOrInsert(
             ['customer_id' => $customer_id, 'product_id' => $product_id],
             ['created_at' => now(), 'updated_at' => now()]
@@ -286,6 +287,8 @@ public function removeFavorite(Request $request)
     public function show_inside_product($product_id)
     {
         $customer_id = Session::get('customer_id');
+
+        $this_product_name= DB::table('tbl_product')->where('product_status','1')->where('product_id',$product_id)->first();
 
         $product_by_id=DB::table('tbl_product')
         ->where('product_status','1')->where('product_id',$product_id)->get();
@@ -321,7 +324,8 @@ public function removeFavorite(Request $request)
         ->with('size',$size_product)
         ->with('gallery_product',$gallery_product)
         ->with('login',$customer_id)
-        ->with('isFavorite',$isFavorite);
+        ->with('isFavorite',$isFavorite)
+        ->with('this_product_name', $this_product_name);
     }
 
 }

@@ -8,7 +8,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <link href="{{ asset('public/frontend/css/StyleShoppingCart.css') }}" rel="stylesheet">
-    <title>Giỏ hàng | Blinkiy</title>
+    <title>Blinkiy | Giỏ hàng</title>
+    <link rel="icon" href="public/frontend/images/logo_title.jpg" type="image/x-icon">
 </head>
 
 <body>

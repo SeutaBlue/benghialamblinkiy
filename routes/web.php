@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ShippingController;
 use App\Http\Controllers\AdditionalController;
 use App\Http\Controllers\BoSungController;
@@ -44,6 +45,8 @@ Route::post('/remove-favorite', [FavouriteController::class, 'removeFavorite'])-
 
 Route::post('/add-shopping-cart', [CartController::class, 'add_shopping_cart'])->name('add_shopping_cart');
 
+//Giới thiệu
+Route::get('/gioi-thieu', [HomeController::class, 'gioithieu'])->name('gioithieu');
 
 // //BE 
 // //admin

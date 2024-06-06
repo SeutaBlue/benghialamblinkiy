@@ -1,0 +1,343 @@
+html{
+    /* background-color: rgb(255, 255, 231); */
+    background-color: #F8F8F8;
+}
+@import url('https://fonts.cdnfonts.com/css/the-brittany-script');
+@font-face {
+    font-family: 'Michegar';
+    src: url('path/to/font/Michegar-Regular.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+  }
+  body
+  {
+      margin-left: 0;
+      margin-right: 0;
+      margin-top: 0;
+      margin-bottom: 0;
+      display: flex;
+      flex-direction: column;
+  }
+span
+{
+    color: #DAB076;
+}
+.blinkiy
+{
+    color: #EC8C96;
+}
+
+.main{
+    /* font-family: "Epilogue", sans-serif; */
+    font-family: 'Dongle', sans-serif;
+    font-size: 20px;
+    font-weight: 280;
+    /* margin-top: 3%;  */
+}
+.main_c_1{
+    background-color:#FFFFFF;
+    display: flex;
+    flex-direction: row;
+    margin-top: 3%;
+}
+.main_c_2{
+    background-color:#FFFFFF;
+    /* display: flex;
+    flex-direction: row; */
+    margin-top: 3%;
+
+}
+
+.content1, .content2, .content3{
+    flex: 3;
+    margin-left: 7%;
+    margin-right: 7%;
+    line-height: 150%;
+    
+}
+
+.content1 h2, .content3 h2, .content2 h2{
+    margin-top: 7%;
+    margin-bottom: 5%;
+    font-family: 'Paytone One', sans-serif;
+    font-weight: 500;
+    font-size: 40px;
+    letter-spacing: 1px;
+}
+.content2 h2, .content1 h2
+{
+    color: #EF99A2;
+}
+.content3 h2
+{
+    color: #DAB076;
+}
+.content1 p
+{
+    text-align: justify;
+    margin-bottom: 30px;
+}
+.content1 span, .content3 span{
+    font-weight: bold;
+}
+.content1 img{
+    margin-right: 3%;
+}
+.content2 p
+{
+    text-align: justify;
+}
+.content3 p
+{
+    text-align: justify;
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
+
+
+.img1{
+    display: flex;
+    flex: 2;    
+    align-items: center;
+}
+.img1 img{
+    width: 85%;
+    height: auto;
+}
+
+ .bg
+ {
+    width: 100%;
+ }
+
+ .bg img
+ {
+    margin-top: -5%;
+    width: 100%;
+    margin-bottom: 5%;
+    /* border: 1px solid #ccc; */
+    box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.2);
+ }
+
+hr{
+    background-color: #EF99A2;
+    border: none;
+    height: 2px;
+    width: 95%;
+    margin-bottom: 1%;
+    margin-top: 1%;
+}
+
+.hr2
+{
+    background-color: #DAB076;
+    border: none;
+    height: 3px;
+    width: 100%;
+    /* margin-bottom: 1%;
+    margin-top: 1%; */
+}
+
+/* Tablet */
+@media only screen and (max-width: 100px)
+{
+
+    body {
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        font-family: 'DM Sans';
+    }
+    
+    .main {
+        font-family: 'Dongle', sans-serif;
+        font-size: 20px;
+        font-weight: 280;
+    }
+    
+    .main_c_1, .main_c_2 {
+        background-color: #FFFFFF;
+        margin-top: 3%;
+        padding: 20px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        border-radius: 8px;
+    }
+    
+    .content1, .content2, .content3 {
+        flex: 3;
+        margin-left: 7%;
+        margin-right: 7%;
+        line-height: 150%;
+    }
+    
+    .content1 h2, .content3 h2, .content2 h2 {
+        margin-top: 7%;
+        margin-bottom: 5%;
+        font-family: 'Paytone One', sans-serif;
+        font-weight: 500;
+        font-size: 40px;
+        letter-spacing: 1px;
+    }
+    
+    .content2 h2, .content1 h2 {
+        color: #EF99A2;
+    }
+    
+    .content3 h2 {
+        color: #DAB076;
+    }
+    
+    .content1 p, .content2 p, .content3 p {
+        text-align: justify;
+    }
+    
+    .content1 span, .content3 span {
+        font-weight: bold;
+    }
+    
+    .img1 {
+        display: flex;
+        flex: 2;
+        align-items: center;
+    }
+    
+    .img1 img {
+        width: 85%;
+        height: auto;
+    }
+    
+    .bg {
+        width: 100%;
+    }
+    
+    .bg img {
+        margin-top: -5%;
+        width: 100%;
+        margin-bottom: 5%;
+        box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.2);
+    }
+    
+    hr {
+        background-color: #EF99A2;
+        border: none;
+        height: 2px;
+        width: 95%;
+        margin-bottom: 1%;
+        margin-top: 1%;
+    }
+    
+    .hr2 {
+        background-color: #DAB076;
+        border: none;
+        height: 3px;
+        width: 100%;
+    }
+    
+    /* Responsive Styles */
+    @media only screen and (min-width: 46.25em) and (max-width: 63.9375em) {
+        .main_c_1, .main_c_2 {
+            flex-direction: column;
+            margin-top: 2%;
+            padding: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+    
+        .content1, .content2, .content3 {
+            margin-left: 5%;
+            margin-right: 5%;
+        }
+    
+        .content1 h2, .content3 h2, .content2 h2 {
+            margin-top: 5%;
+            margin-bottom: 3%;
+            font-size: 30px;
+        }
+    
+        .content1 p, .content2 p, .content3 p {
+            margin-top: 5%;
+            margin-bottom: 5%;
+            font-size: 18px;
+        }
+    
+        .img1 {
+            margin-top: 2%;
+            margin-bottom: 2%;
+        }
+    
+        .img1 img {
+            width: 100%;
+            height: auto;
+        }
+    
+        .bg img {
+            margin-top: 0;
+            margin-bottom: 3%;
+            box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1);
+        }
+    
+        hr {
+            width: 90%;
+        }
+    
+        .hr2 {
+            width: 95%;
+        }
+    }
+
+}
+
+@media only screen and (max-width: 46.1875em)
+{
+    .main {
+        padding: 10px;
+        font-size: 16px;
+    }
+
+    .main_c_1, .main_c_2 {
+        flex-direction: column;
+        margin-top: 2%;
+        padding: 10px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .content1, .content2, .content3 {
+        margin-left: 3%;
+        margin-right: 3%;
+    }
+
+    .content1 h2, .content3 h2, .content2 h2 {
+        margin-top: 5%;
+        margin-bottom: 3%;
+        font-size: 18px;
+    }
+
+    .content1 p, .content2 p, .content3 p {
+        margin-top: 3%;
+        margin-bottom: 3%;
+        font-size: 10px;
+    }
+
+    .img1 {
+        margin-top: 2%;
+        margin-bottom: 2%;
+    }
+
+    .img1 img {
+        width: 100%;
+        height: auto;
+    }
+
+    .bg img {
+        margin-top: 0;
+        margin-bottom: 3%;
+        box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    hr {
+        width: 90%;
+    }
+
+    .hr2 {
+        width: 95%;
+    }
+}

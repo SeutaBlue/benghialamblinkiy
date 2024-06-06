@@ -258,6 +258,10 @@ function changequantity(product)//hàm để tăng số lượng nếu chọn tr
   
 }
 
+// function buynow()
+// {
+//     window.location.href = "/shipping";
+// }
 
 document.addEventListener('DOMContentLoaded', function() {
     var productNames = document.querySelectorAll('.product-name');
@@ -272,4 +276,5 @@ document.addEventListener('DOMContentLoaded', function() {
         // }
     });
 });
+
 

@@ -22,12 +22,9 @@
             @yield('content')
         </div>
 
-
-
-
-
-
     </div>
+
+    @include('Footer')
     <script type="text/javascript" src="{{asset('public/frontend/js/personal_infor.js') }}"></script>
 </body>
 

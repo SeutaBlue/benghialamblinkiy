@@ -158,10 +158,13 @@ class HomeController extends Controller
     {
         $customer = Session::get('customer_id');
 
-        $cart=DB::table('tbl_cart')->where('customer_id',$customer)->distinct()->pluck('product_id');
+        $cart=DB::table('tbl_cart')->where('customer_id',$customer)->distinct()->get();
         
         return response()->json(['number' =>  $cart->count()]);
     }
+    public function gioithieu()
+    {
+        return view('pages.thongtin.gioi_thieu');
+    }
    
-
 }

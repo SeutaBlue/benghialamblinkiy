@@ -32,6 +32,7 @@ class FavouriteController extends Controller
         ->where('tbl_favorite.customer_id', $customerId)
         ->join('tbl_product', 'tbl_favorite.product_id', '=', 'tbl_product.product_id')
         ->select('tbl_product.*', 'tbl_favorite.created_at as favorite_created_at', 'tbl_favorite.updated_at as favorite_updated_at')
+        ->orderBy('tbl_favorite.updated_at','desc')
         ->get();
 
     // Lấy danh sách các size của tất cả sản phẩm yêu thích

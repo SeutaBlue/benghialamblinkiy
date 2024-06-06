@@ -1,12 +1,9 @@
-{{-- @section('Header') --}}
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link href="{{ asset('public/frontend/css/StyleHeaderOnly.css') }}" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
-<link
-    href="https://fonts.googleapis.com/css2?family=Rowdies:wght@400;700&family=Francois+One&family=Paytone+One&family=Sigmar&family=Tilt+Neon&family=Saira+Stencil+One&display=swap"
-    rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Rowdies:wght@400;700&family=Francois+One&family=Paytone+One&family=Sigmar&family=Tilt+Neon&family=Saira+Stencil+One&display=swap" rel="stylesheet">
 <script type="text/javascript" src="{{ asset('public/frontend/js/CartQuantity.js') }}"></script>
 <script type="text/javascript" src="{{ asset('public/frontend/js/HeaderSearch.js') }}"></script>
 
@@ -58,7 +55,7 @@
                 <a href="{{ URL::to('/gio-hang') }}">
                     <div id="cart-shopping">
                         <i class="fa-solid fa-cart-shopping"></i>
-                        <span class="cart-shopping-quantity" id="cart-shopping-quantity">99</span>
+                        <span class="cart-shopping-quantity" id="cart-shopping-quantity">0</span>
                     </div>
                 </a>
                 <a class="top-bar-options-object-title" href="{{ URL::to('/gio-hang') }}">Giỏ hàng</a>
@@ -82,13 +79,16 @@
                 </ul>
             </li>
             <li class="mainmenu-li">
-                <a class="menu-bar-title" href="">GIỚI THIỆU</a>
+                <a class="menu-bar-title"  href="{{ URL::to('/tat-ca-bai-viet') }}">GIỚI THIỆU</a>
             </li>
             <li class="mainmenu-li">
-                <a class="menu-bar-title" href="">BLOG</a>
+                <a class="menu-bar-title" href="{{ URL::to('/tat-ca-bai-viet') }}">BLOG</a>
                 <ul class="product-submenu">
-                    <li><a href="">Cung-Mệnh</a></li>
-                    <li><a href="">Cẩm nang Blinkiy</a></li>
+                    @foreach ($category_post_header as $key => $cate)
+                        <li><a
+                                href="{{ URL::to('/danh-muc-bai-viet/' . $cate->cate_post_slug) }}">{{ $cate->cate_post_name }}</a>
+                        </li>
+                    @endforeach
                 </ul>
             </li>
             <li class="mainmenu-li">
@@ -103,9 +103,4 @@
 
 </header>
 
-{{-- @endsection --}}
-{{-- @extends('ShoppingCard') --}}
 
-{{-- 
-</body>
-</html> --}}

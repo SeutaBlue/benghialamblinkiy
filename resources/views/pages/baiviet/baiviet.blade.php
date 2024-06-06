@@ -3,13 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bài viết</title>
+    
     <link href="{{asset('public/frontend/css/bootstrap.min.css')}}" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"> 
 	<link href="{{asset('public/frontend/css/blog_page.css')}}" rel="stylesheet"> 
     <link href="{{asset('public/backend/css/style-responsive.css')}}" rel="stylesheet"> 
     <link href="{{asset('public/frontend/css/sanpham.css')}}" rel="stylesheet"> 
     <link href="{{asset('public/frontend/css/sweetalert.css')}}" rel="stylesheet"> 
+
+    <link rel="icon" href="http://localhost/blinkiytest/public/frontend/images/logo_title.jpg" type="image/x-icon">
+    <title>Blinkiy | Bài viết</title>
 
 </head>
 <body>

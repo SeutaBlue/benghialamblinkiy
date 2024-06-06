@@ -2,6 +2,7 @@
 <html lang="en">
 
 <head>
+    {{-- <link rel="icon" href="public/frontend/images/logo_title.jpg" type="image/x-icon">
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,15 +14,27 @@
     <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.3/themes/base/jquery-ui.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.3/themes/base/jquery-ui.min.css">
 
-    <title>{{ $this_category_product->category_name}} | Blinkiy</title>
+     --}}
+     <meta charset="UTF-8" />
+     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+     
+     <link href="{{ asset('public/frontend/css/sanpham.css') }}" rel="stylesheet">
+     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+     <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.3/themes/base/jquery-ui.css">
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.3/themes/base/jquery-ui.min.css">
+     <meta name="csrf-token" content="{{ csrf_token() }}">
+     <link rel="icon" href="public/frontend/images/logo_title.jpg" type="image/x-icon">
+     <meta name="csrf-token" content="{{ csrf_token() }}">
+     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+     {{-- <title>Blinkiy | Sản phẩm</title> --}}
+     <link rel="icon" href="http://localhost/blinkiytest/public/frontend/images/logo_title.jpg" type="image/x-icon">
+    <title>Blinkiy | {{ $this_category_product->category_name}}</title>
 </head>
 
 <body>
     @include('Header')
-
-    <meta name="csrf-token" content="{{ csrf_token() }}">
-    {{-- <script src = "https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script> --}}
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
     <div class="container-fluid"> <!-- /*CHỌN LOẠI HIỂN THỊ*/ -->
         <div class="filter-bar">

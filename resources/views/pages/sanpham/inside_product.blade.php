@@ -4,15 +4,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sản phẩm | Blinkiy</title>
+    {{-- <title>Sản phẩm | Blinkiy</title> --}}
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link href="{{ asset('public/frontend/css/StyleInsideProduct.css') }}" rel="stylesheet">
-
+    
+    <link rel="icon" href="http://localhost/blinkiytest/public/frontend/images/logo_title.jpg" type="image/x-icon">
+    <title>Blinkiy | {{ $this_product_name->product_name }}</title>
 </head>
 
 <body>
-
     @include('Header')
 
     @foreach ($product as $key => $pro)
@@ -172,6 +173,7 @@
 
 
                         <div class="buynow_container">
+                            <a href="{{ URL::to('/shipping') }}">
                             <button id="buy_product_now" onclick="buynow()">
                                 <span>
                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
@@ -182,26 +184,13 @@
                                     </svg>
 
                                     <span>Mua ngay</span>
-                            </button>
+                            </button></a>
+                                </span>
                             <br>
                         </div>
                     </div>
 
                     <div class="favorite_container">
-                        {{-- <button id="favorite_product" onclick="toggleFavorite()" class="favorite_button">
-                            <span>
-                                <svg id="heart_svg" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                    fill="currentColor" class="bi-heart" viewBox="0 0 16 16">
-                                    <path id="heart_path"
-                                        d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286
-                                                                                            6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01zM8 15C-7.333
-                                                                                            4.868 3.279-3.04 7.824 1.143q.09.083.176.171a3 3 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15" />
-                                </svg>
-                            </span>
-                            <span class="favorite_product_text">
-                                Yêu thích
-                            </span>
-                        </button> --}}
                         @if ($isFavorite)
                             <button id="favorite_product" onclick="toggleFavorite({{ $pro->product_id }})"
                                 class="favorite_button">
@@ -399,6 +388,7 @@
             // Gửi yêu cầu AJAX để cập nhật yêu thích
             if (heartSvg.classList.contains("bi-heart")) 
             {
+                // alert('sda');
                 $.ajax({
                     type: 'POST',
                     url: '{{ url('/toggle-favorite') }}',
