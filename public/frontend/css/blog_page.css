@@ -59,6 +59,7 @@
 }
 .social_icons{
     display: flex;
+    flex-direction: row;
     flex-wrap: wrap;
 
 }

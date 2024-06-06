@@ -1,9 +1,3 @@
-body {
-    margin: 0;
-    padding: 0;
-    background-color: #f8f8f8;
-}
-
 body
 {
     margin-left: 0;
@@ -348,7 +342,6 @@ footer a:hover {
     height: 190px;
     padding-top: 10px;
     margin-bottom: 30px;
-    /* background-color: #007bff; */
     display: flex;
     align-items: center;
     display: grid;
@@ -390,10 +383,10 @@ footer a:hover {
 {
     width: 100%;
     margin-top: 0;
+    
     /* background-color: #cfe411; */
 }
 .name a {
-    
     width: 100%;
     height: auto;
     font-weight: bold;
@@ -517,4 +510,191 @@ input[type=number]::-webkit-outer-spin-button {
 .basket
 {
     border-radius: 0px 0px 0px 0px;
+}
+
+
+/* Tablet */
+@media only screen and (min-width: 46.25em) and (max-width: 63.9375em)
+{
+    .name{
+        background-color: red;
+    }
+    .basket_container {
+        flex-direction: column;
+    }
+
+    /* Điều chỉnh kích thước và margin cho .cart và .info_container */
+    .cart,
+    .info_container {
+        margin: 0;
+        width: 100%;
+    }
+
+    /* Điều chỉnh margin cho .basket */
+    .basket {
+        margin-top: 2%;
+        margin-left: 0;
+    }
+
+    /* Điều chỉnh kích thước của các phần tử con bên trong .info_container */
+    .info {
+        margin: 40px auto;
+        width: 90%;
+    }
+
+    /* Điều chỉnh kích thước của .process */
+    .process {
+        width: 100%;
+        margin-left: 0;
+        margin-top: 1%;
+    }
+
+    /* Điều chỉnh kích thước của .order_items */
+    .order_items {
+        margin-left: 0;
+        margin-top: 5%;
+    }
+
+    /* Điều chỉnh kích thước của .total_container */
+    .total_container {
+        width: 90%;
+    }
+
+    /* Điều chỉnh kích thước của .discount_container */
+    .discount_container {
+        width: 90%;
+    }
+
+    /* Điều chỉnh kích thước của .discount_container input và button */
+    .discount_container input,
+    .discount_container button {
+        width: 70%;
+    }
+
+    /* Điều chỉnh kích thước của .pay_button */
+    .pay_button {
+        width: 90%;
+    }
+
+    /* Điều chỉnh kích thước của .continue a */
+    .continue a {
+        padding: 3% 10%;
+    }
+}
+
+/* Mobile width < 740px */
+@media only screen and (max-width: 46.1875em)
+{
+     /* Điều chỉnh kích thước và margin cho .basket_container */
+     .basket_container {
+        flex-direction: column;
+    }
+
+    /* Điều chỉnh kích thước và margin cho .cart và .info_container */
+    .cart,
+    .info_container {
+        margin: 0;
+        width: 100%;
+    }
+
+    /* Điều chỉnh kích thước của .process */
+    .process {
+        width: 100%;
+        margin-left: 0;
+        margin-top: 1%;
+    }
+
+    /* Điều chỉnh kích thước của .shopping-cart-title */
+    .shopping-cart-title {
+        font-size: 24px;
+    }
+
+    /* Điều chỉnh kích thước của .total_container */
+    .total_container {
+        width: 100%;
+    }
+
+    .discount_container {
+        width: 100%;
+    }
+
+    .discount_container input,
+    .discount_container button {
+        width: 70%;
+    }
+    .pay_button {
+        width: 100%;
+    }
+    .continue a {
+        padding: 3% 10%;
+    }
+    .item {
+        flex-direction: column;
+    }
+    .product_img {
+        width: 100%; 
+        height: auto; 
+    }
+
+    .item-info > * {
+        width: 100%; 
+    }
+
+    .remove {
+        width: 100%; 
+        margin-top: 10px;
+    }
+    .product-name
+    {
+        font-size: 13px;
+    }
+    .price_text
+    {
+        font-size: 15px;
+    }
+    .total
+    {
+        font-size: 15px;
+    }
+    .product_img{
+        width: 90px;
+        height: 90px;
+        object-fit: cover;
+        border-radius: 2px 2px 2px 2px;
+    }
+    .item 
+    {
+        height: 140px;
+        display: grid;
+        grid-template-columns: 10% 25% 65%;
+    }
+    .product-name
+    {
+        height: 35px;
+    }
+    .name a
+    {
+        margin-top: 1px;
+    }
+    .product-price
+    {
+        height: 20px;
+        margin-top: 1px;
+        margin-bottom: 1px;
+    }
+    .product-decribe
+    {
+        height: 20px;
+    }
+    .remove
+    {
+        height: 25px;
+        width: 15%;
+        display: grid;
+        grid-template-columns: 40% 60%;
+        margin-top: 15px;
+        margin-bottom: 0px;
+        font-size: 13px;
+
+    }
 }

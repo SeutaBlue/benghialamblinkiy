@@ -4,65 +4,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
- 
+    <title>Tất Cả Bài Viết</title>
     <link href="{{asset('public/frontend/css/bootstrap.min.css')}}" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"> 
 	<link href="{{asset('public/frontend/css/blog_page.css')}}" rel="stylesheet"> 
     <link href="{{asset('public/backend/css/style-responsive.css')}}" rel="stylesheet"> 
     <link href="{{asset('public/frontend/css/sanpham.css')}}" rel="stylesheet"> 
     <link href="{{asset('public/frontend/css/sweetalert.css')}}" rel="stylesheet"> 
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 
-    <link rel="icon" href="public/frontend/images/logo_title.jpg" type="image/x-icon">
-    <title>Blinkiy | Tất cả bài viết</title>
 </head>
 <body>
     @include('Header')
-<div class="tag-list">
-        <div class="inner">
-        <div class="tag">
-                <img src="{{asset('public/frontend/image/main_img_39.jpg')}}" alt="">
-            </div>
+    <div class="tag-list">
+        <div class="inner">           
+            @foreach($imagePostSlider as $key => $sliderImg)
             <div class="tag">
-                <img src="{{asset('public/frontend/image/main_img_13.jpg')}}" alt="">
+            <a href="{{ URL::to('/chi-tiet-san-pham/'. $sliderImg->product_id) }}">
+                <img src="{{ URL::to('public/uploads/product/' . $sliderImg->product_image) }}" alt="">
+            </a>            
             </div>
+            @endforeach
+           <!-- Lặp lại hình ảnh  -->
+            @foreach($imagePostSlider as $key => $sliderImg)
             <div class="tag">
-                <img src="{{asset('public/frontend/image/main_img_16.jpg')}}" alt="">
+                <a href="{{ URL::to('/chi-tiet-san-pham/' . $sliderImg->product_id) }}">
+                <img src="{{ URL::to('public/uploads/product/' . $sliderImg->product_image) }}" alt="">
+                </a>
             </div>
-            <div class="tag">
-                <img src="{{asset('public/frontend/image/main_img_12.jpg')}}" alt="" >
-            </div>
-            <div class="tag">
-                <img src="{{asset('public/frontend/image/main_img_8.jpg')}}" alt="" >
-            </div>
-            <div class="tag">
-                <img src="{{asset('public/frontend/image/main_img_26.jpg')}}" alt="" >
-            </div>
-            <div class="tag">
-                <img src="{{asset('public/frontend/image/main_img_22.jpg')}}" alt="" >
-            </div>
-            <!-- lap lai hinh anh -->
-            <div class="tag">
-                <img src="{{asset('public/frontend/image/main_img_39.jpg')}}" alt="">
-            </div>
-            <div class="tag">
-                <img src="{{asset('public/frontend/image/main_img_13.jpg')}}" alt="">
-            </div>
-            <div class="tag">
-                <img src="{{asset('public/frontend/image/main_img_16.jpg')}}" alt="">
-            </div>
-            <div class="tag">
-                <img src="{{asset('public/frontend/image/main_img_12.jpg')}}" alt="" >
-            </div>
-            <div class="tag">
-                <img src="{{asset('public/frontend/image/main_img_8.jpg')}}" alt="" >
-            </div>
-            <div class="tag">
-                <img src="{{asset('public/frontend/image/main_img_26.jpg')}}" alt="" >
-            </div>
-            <div class="tag">
-                <img src="{{asset('public/frontend/image/main_img_22.jpg')}}" alt="" >
-            </div>
+            @endforeach
         </div>
         <div class="fade"></div>
     </div>
@@ -76,25 +45,27 @@
             <div class="post_lists">
                 @foreach($baiviet as $key=>$p)
                     <div class="displayPost">
-                        <div class="">
-                            <img style="" src="{{asset('public/uploads/post/'.$p->post_image)}}" alt="{{$p->post_slug}}"/>
+                    <a style="text-decoration: none; color:black"  href="{{url('/bai-viet/'.$p->post_slug)}}">
+                        <div class="singlePost">
+                            <img style="object-fit:cover" src="{{asset('public/uploads/post/'.$p->post_image)}}" alt="{{$p->post_slug}}"/>
                             <h3 style="color:#000;width:95%"><b>{{$p->post_title}}</b></h3>
                             <p style="width:95%">{!!$p->post_desc!!}</p>                     
                         </div>
-                        <a  href="{{url('/bai-viet/'.$p->post_slug)}}" class="btn btn-default bt-sm">Xem bài viết</a>
+                    </a>
                     </div>
                 @endforeach
             </div> 
-
+        <div class="pagination">
             {{ $baiviet->links('pagination::bootstrap-4') }}
-        <!--Code chinh-->
-            
+        </div>
         </div>
 
         <div id="sidebar" class="sidebar">
             <div class="social">
                 <div class="social_link">
-                <h2 style="color:#5f4100;"><b>SOCIAL</b></h2>                
+                    <hr>
+                    <h2><b>SOCIAL</b></h2>         
+                    <hr>      
                 </div>
                 
                 <div class="groupicon">
@@ -118,15 +89,18 @@
                 </div>
                 
             </div>
-            <hr>
             <div class="foru">
-            <div class="foru_header"><h2 style="color:#5f4100;"><b>FOR YOU</b></h2></div>
+            <div class="foru_header">
+                <hr>
+                <h2><b>FOR YOU</b></h2>
+                <hr>
+            </div>
                 <div class="foru_links">
                     
                     <ul>
                     @foreach($category_post as $key => $danhmucbaiviet)
                     <li>
-                        <i class="fa-solid fa-angles-left" style="color:rgb(206, 158, 56)"></i>
+                        <i class="fa-solid fa-angles-left" style="color:rgb(255, 103, 179)"></i>
                         <a href="{{URL::to('/danh-muc-bai-viet/'.$danhmucbaiviet->cate_post_slug)}}"><b>{{$danhmucbaiviet->cate_post_name}}</b></a>
                         
                     </li>
@@ -134,29 +108,64 @@
                     </ul>
                 </div>
             </div>
-            <hr>
-            <div class="watch_most">
-                <div class="watch_most_header"><h2 style="color:#5f4100;"><b>LATEST POSTS</b></h2></div>
-                <div class="watch_most_links">
+            <div class="top_view">
+                <div class="top_view_header">
+                    <hr>
+                    <h2><b>TOP VIEW</b></h2>
+                    <hr>
+                </div> 
+                <div class="top_view_links">
+                    <ul>
+                    @foreach($topview as $key => $top)
+                    <li>
+                        <a href="{{URL::to('/bai-viet/'.$top->post_slug)}}">
+                            <div style="display:flex">
+                                <img style="object-fit:cover;width:70px;height:70px;margin-right:10px"  src="{{asset('public/uploads/post/'.$top->post_image)}}" alt="{{$top->post_slug}}"/>
+                                <div>
+                                    <p><b>{{$top->post_title}}</b></p>
+                                    <p><em>{{$top->post_views}} lượt xem</em></p>
+                                </div>
+                            </div>               
+                        </a>
+                    </li>
+                    @endforeach
+                    </ul>
+                </div> 
+            </div>
+            <div class="latest">
+                <div class="latest_header">
+                    <hr>
+                    <h2><b>LATEST POSTS</b></h2>
+                    <hr>
+                </div>
+                <div class="latest_links">
                     <ul>
                     @foreach($newest_post as $key => $baivietmoinhat)
                     <li>
-                        <i class="fa-solid fa-angles-right" style="color:rgb(206, 158, 56)"></i>
-                        <a href="{{URL::to('/bai-viet/'.$baivietmoinhat->post_slug)}}">{{$baivietmoinhat->post_title}}</a>
-                        
+                        <a href="{{URL::to('/bai-viet/'.$baivietmoinhat->post_slug)}}">
+                            <div style="display:flex">
+                                <img style="object-fit:cover;width:70px;height:70px;margin-right:10px"  src="{{asset('public/uploads/post/'.$baivietmoinhat->post_image)}}" alt="{{$baivietmoinhat->post_slug}}"/>
+                                <div>
+                                    <p><b>{{$baivietmoinhat->post_title}}</b></p>
+                                    <p><em>{{$baivietmoinhat->post_views}} lượt xem</em></p>
+                                </div>
+                            </div>               
+                        </a>
                     </li>
                     @endforeach
                     </ul>
                 </div>
             </div>
+            
 
         </div>
 
     </div>
     
 </body>
+@include('Footer')
+
 </html>
     
    
     
-

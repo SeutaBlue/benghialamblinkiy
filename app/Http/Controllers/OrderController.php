@@ -47,18 +47,21 @@ class OrderController extends Controller
         $tinh = DB::table('province')->where('province_id', $province)->value('province_name');
         $huyen = DB::table('district')->where('district_id', $district)->value('district_name');
     
-        $cart = Session::get('cart', []); // Lấy giỏ hàng từ session, mặc định là một mảng rỗng nếu không có gì trong session
-    
+        // $cart = Session::get('order', []); // Lấy giỏ hàng từ session, mặc định là một mảng rỗng nếu không có gì trong session
+        $ca = Session::get('order');
+        $order= Session::get('order');
+
         // Tính tổng tiền
         $total = 0;
-        foreach ($cart as $item) {
-            $total += $item['product_price'] * $item['product_quantity'];
+        foreach ($ca as $item) 
+        {
+            $total += $item['productPrice'] * $item['productQuantity'];
         }
     
-        return view('pages.thanhtoan.thanh_toan', compact('hoten', 'email', 'sdt', 'province', 'district', 'address', 'apartment', 'note', 'file', 'tinh', 'huyen', 'cart', 'total'));
+        return view('pages.thanhtoan.thanh_toan', compact( 'order','hoten', 'email', 'sdt', 'province', 'district', 'address', 'apartment', 'note', 'file', 'tinh', 'huyen',  'total'));
+       
     }
     
-
 
     function execPostRequest($url, $data)
     {

@@ -23,7 +23,7 @@
             </div>
             <div class="invoice_section">
                 <h2>Phương thức thanh toán</h2>
-                @switch($order->PTTT)
+                @switch($order->payment_opt)
                     @case(1)
                         <p>Thanh toán bằng MoMo</p>
                         @break

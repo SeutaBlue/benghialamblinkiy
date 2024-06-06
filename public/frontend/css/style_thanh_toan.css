@@ -122,12 +122,14 @@ input[type="radio"] {
 .items_list {
     display: flex;
     flex-direction: row;
+    display: grid;
+    grid-template-columns: 100%;
     margin: 1% auto;
     padding: 3%;
 }
 
 .item {
-    display: grid;
+    /* display: grid;
     grid-template-columns: 20% 50% 25%;
     grid-template-rows: 50% repeat(2, 12.5%) 25%;
     grid-gap: 0 2%;
@@ -136,7 +138,7 @@ input[type="radio"] {
     margin: 0;
     max-width: 100%;
     height: auto;
-    text-align: center;
+    text-align: center; */
 }
   
 .item img {
@@ -171,8 +173,8 @@ input[type="radio"] {
 .item_size {
     grid-column: 2;
     grid-row: 4;
-    margin: 0;
-    margin-bottom: 8px;
+    margin-top: 4px;
+    margin-bottom: 5px;
 }
 
 .item_quantity {

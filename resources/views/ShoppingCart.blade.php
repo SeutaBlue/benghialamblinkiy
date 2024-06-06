@@ -115,8 +115,10 @@
                     </div>
 
                     <div class="pay">
-                        <button class="pay_button" onclick="window.location.href='{{ URL::to('/shipping') }}'">Thanh
-                            toán</button>
+                        <button class="pay_button" 
+                        onclick="NextPage()"
+                        {{-- onclick="window.location.href='{{ URL::to('/shipping') }}'" --}}
+                        >Thanhtoán</button>
                     </div>
                     <div class="continue">
                         <a href="{{ URL::to('/san-pham') }}"><i class="fas fa-angle-double-left"></i> Tiếp tục mua
@@ -180,6 +182,26 @@
                     }
                 });
             }
+        }
+        function NextPage()
+        {
+            // alert('df');
+            // let data = sessionStorage.getItem('selectedItems.productName');
+            let productData = JSON.parse(sessionStorage.getItem('selectedItems'));
+            $.ajax({
+                type: 'POST',
+                url: "{{ url('/pull-cart') }}",
+                data: { 
+                    data: productData ,
+                    _token: '{{ csrf_token() }}'
+                },
+                success: function(response) {
+                    console.log('Dữ liệu đã được gửi thành công đến server.');
+                }
+            });
+            alert('sd');
+            // window.location.href='{{ URL::to('/shipping') }}'";
+            window.location.href = "{{ URL::to('/shipping') }}";
         }
 
         function UpdateCart(cart) {

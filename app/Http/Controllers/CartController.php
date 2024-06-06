@@ -196,5 +196,19 @@ class CartController extends Controller
 
         return response()->json(['success' => true]);
     }
- 
+    public function pull_cart(Request $request)
+    {
+        $dataFromSessionStorage = $request->input('data');
+        $request->session()->put('order', $dataFromSessionStorage);
+
+        // if (session()->has('your_key')) {
+        //     // Dữ liệu tồn tại trong session
+        //     $data = session('your_key');
+        //     // Thực hiện các thao tác khác với dữ liệu này nếu cần
+        // } else {
+        //     // Dữ liệu không tồn tại trong session
+        // }
+        
+        return response()->json(['success' => true]);
+    }
 }

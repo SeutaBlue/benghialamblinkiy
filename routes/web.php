@@ -33,6 +33,8 @@ Route::post('/your-cart', [HomeController::class, 'your_cart'])->name('your_cart
 Route::post('/delete-cart', [CartController::class, 'delete_cart'])->name('delete_cart');
 Route::post('/update-cart', [CartController::class, 'update_cart'])->name('update_cart');
 
+Route::post('/pull-cart', 'App\Http\Controllers\CartController@pull_cart');
+
 //Yêu thích
 
 // Route::post('/toggle-favorite', 'App\Http\Controllers\ProductController@toggleFavorite')->name('toggle.favorite');
@@ -187,5 +189,7 @@ Route::post('/shipping/store', [ShippingController::class, 'store'])->name('ship
 
 //gui email
 Route::get('/test-email', [EmailController::class, 'testEmail']);
+
+
 
 ?>

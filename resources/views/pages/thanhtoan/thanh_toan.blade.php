@@ -97,23 +97,24 @@
                     <p class="info_header" style="text-align: center">Thông tin đơn hàng</p>
                     <hr>
                     <div class="items_list">
-                        @foreach ($cart as $item)
-                            <div class="item">
-                                {{-- <img src="{{ $item['image'] }}" alt="{{ $item['name'] }}"> --}}
-                                <p class="item_name">{{ $item['product_name'] }}</p>
-                                <p class="item_color">Màu: {{ $item['product_color'] }}</p>
-                                <p class="item_size">Kích cỡ: {{ $item['product_size'] }}</p>
-                                <p class="product_quantity">{{ $item['product_quantity'] }}</p>
+                        {{-- <input type="text"> --}}
+                        @foreach ($order as $item)
+                            <div class="item" >
+                                <p class="item_name">{{ $item['productName'] }}</p>
+                                <p class="item_size">{{ $item['productDescription'] }}</p>
+                                {{-- <p class="item_size">Kích cỡ: {{ $item['productSize'] }}</p> --}}
+                                <p class="product_quantity">Số lượng: {{ $item['productQuantity'] }}</p>
 
                                 <p class="item_total">
-                                    {{ number_format($item['product_price'] * $item['product_quantity'], 0, ',', '.') }}
+                                    {{ number_format($item['productPrice'] * $item['productQuantity'], 0, ',', '.') }}
                                     ₫</p>
-                                <p></p>
+                                {{-- <p></p> --}}
+                                <hr>
                             </div>
                         @endforeach
                     </div>
                     <div class="fees">
-                        <hr>
+                        {{-- <hr> --}}
                         <div class="items_total">
                             <span class="total_header">Thành tiền</span>
                             <span class="total">{{ number_format($total, 0, ',', '.') }} ₫</span>
@@ -138,8 +139,11 @@
         </form>
     </div>
     <br><br>
-
+    <input type="hidden" value="{{$cart}}" id="now">
     @include('Footer')
+    <script>
+        console.log(document.getElementById('now').value);
+        </script>
 </body>
 
 </html>
