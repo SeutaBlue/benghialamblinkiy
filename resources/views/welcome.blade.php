@@ -27,11 +27,15 @@
     <input type="hidden" value="{{ $cart->count() }}" id="number_of_cart">
     @if ($my_customer)
         <script>
-            window.onload = function() { countProductsInCart_Customer(); };
+            window.onload = function() {
+                countProductsInCart_Customer();
+            };
         </script>
     @else
         <script>
-            window.onload = function() { countProductsInCart();};
+            window.onload = function() {
+                countProductsInCart();
+            };
         </script>
     @endif
     <div class="top-bar">
@@ -42,29 +46,16 @@
                 <p class="logo-phongthuy">PHONG THỦY</p>
             </div>
         </a>
-        <form method="get">
+        <form id="search-form" method="get" action="{{ URL::to('/tim-kiem') }}">
             {{ csrf_field() }}
-        <div class="search-bar">
-            <div class="search-bar-cover">
-                <button type="submit" id="search-button" style="display:none;"></button><i class="fas fa-search" id="hihi"></i>
-                <input type="input" class="search-bar-input" id="search-bar-input" 
-                {{-- name="search-bar-input"  --}}
-                name="keywords_submit"
-                    placeholder="Tìm kiếm" onclick="Go()" />
-                {{-- <script>
-                    const searchInput = document.getElementById('search-bar-input');
-                    const search = document.getElementById('hihi');
-                    search.addEventListener('click', function(event) 
-                    {
-                        alert("sdads");
-                        // return view('/tim-kiem');
-                        window.location.href = `{{ URL::to('/tim-kiem') }}`;
-                    });
-                </script> --}}
+            <div class="search-bar">
+                <div class="search-bar-cover">
+                    <i class="fas fa-search"id="search_icon"></i>
+                    <input type="input" class="search-bar-input" id="search-bar-input" {{-- name="search-bar-input"  --}}
+                        name="keywords_submit" placeholder="Tìm kiếm sản phẩm..."/>
+                </div>
             </div>
-       
-        </div>
-    </form>
+        </form>
         <div class="top-bar-options">
             <div class="top-bar-options-object">
                 <a href="{{ URL::to('/ho-so') }}" class="icon_option">
@@ -82,7 +73,7 @@
                 <a href="{{ URL::to('/gio-hang') }}">
                     <div id="cart-shopping">
                         <i class="fa-solid fa-cart-shopping"></i>
-                        <span class="cart-shopping-quantity" id="cart-shopping-quantity">99</span>
+                        <span class="cart-shopping-quantity" id="cart-shopping-quantity">0</span>
                     </div>
                 </a>
                 <a class="top-bar-options-object-title" href="{{ URL::to('/gio-hang') }}">Giỏ hàng</a>
@@ -287,6 +278,7 @@
     <script type="text/javascript" src="{{ asset('public/frontend/js/ScriptCardSlider.js') }}"></script>
     <script type="text/javascript" src="{{ asset('public/frontend/js/ScriptHomePage.js') }}"></script>
     <script type="text/javascript" src="{{ asset('public/frontend/js/CartQuantity.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('public/frontend/js/HeaderSearch.js') }}"></script>
 </body>
 
 </html>

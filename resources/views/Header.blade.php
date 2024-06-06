@@ -8,6 +8,7 @@
     href="https://fonts.googleapis.com/css2?family=Rowdies:wght@400;700&family=Francois+One&family=Paytone+One&family=Sigmar&family=Tilt+Neon&family=Saira+Stencil+One&display=swap"
     rel="stylesheet">
 <script type="text/javascript" src="{{ asset('public/frontend/js/CartQuantity.js') }}"></script>
+<script type="text/javascript" src="{{ asset('public/frontend/js/HeaderSearch.js') }}"></script>
 
 <header class="Header">
     <input type="hidden" value="{{ $my_customer }}" id="this-customer">
@@ -30,13 +31,16 @@
                 <p class="logo-phongthuy">PHONG THỦY</p>
             </div>
         </a>
-        <div class="search-bar">
-            <div class="search-bar-cover">
-                <i class="fas fa-search"></i>
-                <input type="input" class="search-bar-input" id="search-bar-input" name="search-bar-input"
-                    placeholder="Tìm kiếm" />
+        <form id="search-form" method="get" action="{{ URL::to('/tim-kiem') }}">
+            {{ csrf_field()}}
+            <div class="search-bar">
+                <div class="search-bar-cover">
+                    <i class="fas fa-search"id="search_icon"></i>
+                    <input type="input" class="search-bar-input" id="search-bar-input" {{-- name="search-bar-input"  --}}
+                        name="keywords_submit" placeholder="Tìm kiếm sản phẩm..."/>
+                </div>
             </div>
-        </div>
+        </form>
         <div class="top-bar-options">
             <div class="top-bar-options-object">
                 <a href="{{ URL::to('/ho-so') }}" class="icon_option">
