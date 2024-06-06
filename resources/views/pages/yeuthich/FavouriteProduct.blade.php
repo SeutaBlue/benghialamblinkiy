@@ -12,63 +12,73 @@
 </head>
 
 <body>
-@include('Header')
-<div class="favor">
-    <div class="favor_container">
-        <div class="header">Mục ưa thích</div>
-        @if(Session::has('customer_id'))
-            @if(isset($favorites) && count($favorites) > 0)
-                <ul class="cart_items">
-                    @foreach ($favorites as $favorite)
-                    <li data-product-id="{{ $favorite->product_id }}">
-                        <div class="product">
-                            <div class="img_product">
-                                <a href="{{ url('/chi-tiet-san-pham/' . $favorite->product_id) }}">
-                                    <img src="{{ URL::to('public/uploads/product/' . $favorite->product_image) }}"
-                                        alt="{{ $favorite->product_name }}">
-                                </a>
-                            </div>
-                            <div class="info">
-                                <p class="product_name">
-                                    <a href="{{ url('/chi-tiet-san-pham/' . $favorite->product_id) }}">{{ $favorite->product_name }}</a>
-                                </p>
-                                <p class="product_price">{{ $favorite->product_price }}đ</p>
-                            </div>
-                            <div class="choose_type">
-                                <p class="type_size">
-                                    <select id="input_size_{{ $favorite->product_id }}" name="size_id">
-                                        <option value="" selected disabled hidden>- Chọn kích cỡ -</option>
-                                        @foreach ($sizes[$favorite->product_id] as $size)
-                                        <option value="{{ $size->size_id }}" data-max-quantity="{{ $size->SL }}">{{ $size->size_value }}</option>
-                                        @endforeach
-                                    </select>
-                                </p>
-                            <div class="quantity_selector">
-                                <p class="number-input">
-                                    <input type="button" value="-" class="decrease_button">
-                                    <input type="number" id="item_quantity_{{ $favorite->product_id }}" class="quantity_values" name="quantity" value="1" aria-label="Product quantity" size="4" min="1" step="1" inputmode="numeric" autocomplete="off">
-                                    <input type="button" value="+" class="increase_button">
-                                </p>
-                            </div>
-                            </div>
-                            <div class="add_produce">
-                                <p class="icon">
-                                    <i class="fa-solid fa-cart-plus" onclick="addToCart({{ $favorite->product_id }}, '{{ $favorite->product_name }}', '{{ $favorite->product_image }}', {{ $favorite->product_price }}, $('#item_quantity_{{ $favorite->product_id }}').val())"></i>
-                                </p>
-                                <input type="button" value="Thêm vào giỏ hàng" class="add" onclick="addToCart({{ $favorite->product_id }}, '{{ $favorite->product_name }}', '{{ $favorite->product_image }}', {{ $favorite->product_price }}, $('#item_quantity_{{ $favorite->product_id }}').val())">
-                            </div>
-                            <p class="remove"><i class="fa-solid fa-trash"></i> Xóa</p>
-                        </div>
-                    </li>
-                    @endforeach
-                </ul>
+    @include('Header')
+    <div class="favor">
+        <div class="favor_container">
+            <div class="header">Mục ưa thích</div>
+            @if (Session::has('customer_id'))
+                @if (isset($favorites) && count($favorites) > 0)
+                    <ul class="cart_items">
+                        @foreach ($favorites as $favorite)
+                            <li data-product-id="{{ $favorite->product_id }}">
+                                <div class="product">
+                                    <div class="img_product">
+                                        <a href="{{ url('/chi-tiet-san-pham/' . $favorite->product_id) }}">
+                                            <img src="{{ URL::to('public/uploads/product/' . $favorite->product_image) }}"
+                                                alt="{{ $favorite->product_name }}">
+                                        </a>
+                                    </div>
+                                    <div class="info">
+                                        <p class="product_name">
+                                            <a
+                                                href="{{ url('/chi-tiet-san-pham/' . $favorite->product_id) }}">{{ $favorite->product_name }}</a>
+                                        </p>
+                                        <p class="product_price">{{ $favorite->product_price }}đ</p>
+                                    </div>
+                                    <div class="choose_type">
+                                        <p class="type_size">
+                                            <select id="input_size_{{ $favorite->product_id }}" name="size_id">
+                                                <option value="" selected disabled hidden>- Chọn kích cỡ -
+                                                </option>
+                                                @foreach ($sizes[$favorite->product_id] as $size)
+                                                    <option value="{{ $size->size_id }}"
+                                                        data-max-quantity="{{ $size->SL }}">
+                                                        {{ $size->size_value }}</option>
+                                                @endforeach
+                                            </select>
+                                        </p>
+                                        <div class="quantity_selector">
+                                            <p class="number-input">
+                                                <input type="button" value="-" class="decrease_button">
+                                                <input type="number" id="item_quantity_{{ $favorite->product_id }}"
+                                                    class="quantity_values" name="quantity" value="1"
+                                                    aria-label="Product quantity" size="4" min="1"
+                                                    step="1" inputmode="numeric" autocomplete="off">
+                                                <input type="button" value="+" class="increase_button">
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="add_produce">
+                                        <p class="icon">
+                                            <i class="fa-solid fa-cart-plus"
+                                                onclick="addToCart({{ $favorite->product_id }}, '{{ $favorite->product_name }}', '{{ $favorite->product_image }}', {{ $favorite->product_price }}, $('#item_quantity_{{ $favorite->product_id }}').val())"></i>
+                                        </p>
+                                        <input type="button" value="Thêm vào giỏ hàng" class="add"
+                                            onclick="addToCart({{ $favorite->product_id }}, '{{ $favorite->product_name }}', '{{ $favorite->product_image }}', {{ $favorite->product_price }}, $('#item_quantity_{{ $favorite->product_id }}').val())">
+                                    </div>
+                                    <p class="remove"><i class="fa-solid fa-trash"></i> Xóa</p>
+                                </div>
+                            </li>
+                        @endforeach
+                    </ul>
+                @else
+                    <p class="login_request">Không có sản phẩm yêu thích nào.</p>
+                @endif
             @else
-                <p class="login_request">Không có sản phẩm yêu thích nào.</p>
+                <p class="login_request">Bạn cần <a href="{{ route('login') }}">đăng nhập</a> để xem mục ưa thích của
+                    mình.</p>
             @endif
-        @else
-            <p class="login_request">Bạn cần <a href="{{ route('login') }}">đăng nhập</a> để xem mục ưa thích của mình.</p>
-        @endif
-    </div>
+        </div>
     </div>
 
     <script type="text/javascript">
@@ -82,9 +92,8 @@
                 });
                 return;
             }
-
+            
             $.ajax({
-                // url: "{{ route('add-to-cart') }}",
                 url: "{{ url('/add-to-cart') }}",
                 method: "POST",
                 data: {
@@ -106,9 +115,11 @@
                             confirmButtonText: 'Chuyển tới giỏ hàng',
                             cancelButtonText: 'Ở lại trang'
                         }).then((result) => {
+                            Update_Number_Of_Cart();
                             if (result.isConfirmed) {
-                                window.location.href = '{{url("/gio-hang")}}';
+                                window.location.href = '{{ url('/gio-hang') }}';
                             }
+                            
                         });
                     } else {
                         Swal.fire({
@@ -124,6 +135,30 @@
                         title: 'Lỗi',
                         text: 'Có lỗi xảy ra, vui lòng thử lại.'
                     });
+                }
+            });
+
+        }
+        function Update_Number_Of_Cart()
+        {
+            $.ajax({
+                type: 'POST',
+                url: "{{ url('/your-cart') }}",
+                data: {
+                    _token: '{{ csrf_token() }}'
+                },
+                success: function(response) {
+                    console.log('Cập nhật số lượng sản phẩm hiển thị trên ô giỏ hàng thành công');
+                    if (parseInt(response.number) < 99) 
+                    {
+                        $('#cart-shopping-quantity').text(response.number);
+                    } else {
+                        $('#cart-shopping-quantity').text('99+');
+                    }
+                },
+                error: function(jqXHR, textStatus, errorThrown) {
+                    console.log('AJAX call failed: ' + textStatus + ', ' +
+                        errorThrown);
                 }
             });
         }

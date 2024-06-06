@@ -330,27 +330,45 @@
                     var proid = $('#productid_hidden').val();
                     var prosize = sizeSelected.value;
                     var proquantity = $('#amountnumber').val();
-                    console.log(customer);
-                    console.log(proid);
-                    console.log(prosize);
-                    console.log(proquantity);
+                    // console.log(customer);
+                    // console.log(proid);
+                    // console.log(prosize);
+                    // console.log(proquantity);
                     if (proid) {
 
                         $.ajax({
                             type: 'POST',
-                            // url: '',
                             url: "{{ url('/add-shopping-cart') }}",
                             data: {
                                 proid: proid,
                                 prosize: prosize,
                                 customer: customer,
                                 proquantity: proquantity,
-                                // action: 'add-to-shopping-cart',
                                 _token: '{{ csrf_token() }}'
                             },
                             success: function(response) {
-                                // $('#test_text').html(response);
                                 console.log('Thêm vào giỏ hàng thành công')
+                            },
+                            error: function(jqXHR, textStatus, errorThrown) {
+                                console.log('AJAX call failed: ' + textStatus + ', ' +
+                                    errorThrown);
+                            }
+                        });
+
+                        $.ajax({
+                            type: 'POST',
+                            url: "{{ url('/your-cart') }}",
+                            data: {
+                                _token: '{{ csrf_token() }}'
+                            },
+                            success: function(response) {
+                                console.log('Cập nhật số lượng sản phẩm hiển thị trên ô giỏ hàng thành công');
+                                if (parseInt(response.number) < 99) 
+                                {
+                                    $('#cart-shopping-quantity').text(response.number);
+                                } else {
+                                    $('#cart-shopping-quantity').text('99+');
+                                }
                             },
                             error: function(jqXHR, textStatus, errorThrown) {
                                 console.log('AJAX call failed: ' + textStatus + ', ' +

@@ -193,6 +193,7 @@ document.querySelectorAll('.remove').forEach(removeButton => {
             cart = cart.filter(item => !(item.product_id === productid && item.product_size === productsize)) ;
             sessionStorage.setItem('cart', JSON.stringify(cart));
         }
+        countProductsInCart();
     });
 });
 

@@ -1,10 +1,18 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ShippingController;
+use App\Http\Controllers\AdditionalController;
+use App\Http\Controllers\BoSungController;
+use App\Http\Controllers\FileDisplayController;
+use App\Http\Controllers\OrderController;
+use App\Http\Controllers\EmailController;
+use App\Http\Controllers\CartController;
+use App\Http\Controllers\FavouriteController;
+use App\Http\Middleware\CustomerMiddleware;
+use App\Http\Controllers\HomeController;
 
-// Route::get('/test', function () {
-//         return view('testin');
-//     });
+
 
 // // FE
 Route::get('/', 'App\Http\Controllers\HomeController@index'); // goi ham index trong HomeController, khi go localhost/blinky thi hien ra page luon
@@ -15,13 +23,27 @@ Route::get('/san-pham', 'App\Http\Controllers\HomeController@sanpham');
 Route::get('/danh-muc-san-pham/{category_product_id}','App\Http\Controllers\CategoryProduct@show_category_product_home');
 Route::get('/chi-tiet-san-pham/{product_id}','App\Http\Controllers\ProductController@show_inside_product');
 
-
-Route::post('/filter-products', 'App\Http\Controllers\ProductController@filterProducts');
+Route::get('/tim-kiem','App\Http\Controllers\HomeController@search');
 
 //Giỏ hàng
 Route::post('/add-to-cart', 'App\Http\Controllers\ProductController@add_to_cart');
 
-Route::get('/tim-kiem','App\Http\Controllers\HomeController@search');
+Route::post('/your-cart', [HomeController::class, 'your_cart'])->name('your_cart');
+Route::post('/delete-cart', [CartController::class, 'delete_cart'])->name('delete_cart');
+Route::post('/update-cart', [CartController::class, 'update_cart'])->name('update_cart');
+
+//Yêu thích
+
+// Route::post('/toggle-favorite', 'App\Http\Controllers\ProductController@toggleFavorite')->name('toggle.favorite');
+
+Route::post('/toggle-favorite', [ProductController::class, 'toggleFavorite'])->name('toggle.favorite'); // khi ấn yêu thích trong ctsp
+Route::post('/delete-favorite', [ProductController::class, 'removeFavorite'])->name('remove.favorite'); // khi bỏ yêu thích trong ctsp
+Route::get('/favourite-product', [FavouriteController::class, 'getFavoritesByCustomer'])->middleware(CustomerMiddleware::class);
+Route::post('/add-to-cart', [CartController::class, 'addToCart'])->name('add-to-cart')->middleware(CustomerMiddleware::class);
+Route::post('/remove-favorite', [FavouriteController::class, 'removeFavorite'])->name('remove-favorite')->middleware(CustomerMiddleware::class);
+
+Route::post('/add-shopping-cart', [CartController::class, 'add_shopping_cart'])->name('add_shopping_cart');
+
 
 // //BE 
 // //admin
@@ -141,14 +163,6 @@ Route::get('/reset-password', 'App\Http\Controllers\CheckoutController@reset_pas
 Route::post('/reset-password', 'App\Http\Controllers\CheckoutController@check_reset_password'); 
 
 
-
-use App\Http\Controllers\ShippingController;
-use App\Http\Controllers\AdditionalController;
-use App\Http\Controllers\BoSungController;
-use App\Http\Controllers\FileDisplayController;
-use App\Http\Controllers\OrderController;
-use App\Http\Controllers\EmailController;
-
 //thanh toan
 Route::get('/hoa-don', [OrderController::class, 'hoaDon'])->name('hoa_don');
 Route::get('/thanh-toan', [OrderController::class, 'thanhToan'])->name('thanh_toan');
@@ -171,20 +185,4 @@ Route::post('/shipping/store', [ShippingController::class, 'store'])->name('ship
 //gui email
 Route::get('/test-email', [EmailController::class, 'testEmail']);
 
-
-
-//Yêu thích
-use App\Http\Controllers\CartController;
-use App\Http\Controllers\FavouriteController;
-use App\Http\Middleware\CustomerMiddleware;
-
-Route::post('/toggle-favorite', 'App\Http\Controllers\ProductController@toggleFavorite')->name('toggle.favorite');
-
-//Route::post('/toggle-favorite', [ProductController::class, 'toggleFavorite'])->name('toggle.favorite'); // khi ấn yêu thích trong ctsp
-Route::post('/delete-favorite', [ProductController::class, 'removeFavorite'])->name('remove.favorite'); // khi bỏ yêu thích trong ctsp
-Route::get('/favourite-product', [FavouriteController::class, 'getFavoritesByCustomer'])->middleware(CustomerMiddleware::class);
-Route::post('/add-to-cart', [CartController::class, 'addToCart'])->name('add-to-cart')->middleware(CustomerMiddleware::class);
-Route::post('/remove-favorite', [FavouriteController::class, 'removeFavorite'])->name('remove-favorite')->middleware(CustomerMiddleware::class);
-
-Route::post('/add-shopping-cart', [CartController::class, 'add_shopping_cart'])->name('add_shopping_cart');
 ?>

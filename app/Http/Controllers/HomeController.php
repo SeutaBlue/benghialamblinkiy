@@ -7,7 +7,8 @@ use DB; // sử dụng database
 use App\Http\Requests;
 use App\Models\CatePost;
 use App\Models\Post;
-use Session; // thu vien sdung session
+use Illuminate\Support\Facades\Session;
+//use Session; // thu vien sdung session
 use Illuminate\Support\Facades\Redirect; 
 session_start();
 
@@ -153,6 +154,14 @@ class HomeController extends Controller
         ->with('selectedColors',$filter)
         ->with('keywords',$keywords);
     }
-    
+    public function your_cart(Request $request)
+    {
+        $customer = Session::get('customer_id');
+
+        $cart=DB::table('tbl_cart')->where('customer_id',$customer)->distinct()->pluck('product_id');
+        
+        return response()->json(['number' =>  $cart->count()]);
+    }
+   
 
 }

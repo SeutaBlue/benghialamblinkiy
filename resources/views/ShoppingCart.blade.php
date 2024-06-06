@@ -23,14 +23,14 @@
                     <div class="shopping-cart-title">Giỏ hàng của bạn</div>
                     <div id="list" class="list">
                         @if ($login)
-                            @if($ShoppingCart->isEmpty())
+                            @if ($ShoppingCart->isEmpty())
                                 <p class="note">Bạn chưa có sản phẩm nào trong giỏ hàng, hãy thêm vào đi nào :3</p>
                             @else
-                            <input type="hidden" value="{{ $ShoppingCart }}" id="abc">
+                                <input type="hidden" value="{{ $ShoppingCart }}" id="abc">
                                 <script>
-                                    var check=document.getElementById('abc').value;
+                                    var check = document.getElementById('abc').value;
                                     console.log(check);
-                                    </script>
+                                </script>
                                 @foreach ($ShoppingCart as $key => $cart)
                                     <div class="item">
                                         <input type="checkbox" class="checkbox">
@@ -47,33 +47,40 @@
                                                 <a href="{{ URL::to('/chi-tiet-san-pham/' . $cart->product_id) }}">
                                                     <div class="product-name">{{ $cart->product_name }}</div>
                                                 </a>
-                                                <input type="hidden" class="product-id" value="{{ $cart->product_id }}">
+                                                <input type="hidden" class="product-id"
+                                                    value="{{ $cart->product_id }}">
                                             </div>
                                             <div class="product-decribe">(Màu: <input type="hidden"
                                                     class="color">{{ $cart->product_color }},
-                                                Kích cỡ:<input type="hidden" class="size" value="{{ $cart->size_id }}">
+                                                Kích cỡ:<input type="hidden" class="size"
+                                                    value="{{ $cart->size_id }}">
                                                 {{ $cart->size_value }} )
                                             </div>
                                             <div class="product-price">
-                                                <input type="hidden" class="price" value="{{ $cart->product_price }}">
-                                                <p class="price_text">{{ number_format($cart->product_price, 0, '.', '.') }}đ
+                                                <input type="hidden" class="price"
+                                                    value="{{ $cart->product_price }}">
+                                                <p class="price_text">
+                                                    {{ number_format($cart->product_price, 0, '.', '.') }}đ
                                                 </p>
                                                 <div class="number-input">
                                                     <input type="button" value="-" class="decrease_button"
                                                         onclick="UpdateCart(this)">
                                                     <input type="number" class="quantity_values" name="quantity"
-                                                        value="{{ $cart->cart_quantity }}" aria-label="Product quantity"
-                                                        size="4" min="1" step="1" inputmode="numeric"
-                                                        autocomplete="off" onchange="UpdateCart(this)">
+                                                        value="{{ $cart->cart_quantity }}"
+                                                        aria-label="Product quantity" size="4" min="1"
+                                                        step="1" inputmode="numeric" autocomplete="off"
+                                                        onchange="UpdateCart(this)">
                                                     <input type="button" value="+" class="increase_button"
                                                         onclick="UpdateCart(this)">
-                                                    <input type="hidden" class="inventory" value="{{ $cart->SL }}">
+                                                    <input type="hidden" class="inventory"
+                                                        value="{{ $cart->SL }}">
                                                 </div>
                                                 <p class="total">
                                                     {{ number_format($cart->cart_quantity * $cart->product_price, 0, '.', '.') }}đ
                                                 </p>
                                             </div>
-                                            <p class="remove" onclick="DeleteCart(this)"><i class="fa-solid fa-trash"></i>
+                                            <p class="remove" onclick="DeleteCart(this)"><i
+                                                    class="fa-solid fa-trash"></i>
                                                 Xóa</p>
                                         </div>
                                     </div>
@@ -107,10 +114,12 @@
                     </div>
 
                     <div class="pay">
-                        <button class="pay_button" onclick="window.location.href='{{ URL::to('/shipping') }}'">Thanh toán</button>
+                        <button class="pay_button" onclick="window.location.href='{{ URL::to('/shipping') }}'">Thanh
+                            toán</button>
                     </div>
                     <div class="continue">
-                        <a href="{{ URL::to('/san-pham') }}"><i class="fas fa-angle-double-left"></i> Tiếp tục mua hàng</a>
+                        <a href="{{ URL::to('/san-pham') }}"><i class="fas fa-angle-double-left"></i> Tiếp tục mua
+                            hàng</a>
                     </div>
                 </div>
             </div>
@@ -121,32 +130,55 @@
 
     <script src="{{ asset('public/frontend/js/ScriptShoppingCart.js') }}"></script>
     <script>
-        function DeleteCart(cart) {
+        function DeleteCart(cart) 
+        {
             var product = cart.closest('.item');
             const proid = product.querySelector('.product-id').value;
             const prosize = product.querySelector('.size').value;
             const customer = document.getElementById('customer-id').value;
             const proquantity = product.querySelector('.quantity_values').value;
 
-            
-            $.ajax({
-                type: 'GET',
-                url: '',
-                data: {
-                    proid: proid,
-                    prosize: prosize,
-                    customer: customer,
-                    proquantity: proquantity,
-                    action: 'delete-shopping-cart'
-                },
-                success: function(response) {
-
-                },
-                error: function(jqXHR, textStatus, errorThrown) {
-                    console.log('AJAX call failed: ' + textStatus + ', ' +
-                        errorThrown);
-                }
-            });
+            if (customer) 
+            {
+                $.ajax({
+                    type: 'POST',
+                    url: "{{ url('/delete-cart') }}",
+                    data: {
+                        proid: proid,
+                        prosize: prosize,
+                        proquantity: proquantity,
+                        _token: '{{ csrf_token() }}'
+                    },
+                    success: function(response) {
+                        console.log('Xóa sản phẩm khỏi giỏ hàng thành công');
+                    },
+                    error: function(jqXHR, textStatus, errorThrown) {
+                        console.log('AJAX call failed: ' + textStatus + ', ' +
+                            errorThrown);
+                    }
+                });
+                $.ajax({
+                    type: 'POST',
+                    url: "{{ url('/your-cart') }}",
+                    data: {
+                        _token: '{{ csrf_token() }}'
+                    },
+                    success: function(response) {
+                        console.log('Cập nhật số lượng sản phẩm hiển thị trên ô giỏ hàng thành công');
+                        $('#cart-shopping-quantity').text(response.number);
+                        if (parseInt(response.number) < 99) 
+                        {
+                            $('#cart-shopping-quantity').text(response.number);
+                        } else {
+                            $('#cart-shopping-quantity').text('99+');
+                        }
+                    },
+                    error: function(jqXHR, textStatus, errorThrown) {
+                        console.log('AJAX call failed: ' + textStatus + ', ' +
+                            errorThrown);
+                    }
+                });
+            }
         }
 
         function UpdateCart(cart) {
@@ -157,27 +189,34 @@
             var customer = document.getElementById('customer-id').value;
             var proquantity = product.querySelector('.quantity_values').value;
 
-            if (cart.value === '+') { proquantity = parseInt(proquantity) + 1; } 
-            else if (cart.value === '-') { if (proquantity > 1) {proquantity = parseInt(proquantity) - 1;}}
+            if(customer)
+            {
+            if (cart.value === '+') {
+                proquantity = parseInt(proquantity) + 1;
+            } else if (cart.value === '-') {
+                if (proquantity > 1) {
+                    proquantity = parseInt(proquantity) - 1;
+                }
+            }
 
             $.ajax({
-                type: 'GET',
-                url: '',
+                type: 'POST',
+                url: "{{ url('/update-cart') }}",
                 data: {
                     proid: proid,
                     prosize: prosize,
-                    customer: customer,
                     proquantity: proquantity,
-                    action: 'update-shopping-cart'
+                    _token: '{{ csrf_token() }}' 
                 },
                 success: function(response) {
-
+                    console.log('Cập nhật số lượng trong giỏ hàng thành công');
                 },
                 error: function(jqXHR, textStatus, errorThrown) {
                     console.log('AJAX call failed: ' + textStatus + ', ' +
                         errorThrown);
                 }
             });
+        }
         }
     </script>
     <?php

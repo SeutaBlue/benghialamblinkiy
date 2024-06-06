@@ -47,30 +47,15 @@ class AppServiceProvider extends ServiceProvider
             // if($customer_id)
             // {
 
-                // $cart=DB::table('tbl_cart')
-                // ->where('customer_id', $customer_id)
-                // ->join('tbl_product','tbl_product.product_id','=','tbl_cart.product_id')
-                // ->join('tbl_size','tbl_size.size_id','=','tbl_cart.size_id')
-                // ->join('tbl_product_details', function ($join) {
-                //     $join->on('tbl_cart.product_id', '=', 'tbl_product_details.product_id')
-                //         ->on('tbl_cart.size_id', '=', 'tbl_product_details.size_id');})
-                // ->orderBy('tbl_cart.created_at', 'desc')
-                // ->get();
-
-            //     return view('ShoppingCart')->with('login',$customer_id)->with('ShoppingCart',$cart);
-            //     $view
-            //     ->with('category_product_header',$category_product_header)
-            //     ->with('category_post_header',$category_post_header)
-            //     ->with('my_customer',$customer_id )
-            //     ->with('cart',$cart);
-            // }
-            // else 
+                $cart=DB::table('tbl_cart')
+                ->where('customer_id', $customer_id)
+                ->distinct()->pluck('product_id');
 
             $view
             ->with('category_product_header',$category_product_header)
             ->with('category_post_header',$category_post_header)
             ->with('my_customer',$customer_id )
-            // ->with('cart',$cart )
+            ->with('cart',$cart )
             ;
         });
     }

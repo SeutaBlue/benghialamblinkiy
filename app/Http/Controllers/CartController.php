@@ -171,4 +171,30 @@ class CartController extends Controller
         }
 
     }
+    public function delete_cart(Request $request)
+    {
+        $customer = Session::get('customer_id');
+        $product =  $request->proid;
+        $size =  $request->prosize;
+        $quantity =  $request->proquantity;
+
+        DB::table('tbl_cart')->where('product_id', $product)->where('size_id', $size)->where('customer_id', $customer)->delete();
+        return response()->json(['success' => true]);
+    }
+    public function update_cart(Request $request)
+    {
+        $customer = Session::get('customer_id');
+        $product =  $request->proid;
+        $size =  $request->prosize;
+        $quantity =  $request->proquantity;
+
+        DB::table('tbl_cart')
+        ->where('product_id', $product)
+        ->where('size_id', $size)
+        ->where('customer_id', $customer)
+        ->update(['cart_quantity' => $quantity]);
+
+        return response()->json(['success' => true]);
+    }
+ 
 }
