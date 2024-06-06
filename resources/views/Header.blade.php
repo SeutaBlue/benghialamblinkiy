@@ -79,7 +79,7 @@
                 </ul>
             </li>
             <li class="mainmenu-li">
-                <a class="menu-bar-title"  href="{{ URL::to('/tat-ca-bai-viet') }}">GIỚI THIỆU</a>
+                <a class="menu-bar-title"  href="{{ URL::to('/gioi-thieu') }}">GIỚI THIỆU</a>
             </li>
             <li class="mainmenu-li">
                 <a class="menu-bar-title" href="{{ URL::to('/tat-ca-bai-viet') }}">BLOG</a>
